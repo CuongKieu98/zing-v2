@@ -8,6 +8,11 @@ export const initialState = {
     bgSidebarIsActive:"hsla(0,0%,100%,0.1)",
     bgSidebarBorderActive:"3px solid #ed2b91",
     bgLoading:"hsla(0, 0%, 100%, 0.1)",
+    bglayout:"#37075d",
+    //now playing bar
+    themePlaying:images.zma,
+    playerbg:"rgba(0,0,0,0.2)",
+    borderPlayer: "1px solid hsla(0,0%,100%,0.1)"
 };
 const bgReducer = (state=initialState,action) => {
     switch (action.type){

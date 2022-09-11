@@ -13,6 +13,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import images from "./assets/images";
 import SideBar from "./components/sidebar/SideBar";
+import PlayingBar from "./components/playingbar/PlayingBar";
 
 function App() {
   return (
@@ -30,22 +31,22 @@ function App() {
             overflow: "hidden",
           }}
         >
-        <Header />
-        <main
-        id={"boxm"}
-        className="main"
-          style={{
-            position: "absolute",
-            inset: "0px",
-            overflow: "hidden scroll",
-            marginBottom: "0px",
-          }}
-        >
-          <Routesv6 />
-          <Footer />
-
-        </main>
+          <Header />
+          <main
+            id={"boxm"}
+            className="main"
+            style={{
+              position: "absolute",
+              inset: "0px",
+              overflow: "hidden scroll",
+              marginBottom: "0px",
+            }}
+          >
+            <Routesv6 />
+            <Footer />
+          </main>
         </div>
+        <PlayingBar />
       </div>
     </BrowserRouter>
   );

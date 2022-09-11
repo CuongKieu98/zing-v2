@@ -39,12 +39,24 @@ const SlideHome = () => {
       <Swiper
         modules={[Autoplay]}
         grabCursor={true}
-        spaceBetween={10}
-        slidesPerView={3}
+        spaceBetween={0}
+        slidesPerView={2}
+        loop={true}
+        breakpoints={{
+          600: {
+            slidesPerView: 2,
+            spaceBetween: 5,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+        }}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
         }}
+        
       >
         {bannersSlide.map((item, index) => (
           <SwiperSlide key={index}>
