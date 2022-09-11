@@ -32,6 +32,8 @@ function App() {
         >
         <Header />
         <main
+        id={"boxm"}
+        className="main"
           style={{
             position: "absolute",
             inset: "0px",

@@ -30,17 +30,19 @@ const Header = () => {
   useEffect(() => {
     const shrinkHeader = () => {
       if (
-        document.body.scrollTop > 100 ||
-        document.documentElement.scrollTop > 100
+        document.getElementsByClassName("main")[0]?.scrollTop > 100 ||
+        document.getElementById("boxm")[0]?.scrollTop > 100
       ) {
+      
         headerRef.current.classList.add("shrink");
       } else {
         headerRef.current.classList.remove("shrink");
       }
     };
-    window.addEventListener("scroll", shrinkHeader);
+  
+    document.getElementById("boxm").addEventListener("scroll", shrinkHeader);
     return () => {
-      window.removeEventListener("scroll", shrinkHeader);
+      document.getElementById("boxm").removeEventListener("scroll", shrinkHeader);
     };
   }, []);
 

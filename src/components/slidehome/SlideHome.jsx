@@ -41,10 +41,10 @@ const SlideHome = () => {
         grabCursor={true}
         spaceBetween={10}
         slidesPerView={3}
-        // autoplay={{
-        //   delay: 5000,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
       >
         {bannersSlide.map((item, index) => (
           <SwiperSlide key={index}>

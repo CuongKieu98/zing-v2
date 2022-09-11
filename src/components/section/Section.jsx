@@ -8,47 +8,20 @@ import Actions from "../actions/Actions";
 
 //icon
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 //icon
 
-const playlist = [
-  {
-    img: images.test1,
-    title: "K-pop Deabak",
-    astist: "aespa,NCT Dream,NewJeans...",
-  },
-  {
-    img: images.test2,
-    title: "K-pop Deabak",
-    astist: "aespa,NCT Dream,NewJeans...",
-  },
-  {
-    img: images.test3,
-    title: "K-pop Deabak",
-    astist: "aespa,NCT Dream,NewJeans...",
-  },
-  {
-    img: images.test4,
-    title: "K-pop Deabak",
-    astist: "aespa,NCT Dream,NewJeans...",
-  },
-  {
-    img: images.test5,
-    title: "K-pop Deabak",
-    astist: "aespa,NCT Dream,NewJeans...",
-  },
-];
 
 const Section = (props) => {
-  const {title} = props
+  const {title,list} = props
   return (
     <div className="section mt-3">
       <div className="section__container mt-3">
         <h3 className="section__container__title is-2">{title}</h3>
         <div className="section__items">
           <div className="section__items__item">
-            {playlist.map((item, index) => (
+            {list.map((item, index) => (
               <Card
                 key={index}
                 img={item.img}
@@ -79,8 +52,7 @@ const Card = (props) => {
       className: "card-small-icon ",
     },
     {
-      icon: <PlayArrowIcon sx={{ fontSize: 45 }} />,
-      title: "Play",
+      icon: <PlayArrowRoundedIcon sx={{ fontSize: 45 }} />,
       onClick: (e) => handleClick(e, "play"),
       className: "border-icon ",
       customClass:" no-bg"
@@ -88,7 +60,7 @@ const Card = (props) => {
     {
       icon: <MoreHorizIcon sx={{ fontSize: 20 }} />,
       title: "Xem thêm",
-      onClick: (e) => handleClick(e, "xem thêm"),
+      onClick: (e) => handleClick(e, "Khác"),
       className: "card-small-icon ",
     },
   ];
