@@ -1,0 +1,22 @@
+@use "../../scss/" as *;
+
+.slide-home{
+    height: 200px;
+    margin: 3rem;
+}
+.slide-item__content_banner{
+    flex: 1;
+    @include flex(center, center);
+    position: relative;
+    padding: 0 10px;
+
+    img {
+        width: 100%;
+      border-radius: $border-radius-slide;
+      box-shadow: $box-shadow;
+
+    //   transform: scale(0);
+    //   transition: transform 0.7s ease;
+    }
+   
+}

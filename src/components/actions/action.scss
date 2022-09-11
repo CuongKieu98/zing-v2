@@ -1,0 +1,48 @@
+@use "../../scss/" as *;
+
+.actions {
+  width: 100%;
+  @include flex(center, space-evenly);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  z-index: 98;
+  transform: translateX(-50%) translateY(-50%);
+  visibility: hidden;
+  &__icon {
+    border-radius: 999px;
+    line-height: normal;
+    display: inline-block;
+    font-weight: 400;
+    text-transform: none;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    &.no-bg:hover {
+      background-color: unset;
+      filter: brightness(0.9);
+    }
+    &:hover {
+      background-color: $hover-tooltip-opacity;
+    }
+  }
+  .card-normal-icon {
+    filter: brightness(0.9);
+    background-color: unset !important;
+  }
+  .card-small-icon {
+    width: 30px;
+    height: 30px;
+    @include flex(center, center);
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+
+    @include mobile {
+      display: none;
+    }
+    line-height: 0;
+  }
+}

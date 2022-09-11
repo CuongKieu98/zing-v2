@@ -1,0 +1,69 @@
+@use "../../scss/" as *;
+
+.sidebar {
+  width: 240px;
+  padding-top: $header-height;
+  padding-bottom: 50px;
+  transition: 0.5s ease;
+  @include tablet {
+    width: 70px;
+  }
+
+  @include mobile {
+    display: none;
+  }
+  &__wrapper {
+    @include flex(center, center);
+
+    &__menu {
+      width: 100%;
+      position: relative;
+      margin-bottom: 15px;
+
+      ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+          font-weight: 600;
+          color: $txt-color;
+          border-left: 3px solid transparent;
+
+          a {
+            @include flex(center, unset);
+            padding: 7px 25px;
+            font-size: 14px;
+            i {
+              line-height: 66%;
+              display: inline-block;
+              margin-right: 10px;
+            }
+
+            span {
+              @include tablet {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    &__divide {
+      position: relative;
+      height: 1px;
+      margin-bottom: 15px;
+      &::after{
+        content: "";
+        border-top: 1px solid hsla(0,0%,100%,0.1);
+        position: absolute;
+        left: 25px;
+        right: 25px;
+        top: 0;
+      }
+    }
+  }
+}
+.sidebar-scroll{
+  height: 100%;
+  overflow: hidden auto;
+}
