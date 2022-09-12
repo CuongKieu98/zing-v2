@@ -21,5 +21,37 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
+    &__left {
+      position: relative;
+      width: 30%;
+      z-index: 1;
+      .level__item.is-narrow{
+        width: 100%;
+      }
+      .media {
+        padding: 0;
+        transition: transform 0.5s;
+        cursor: inherit;
+        width: 100%;
+      }
+    }
+    &__center{
+      flex-grow: 1;
+    max-width: 40vw;
+    }
+    &__right{
+      width: 30%;
+      @include flex(center,flex-end);
+      .duration-bar{
+        width: 70px;
+        cursor: pointer;
+      }
+      .divide{
+        height: 33px;
+        width: 1px;
+        background-color: $border-player;
+        margin: 0 20px;
+      }
+    }
   }
 }

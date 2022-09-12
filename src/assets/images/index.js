@@ -23,6 +23,7 @@ const images = {
     xone4: require('../images/xone4.jpg'),
     xone5: require('../images/xone5.jpg'),
     zma: require('../images/zma.png'),
+    datatest: require('../images/datatest.jpg'),
     
 };
 export default images;

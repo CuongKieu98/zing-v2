@@ -1,0 +1,51 @@
+@use "../../scss/" as *;
+
+.footer {
+  margin-top: 40px;
+  padding: 0 40px;
+  text-align: center;
+  &__partner {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 0 -15px;
+    &__item {
+      width: 12.5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 10px;
+
+      @include tablet {
+        width: 25%;
+        height: 100px;
+      }
+      @include mobile {
+        height: 70px;
+      }
+      figure {
+        width: 100%;
+        height: 50%;
+        border-radius: 8px;
+        background-color: #f7f7f7;
+        line-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include tablet {
+          height: 60px;
+        }
+        @include mobile {
+            height: 40px;
+          }
+        img {
+          max-width: 90%;
+          max-height: 50%;
+          width: auto;
+        }
+      }
+    }
+  }
+}

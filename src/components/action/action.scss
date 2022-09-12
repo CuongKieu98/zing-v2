@@ -1,0 +1,49 @@
+@use "../../scss/" as *;
+.action {
+
+  &__icon {
+    border-radius: 999px;
+    line-height: normal;
+    display: inline-block;
+    font-weight: 400;
+    text-transform: none;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    &.no-bg:hover {
+ 
+      background-color: unset;
+      filter: brightness(0.9);
+      i{
+        color: $main-color;
+      }
+    }
+    &:hover {
+      background-color: $hover-tooltip-opacity;
+    }
+    &.show-bg-square{
+      background-color: hsla(0,0%,100%,.1);
+      border-radius: 5px;
+      .active{
+        background-color: $main-color;
+      }
+      &:hover{
+        background-color: $hover-tooltip-opacity;
+      }
+    }
+  }
+
+  .card-small-icon {
+    width: 30px;
+    height: 30px;
+    @include flex(center, center);
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+
+    @include mobile {
+      display: none;
+    }
+    line-height: 0;
+  }
+}
