@@ -1,10 +1,7 @@
 @use "../../scss/" as *;
 
 .slide-home{
-    margin: 3rem;
-    @include mobile {
-        margin: 1rem;
-    }
+
 }
 .slide-item__content_banner{
     flex: 1;

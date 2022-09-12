@@ -15,7 +15,6 @@ const Action = (props) => {
             arrow
             placement="top"
             disableFocusListener
-            disableTouchListener
           >
             <i className={icon.className} onClick={icon.onClick}>
               {icon.icon}

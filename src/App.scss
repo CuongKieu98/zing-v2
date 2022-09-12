@@ -64,6 +64,7 @@ iframe {
 .container-main {
   max-width: 1660px;
   margin-top: 80px;
+  padding: 0 2rem;
 }
 
 .mb-3 {
@@ -85,11 +86,17 @@ iframe {
 .pd-3{
   padding: 3px;
 }
+.mr-15{
+  margin-right: 15px !important;
+}
 .section {
-  padding: 0 2rem;
+
 }
 .mg-07{
   margin: 0 7px;
+}
+.mt-30{
+  margin-top: 30px;
 }
 .border-icon {
   line-height: 0;
@@ -167,4 +174,28 @@ body ::-webkit-scrollbar-track {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+.number{
+  min-width: 38px;
+    -webkit-text-stroke: 1.5px $txt-color;
+    opacity: .7;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1;
+    text-align: center;
+    color: rgba(74,144,226,0);
+    font-family: "Roboto",sans-serif;
+    white-space: nowrap;
+}
+.top-1{
+  -webkit-text-stroke: 1px #4a90e2;
+    opacity: 1;
+}
+.top-2{
+  -webkit-text-stroke: 1px #50e3c2;
+  opacity: 1;
+}
+.top-3{
+  -webkit-text-stroke: 1px #e35050;
+  opacity: 1;
 }

@@ -1,1 +1,63 @@
-@use "../../scss/" as *;
+@use "../../../scss/" as *;
+
+.chart-home {
+  padding: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-grow: 1;
+  position: relative;
+  width: 100%;
+  .bg-blur {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .bg-alpha {
+    display: block;
+    z-index: 0;
+    background-image: linear-gradient(to bottom, #740091, #2d1a4c);
+    opacity: 0.95;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  &__header {
+    position: relative;
+    @include flex(center, unset);
+    font-size: 28px;
+    font-weight: 700;
+    color: $txt-color;
+    margin-bottom: 20px;
+  }
+  &__content {
+    &__item {
+      border-radius: 4px !important;
+      margin-bottom: 10px;
+      background-color: hsla(0, 0%, 100%, 0.07);
+      -webkit-mask-image: linear-gradient(359deg, transparent 0.1%, #000 10%);
+
+      &:hover,
+      &:active {
+        cursor: pointer;
+        background-color: hsla(0, 0%, 100%, 0.2) !important;
+        .opacity {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 4px;
+          background-color: $dark-alpha;
+        }
+        .center {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}

@@ -24,6 +24,7 @@ const images = {
     xone5: require('../images/xone5.jpg'),
     zma: require('../images/zma.png'),
     datatest: require('../images/datatest.jpg'),
+    bgchart1: require('../images/bgchart1.jpg'),
     
 };
 export default images;

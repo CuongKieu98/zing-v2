@@ -7,7 +7,21 @@
   padding: 10px;
   border-radius: 5px;
   &__left {
+    display: flex;
     margin-right: 10px;
+    &__rank{
+      @include flex(center,center);
+      font-size: 12px;
+      margin-right: 10px;
+      color: $txt-color;
+      font-weight: 700;
+      span{
+        width: 22px;
+        min-width: 0;
+        margin: 0!important;
+        -webkit-mask-image: linear-gradient(270deg, transparent 0.5%, #000 10%);
+      }
+    }
   }
   &__thumb {
     position: relative;
@@ -25,10 +39,15 @@
     figure {
       width: 64px;
       height: 64px;
+      border-radius: 4px;
+
       img {
         border-radius: 4px;
       }
+      
+      
     }
+  
   }
   &__content {
     min-width: 0;
@@ -54,7 +73,7 @@
       }
     }
     h4 {
-      margin-top: 1px;
+      margin-top: 2px;
       color: $txt-color-secondary;
       display: block;
       font-size: 12px;
@@ -64,9 +83,17 @@
       max-width: 100%;
       line-height: normal;
       font-weight: 400;
+      -webkit-mask-image: linear-gradient(270deg, transparent 0.5%, #000 10%);
     }
   }
   &__right {
     margin-left: 10px;
+  }
+  &__action{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
   }
 }

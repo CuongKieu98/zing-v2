@@ -90,7 +90,11 @@ const openRightBar = () =>{
         >
           <div className="playing-bar__controls__left level-left">
             <div className="level__item is-narrow">
-              <Media right={icons} />
+              <Media right={icons} item={{
+                artistsNames:"Vương Anh Tú",
+                title:"Cứu Vãn Kịp Không",
+                thumbnailM:"/",
+              }}/>
             </div>
           </div>
           <div className="playing-bar__controls__center">
