@@ -23,9 +23,9 @@ const ChartHome = () => {
       <div className="bg-alpha"></div>
       <div className="chart-home__header">
         <Link to={"/zing-chart"}>#zingchart</Link>
-        <Link to={"/zing-chart"}>
+        <Link to={"/zing-chart"} style={{paddingTop:10}}>
           {" "}
-          <PlayCircleIcon />
+          <PlayCircleIcon sx={{ fontSize: 36 }}/>
         </Link>
       </div>
       <div className="chart-home__content">
@@ -43,6 +43,11 @@ const ChartHome = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="is-center">
+        <Link to={"/zing-chart"} className="show-more">
+        {chart.length === 0 ? "Đang tải..." : "Xem thêm"}
+        </Link>
       </div>
     </div>
   );
