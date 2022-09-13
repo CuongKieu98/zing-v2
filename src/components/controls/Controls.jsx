@@ -9,6 +9,11 @@ import RepeatRoundedIcon from "@mui/icons-material/RepeatRounded";
 import ShuffleRoundedIcon from "@mui/icons-material/ShuffleRounded";
 import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
 import { Slider } from "@mui/material";
+import ActiveRandom from "./ActiveRandom";
+import Previous from "./Previous";
+import PlayPause from "./PlayPause";
+import NextSong from "./NextSong";
+import Loop from "./Loop";
 //icon
 
 const Controls = () => {
@@ -22,65 +27,21 @@ const Controls = () => {
     return `0${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
   }
 
-  const handleClick = () => {
-    return;
-  };
-
-  const handleTogglePlay = () => {
-    setIsPlay(!isPlay);
-  };
 
   return (
     <>
       <div className="level__item">
         <div className="action-bar">
-          <Action
-            icon={{
-              icon: <ShuffleRoundedIcon sx={{ fontSize: 20 }} />,
-              title: "Bật phát ngẫu nhiên",
-              onClick: (e) => handleClick(e, "favorite"),
-              className: "card-small-icon ",
-            }}
-            className={"mg-07"}
-          />
-          <Action
-            icon={{
-              icon: <SkipPreviousRoundedIcon sx={{ fontSize: 20 }} />,
-              onClick: (e) => handleClick(e, "favorite"),
-              className: "card-small-icon ",
-            }}
-            className={"mg-07"}
-          />
-          <Action
-            icon={{
-              icon: !isPlay ? (
-                <PlayArrowRoundedIcon sx={{ fontSize: 32 }} />
-              ) : (
-                <PauseRoundedIcon sx={{ fontSize: 32 }} />
-              ),
-              onClick: (e) => handleTogglePlay(),
-              className: "border-icon ",
-              customClass: " no-bg",
-            }}
-            className={"mg-07"}
-          />
-          <Action
-            icon={{
-              icon: <SkipNextRoundedIcon sx={{ fontSize: 20 }} />,
-              onClick: (e) => handleClick(e, "Khác"),
-              className: "card-small-icon ",
-            }}
-            className={"mg-07"}
-          />
-          <Action
-            icon={{
-              icon: <RepeatRoundedIcon sx={{ fontSize: 20 }} />,
-              title: "Phát lại tất cả",
-              onClick: (e) => handleClick(e, "Phát lại"),
-              className: "card-small-icon ",
-            }}
-            className={"mg-07"}
-          />
+          {/* acitve random song */}
+          <ActiveRandom />
+          {/* previous song */}
+          <Previous />
+          {/* Play/Pause */}
+          <PlayPause isPlay={isPlay} />
+          {/* next song */}
+          <NextSong />
+          {/* loop */}
+          <Loop />
         </div>
       </div>
       <div className="level__item mb-5">
@@ -93,7 +54,7 @@ const Controls = () => {
           step={1}
           max={duration}
           onChange={(_, value) => setPosition(value)}
-          sx={{color:"white"}}
+          sx={{ color: "white" }}
         />
         <span className="time right">{formatDuration(duration)}</span>
       </div>

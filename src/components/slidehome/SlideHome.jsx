@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
-
+import { Navigation } from "swiper";
 import banners from "../../assets/banner";
 
 import "./slidehome.scss";

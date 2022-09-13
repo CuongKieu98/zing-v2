@@ -1,1 +1,1 @@
-export const changeBgSelector = (state) => state;
+export const actionSelector = (state) => state;

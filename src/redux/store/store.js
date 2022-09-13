@@ -1,6 +1,12 @@
-import { createStore } from "redux";
-import bgReducer from "../reducers/bgReducer";
+import { createStore ,applyMiddleware} from "redux";
+import reducers from "../reducers";
+import thunk from "redux-thunk";
 
-const store = createStore(bgReducer);
 
-export default store;
+export default function configureStore(initialState){
+    return createStore(reducers,initialState,applyMiddleware(thunk));
+}
+
+// const store = createStore(reducers);
+
+// export default store;

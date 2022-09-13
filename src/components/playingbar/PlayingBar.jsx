@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./playingbar.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { changeBgSelector } from "../../redux/selectors/selectors";
+import { actionSelector } from "../../redux/selectors/selectors";
 import Media from "../media/Media";
 import { Slider } from "@mui/material";
 
@@ -19,8 +19,8 @@ import { useRef } from "react";
 //icon
 
 const PlayingBar = () => {
-  const bg = useSelector(changeBgSelector);
-  const rightbarRef=  useRef(null)
+  const bg = useSelector(actionSelector).bgReducer;
+  const rightbarRef = useRef(null);
 
   const [valueVolume, setValueVolume] = useState(50);
 
@@ -30,9 +30,7 @@ const PlayingBar = () => {
   const handleChangeVol = (event, newValue) => {
     setValueVolume(newValue);
   };
-const openRightBar = () =>{
-
-}
+  const openRightBar = () => {};
 
   const icons = [
     {
@@ -90,11 +88,14 @@ const openRightBar = () =>{
         >
           <div className="playing-bar__controls__left level-left">
             <div className="level__item is-narrow">
-              <Media right={icons} item={{
-                artistsNames:"Vương Anh Tú",
-                title:"Cứu Vãn Kịp Không",
-                thumbnailM:"/",
-              }}/>
+              <Media
+                right={icons}
+                item={{
+                  artistsNames: "Vương Anh Tú",
+                  title: "Cứu Vãn Kịp Không",
+                  thumbnailM: "/",
+                }}
+              />
             </div>
           </div>
           <div className="playing-bar__controls__center">
@@ -129,7 +130,6 @@ const openRightBar = () =>{
                   customClass: " show-bg-square",
                 }}
                 className={"pd-3"}
-                
               />
             </div>
           </div>

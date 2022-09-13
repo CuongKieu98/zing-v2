@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
-import { changeBgSelector } from "../../redux/selectors/selectors";
+import { actionSelector } from "../../redux/selectors/selectors";
 import "./sidebar.scss";
 
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
@@ -10,10 +10,10 @@ import GraphicEqIcon from "@mui/icons-material/GraphicEq";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
-import MusicVideoIcon from '@mui/icons-material/MusicVideo';
-import WidgetsIcon from '@mui/icons-material/Widgets';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import MusicVideoIcon from "@mui/icons-material/MusicVideo";
+import WidgetsIcon from "@mui/icons-material/Widgets";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 const sibarNav = [
   {
@@ -45,65 +45,57 @@ const sibarNav = [
 
 const sideBarv2 = [
   {
-    display:"Nhạc Mới",
-    icon:<MusicVideoIcon />,
-    path:"/",
+    display: "Nhạc Mới",
+    icon: <MusicVideoIcon />,
+    path: "/",
   },
   {
-    display:"Thể Loại",
-    icon:<WidgetsIcon />,
-    path:"/",
-
+    display: "Thể Loại",
+    icon: <WidgetsIcon />,
+    path: "/",
   },
   {
-    display:"Top 100",
-    icon:<StarBorderIcon />,
-    path:"/",
-
+    display: "Top 100",
+    icon: <StarBorderIcon />,
+    path: "/",
   },
   {
-    display:"MV",
-    icon:<YouTubeIcon />,
-    path:"/",
-
+    display: "MV",
+    icon: <YouTubeIcon />,
+    path: "/",
   },
   {
-    display:"MV",
-    icon:<YouTubeIcon />,
-    path:"/",
-
+    display: "MV",
+    icon: <YouTubeIcon />,
+    path: "/",
   },
   {
-    display:"MV",
-    icon:<YouTubeIcon />,
-    path:"/",
-
+    display: "MV",
+    icon: <YouTubeIcon />,
+    path: "/",
   },
   {
-    display:"MV",
-    icon:<YouTubeIcon />,
-    path:"/",
-
+    display: "MV",
+    icon: <YouTubeIcon />,
+    path: "/",
   },
   {
-    display:"MV",
-    icon:<YouTubeIcon />,
-    path:"/",
-
+    display: "MV",
+    icon: <YouTubeIcon />,
+    path: "/",
   },
   {
-    display:"MV",
-    icon:<YouTubeIcon />,
-    path:"/",
-
+    display: "MV",
+    icon: <YouTubeIcon />,
+    path: "/",
   },
-]
+];
 
 const SideBar = (props) => {
   const { pathname } = useLocation();
   const active = sibarNav.findIndex((e) => e.path === pathname);
 
-  const bg = useSelector(changeBgSelector);
+  const bg = useSelector(actionSelector).bgReducer;
 
   return (
     <div className="sidebar" style={{ backgroundColor: `${bg.bgSidebar}` }}>
@@ -133,41 +125,41 @@ const SideBar = (props) => {
         </nav>
       </div>
       <div className="sidebar__wrapper__divide"></div>
-      <SideBarScroll active={active}/>
+      <SideBarScroll active={active} />
     </div>
   );
 };
 
-
-const SideBarScroll = (props) =>{
+const SideBarScroll = (props) => {
   return (
-    <div style={{
-      position:"relative",
-      overflow:"hidden",
-      width:"100%",
-      height:"200px"
-    }}>
+    <div
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        width: "100%",
+        height: "200px",
+      }}
+    >
       <div className="sidebar-scroll">
-      <div className="sidebar__wrapper">
-        <nav className="sidebar__wrapper__menu">
-          <ul>
-            {sideBarv2.map((item, index) => (
-              <li
-                key={index}
-                className={`${index === props.active ? "active" : ""}`}
-                
-              >
-                <Link to={item.path}>
-                  <i>{item.icon}</i>
-                  <span>{item.display}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+        <div className="sidebar__wrapper">
+          <nav className="sidebar__wrapper__menu">
+            <ul>
+              {sideBarv2.map((item, index) => (
+                <li
+                  key={index}
+                  className={`${index === props.active ? "active" : ""}`}
+                >
+                  <Link to={item.path}>
+                    <i>{item.icon}</i>
+                    <span>{item.display}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 export default SideBar;

@@ -3,18 +3,17 @@ import "./section.scss";
 import images from "../../assets/images";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { changeBgSelector } from "../../redux/selectors/selectors";
+import { actionSelector } from "../../redux/selectors/selectors";
 import Actions from "../actions/Actions";
 
 //icon
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
+import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 //icon
 
-
 const Section = (props) => {
-  const {title,list} = props
+  const { title, list } = props;
   return (
     <div className="section mt-3">
       <div className="section__container mt-3">
@@ -39,7 +38,7 @@ const Section = (props) => {
 const Card = (props) => {
   const { img, title, content } = props;
 
-  const bg = useSelector(changeBgSelector);
+  const bg = useSelector(actionSelector).bgReducer;
   const handleClick = (e, value) => {
     e.preventDefault();
     console.log(value);
@@ -55,7 +54,7 @@ const Card = (props) => {
       icon: <PlayArrowRoundedIcon sx={{ fontSize: 45 }} />,
       onClick: (e) => handleClick(e, "play"),
       className: "border-icon ",
-      customClass:" no-bg"
+      customClass: " no-bg",
     },
     {
       icon: <MoreHorizIcon sx={{ fontSize: 20 }} />,

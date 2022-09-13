@@ -1,18 +1,18 @@
-import React, { useRef ,useEffect} from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./media.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { changeBgSelector } from "../../redux/selectors/selectors";
+import { actionSelector } from "../../redux/selectors/selectors";
 import { Tooltip } from "@mui/material";
 import Action from "../action/Action";
 
 //icon
-import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
+import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 
 const Media = (props) => {
   const { left, right, item } = props;
   const numRef = useRef(null);
-  const bg = useSelector(changeBgSelector);
+  const bg = useSelector(actionSelector).bgReducer;
 
   useEffect(() => {
     if (left && (left.rank === 1 || left.rank === 2 || left.rank === 3)) {
@@ -42,8 +42,7 @@ const Media = (props) => {
                 icon={{
                   icon: <PlayArrowRoundedIcon sx={{ fontSize: 30 }} />,
                   onClick: (e) => console.log("media icon click"),
-                  customClass:" no-bg"
-
+                  customClass: " no-bg",
                 }}
                 className="center"
               />
