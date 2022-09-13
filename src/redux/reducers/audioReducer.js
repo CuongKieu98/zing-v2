@@ -56,10 +56,7 @@ const audioReducer = (state = initialState, action) => {
     case "ACTION_SET_INFOSONG":
       return {
         ...state,
-        infoSong: {
-          ...state.infoSong,
-          infoSong: action.payload,
-        },
+        infoSong: action.payload,
       };
     case "ACTION_SET_SRC_AUDIO":
       return {
@@ -97,6 +94,11 @@ const audioReducer = (state = initialState, action) => {
         ...state,
         isLyric: action.payload,
       };
+      // case "ACTION_SET_SONG":
+      //   return {
+      //     ...state,
+      //     state: action.payload,
+      //   };
     default:
       return state;
   }

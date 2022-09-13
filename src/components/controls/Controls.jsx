@@ -2,12 +2,7 @@ import React, { useState, useRef } from "react";
 import "./controls.scss";
 import Action from "../action/Action";
 //icon
-import SkipNextRoundedIcon from "@mui/icons-material/SkipNextRounded";
-import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
-import SkipPreviousRoundedIcon from "@mui/icons-material/SkipPreviousRounded";
-import RepeatRoundedIcon from "@mui/icons-material/RepeatRounded";
-import ShuffleRoundedIcon from "@mui/icons-material/ShuffleRounded";
-import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
+
 import { Slider } from "@mui/material";
 import ActiveRandom from "./ActiveRandom";
 import Previous from "./Previous";
@@ -22,7 +17,7 @@ const Controls = (props) => {
   const dispatch = useDispatch();
   const audioRef = useRef(null);
 
-  const [duration, setDuration] = useState(tracks.duration || 0); // seconds
+  const [duration, setDuration] = useState(0); // seconds
   const [position, setPosition] = useState(0);
   const [paused, setPaused] = useState(false);
   const [seekValue, setSeekValue] = useState(0);
@@ -94,7 +89,7 @@ const Controls = (props) => {
           onChange={handleChange}
           sx={{ color: "white" }}
         />
-        <span className="time right">{formatDuration(duration)}</span>
+        <span className="time right">{formatDuration(tracks.duration)}</span>
       </div>
     </>
   );

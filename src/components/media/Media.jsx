@@ -8,11 +8,62 @@ import Action from "../action/Action";
 
 //icon
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
+import images from "../../assets/images";
+import {
+  setDurTime,
+  setSongId,
+  setSongInfo,
+  setSrcAudio,
+} from "../../redux/actions/actions";
+import { getInfoSong, getSong } from "../../api/musicApi";
+import { useState } from "react";
+import { PlaceOutlined } from "@mui/icons-material";
 
 const Media = (props) => {
-  const { left, right, item,onClick } = props;
+  const { left, right, item, tracks } = props;
+  const dispatch = useDispatch();
   const numRef = useRef(null);
   const bg = useSelector(actionSelector).bgReducer;
+  
+  const [loading, setLoading] = useState(false);
+  const [playing,setPlaying] = useState(false)
+  useEffect(() =>{
+    if(tracks && item.encodeId === tracks.songId && tracks.isPlay){
+      setPlaying(true);
+    }
+    else{
+      setPlaying(false)
+    }
+  },[item.encodeId, playing, tracks])
+
+  const handlePlay = async (e) => {
+    if (tracks.songId === item.encodeId && tracks.isPlay) {
+
+      return;
+    } else {
+      setLoading(true);
+      dispatch(setSongId(item.encodeId));
+      dispatch(
+        setSongInfo({
+          title: item.title,
+          thumbnailM: item.thumbnailM,
+          thumbnail: item.thumbnailM,
+          artistsNames: item.artistsNames,
+        })
+      );
+      await getInfoSong(item.encodeId).then((res) => {
+        dispatch(setDurTime(res.data.duration));
+      });
+      await getSong(item.encodeId).then((res) => {
+        try {
+          dispatch(setSrcAudio(res.data[128]));
+        } catch (error) {
+          console.log(error);
+        }
+      });
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (left && (left.rank === 1 || left.rank === 2 || left.rank === 3)) {
@@ -38,14 +89,28 @@ const Media = (props) => {
             </figure>
             <div className="opacity"></div>
             <div className="media__action">
-              <Action
-                icon={{
-                  icon: <PlayArrowRoundedIcon sx={{ fontSize: 30 }} />,
-                  onClick: (e) => console.log("media icon click"),
-                  customClass: " no-bg",
-                }}
-                className="center"
-              />
+              {loading ? (
+                <img
+                  className="media__action__loading"
+                  src={images.spiner}
+                  alt=""
+                />
+              ) : playing ? (
+                <img
+                  className="media__action__playing"
+                  src={images.iconplaying}
+                  alt=""
+                />
+              ) : (
+                <Action
+                  icon={{
+                    icon: <PlayArrowRoundedIcon sx={{ fontSize: 30 }} />,
+                    onClick: handlePlay,
+                    customClass: " no-bg",
+                  }}
+                  className="center"
+                />
+              )}
             </div>
           </div>
         </Link>

@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from "react";
 import "./charthome.scss";
-import { getCharthome } from "../../../api/musicApi";
+import {
+  getCharthome,
+  getInfoSong,
+  getLyric,
+  getSong,
+} from "../../../api/musicApi";
 import { Link } from "react-router-dom";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import images from "../../../assets/images";
 import Media from "../../media/Media";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionSelector } from "../../../redux/selectors/selectors";
+
 const ChartHome = () => {
+  const dispatch = useDispatch();
+
   const tracks = useSelector(actionSelector).audioReducer;
   const [chart, setChart] = useState([]);
   const dataSize = 4;
+
+
   useEffect(() => {
     getCharthome().then((res) => {
       setChart(res.data.RTChart.items?.slice(0, dataSize));
       console.log(res.data.RTChart.items?.slice(0, dataSize));
     });
   }, []);
+
   return (
     <div className="chart-home mt-3">
       <div
@@ -41,6 +52,7 @@ const ChartHome = () => {
                     rank: index + 1,
                   }}
                   item={item}
+                  tracks={tracks}
                 />
               </div>
             </div>

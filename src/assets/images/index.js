@@ -2,6 +2,7 @@
 
 const images = {
     background1 : require('../images/background1.svg').default,
+    spiner : require('../images/spiner.svg').default,
     test1 : require('../images/test1.jpg'),
     test2 : require('../images/test2.jpg'),
     test3 : require('../images/test3.jpg'),
@@ -25,6 +26,7 @@ const images = {
     zma: require('../images/zma.png'),
     datatest: require('../images/datatest.jpg'),
     bgchart1: require('../images/bgchart1.jpg'),
+    iconplaying: require('../images/iconplaying.gif'),
     
 };
 export default images;

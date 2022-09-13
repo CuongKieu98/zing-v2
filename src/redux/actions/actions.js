@@ -10,3 +10,27 @@ export const togglePlay = (isPlay) =>{
         payload:isPlay
     }
 }
+export const setSongId = (id) =>{
+    return {
+        type:"ACTION_SET_SONGID",
+        payload:id
+    }
+}
+export const setSongInfo = (info) =>{
+    return {
+        type:"ACTION_SET_INFOSONG",
+        payload:info
+    }
+}
+export const setSrcAudio = (src) =>{
+    return {
+        type:"ACTION_SET_SRC_AUDIO",
+        payload:src
+    }
+}
+export const setDurTime = (sec) =>{
+    return {
+        type:"ACTION_SET_DUR_TIME",
+        payload:sec
+    }
+}
