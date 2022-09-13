@@ -12,7 +12,10 @@ export const initialState = {
     //now playing bar
     themePlaying:images.zma,
     playerbg:"rgba(0,0,0,0.2)",
-    borderPlayer: "1px solid hsla(0,0%,100%,0.1)"
+    borderPlayer: "1px solid hsla(0,0%,100%,0.1)",
+    //rightbar
+    bgRightbar:"#5d218c",
+    activeMedia:"#ed2b91"
 };
 const bgReducer = (state=initialState,action) => {
     switch (action.type){

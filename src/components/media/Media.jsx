@@ -20,13 +20,14 @@ import { useState } from "react";
 import { PlaceOutlined } from "@mui/icons-material";
 
 const Media = (props) => {
-  const { left, right, item, tracks } = props;
+  const { left, right, item, tracks,className } = props;
   const dispatch = useDispatch();
   const numRef = useRef(null);
   const bg = useSelector(actionSelector).bgReducer;
   
   const [loading, setLoading] = useState(false);
-  const [playing,setPlaying] = useState(false)
+  const [playing,setPlaying] = useState(false);
+  const classImg = className ? className : "";
   useEffect(() =>{
     if(tracks && item.encodeId === tracks.songId && tracks.isPlay){
       setPlaying(true);
@@ -84,7 +85,7 @@ const Media = (props) => {
         {/*start img in bar */}
         <Link to={"/"}>
           <div className="media__thumb">
-            <figure style={{ backgroundColor: `${bg.bglayout}` }}>
+            <figure style={{ backgroundColor: `${bg.bglayout}` }} className={className}>
               <img src={item.thumbnailM} alt="" />
             </figure>
             <div className="opacity"></div>

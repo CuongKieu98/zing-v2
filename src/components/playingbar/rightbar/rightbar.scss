@@ -1,0 +1,80 @@
+@use "../../../scss/" as *;
+
+.right-bar {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  width: 330px;
+  border: none;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(25, 255, 255, 0.05);
+  bottom: 90px;
+  &__container-bar {
+    height: calc(100vh - 90px);
+    max-height: calc(100vh - 90px);
+    bottom: 0;
+    right: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  &__header {
+    padding: 14px 0;
+    position: relative;
+    .tabs-bar {
+      padding: 0 8px;
+      .level-left {
+        flex: 1 1;
+        border-radius: 999px;
+        background-color: $alpha-bg;
+        padding: 3px;
+      }
+      .level__item {
+        border-radius: 999px;
+        padding: 5px 0;
+        cursor: pointer;
+        color: $navigation-text;
+        &.is-active{
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 7%);
+            background-color: $tab-active-bg;
+            color: $txt-color;
+        }
+        h6{
+          font-weight: 500;
+          font-size: 12px;
+        }
+
+      }
+    }
+  }
+  &__content {
+    flex: 1 1;
+    &__main {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      &__section {
+        position: absolute;
+        inset: 0px;
+        overflow: hidden scroll;
+        margin-right: -6px;
+        margin-bottom: 0px;
+      }
+    }
+    &__list {
+      top: 0px;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+    &__items {
+      position: relative;
+      padding: 0 8px 15px;
+      .media-item{
+        border-radius: 4px;
+
+      }
+    }
+  }
+}

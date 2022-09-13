@@ -17,6 +17,7 @@ import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import { useRef } from "react";
 import { useEffect } from "react";
+import RightBar from "./rightbar/RightBar";
 //icon
 
 const PlayingBar = () => {
@@ -26,7 +27,7 @@ const PlayingBar = () => {
 
   console.log(tracks);
   const audioRef = useRef(null);
-  const rightbarRef = useRef(null);
+
 
   const [valueVolume, setValueVolume] = useState(50);
 
@@ -80,6 +81,7 @@ const PlayingBar = () => {
 
   return (
     <div className="playing-bar">
+      <RightBar bg={bg} tracks={tracks}/>
       <div
         className="playing-bar__controls"
         style={{ backgroundColor: `${bg.bglayout}` }}
