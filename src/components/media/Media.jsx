@@ -116,12 +116,12 @@ const Media = (props) => {
           </div>
         </Link>
         {/*end img in bar */}
-      </div>
       <div className="media__content ">
         <h3 className="is-mark level-left">{item.title}</h3>
         <h4 className="is-mark">
           <Link to={"/"}>{item.artistsNames}</Link>
         </h4>
+      </div>
       </div>
       <div className="media__right">
         <div className="level">

@@ -129,7 +129,7 @@ const PlayingBar = () => {
             <div className="level__item is-narrow">
               <span className="divide"></span>
             </div>
-            <div className="level__item is-narrow">
+            <div className="level__item is-narrow" >
               <Action
                 icon={{
                   icon: <PlaylistPlayIcon sx={{ fontSize: 20 }} />,

@@ -37,7 +37,7 @@ const RightBar = (props) => {
   const { bg, tracks ,refbar} = props;
 
   return (
-    <div className="right-bar" style={{ backgroundColor: `${bg.bgRightbar}` }} ref={refbar}>
+    <div className="right-bar" style={{ backgroundColor: `${bg.bgRightbar}` }} ref={refbar} >
       <div className="right-bar__container-bar">
         <div className="right-bar__header">
           <div className="level tabs-bar">
@@ -94,6 +94,20 @@ const Content = ({ tracks, bg }) => {
               <div className="next-song">
                 <h3>Tiếp theo</h3>
               </div>
+              {tracks.playingList.map((item,index) =>(
+              <div
+              className="media-item "
+              key={index}
+            >
+              <Media
+                item={item}
+                tracks={tracks}
+                className={"is-40"}
+                right={iconsMedia}
+              />
+              </div>
+              ))}
+
             </div>
           </div>
         </div>

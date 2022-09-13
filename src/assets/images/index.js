@@ -27,6 +27,7 @@ const images = {
     datatest: require('../images/datatest.jpg'),
     bgchart1: require('../images/bgchart1.jpg'),
     iconplaying: require('../images/iconplaying.gif'),
+    background2: require('../images/iu.jpg'),
     
 };
 export default images;

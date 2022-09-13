@@ -14,13 +14,16 @@ import Footer from "./components/footer/Footer";
 import images from "./assets/images";
 import SideBar from "./components/sidebar/SideBar";
 import PlayingBar from "./components/playingbar/PlayingBar";
+import { actionSelector } from "./redux/selectors/selectors";
+import { useSelector } from "react-redux";
 
 function App() {
+  const bg = useSelector(actionSelector).bgReducer;
   return (
     <BrowserRouter>
       <div
         className="bg-layout"
-        style={{ backgroundImage: `url(${images.background1})` }}
+        style={{ backgroundImage: `url(${bg.bg})` ,backgroundSize:"1920px auto",backgroundRepeat:"reqeat"}}
       >
         <SideBar />
         <div

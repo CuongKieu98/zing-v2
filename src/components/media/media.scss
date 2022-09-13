@@ -6,6 +6,7 @@
   text-align: left;
   padding: 10px;
   border-radius: 5px;
+  justify-content: space-between;
   &__left {
     display: flex;
     margin-right: 10px;
@@ -47,6 +48,7 @@
     }
   }
   &__content {
+    margin-left: 10px;
     min-width: 0;
     max-width: -webkit-max-content;
     max-width: -moz-max-content;

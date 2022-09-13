@@ -6,16 +6,39 @@ const initialState = {
   songId: "ZZFDAZ89",
   infoSong: {
     title: "Waiting For You",
-    thumbnailM: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/e/7/7/2/e772358978fef8a02eefd34f6a4ca6f3.jpg",
-    thumbnail: "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/e/7/7/2/e772358978fef8a02eefd34f6a4ca6f3.jpg",
+    thumbnailM:
+      "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/e/7/7/2/e772358978fef8a02eefd34f6a4ca6f3.jpg",
+    thumbnail:
+      "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/e/7/7/2/e772358978fef8a02eefd34f6a4ca6f3.jpg",
     artistsNames: "MONO, Onionn",
   },
-  srcAudio: "https://vnso-zn-10-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1663213044~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=09d94935a37dcd4ba69b8ca82f3b81ca",
+  srcAudio:
+    "https://vnso-zn-10-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1663213044~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=09d94935a37dcd4ba69b8ca82f3b81ca",
   currentTime: 0,
   duration: 266,
   volume: 0.5,
   isLoop: false,
-  playingList: [],
+  playingList: [
+    {
+      encodeId:"Z60BAWEO",
+      title: "Em Lấy Chồng",
+      thumbnailM:
+      "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/5/1/5/e/515ee410d55fd71ae7c59e13f57ae47f.jpg",
+      thumbnail:
+      "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/5/1/5/e/515ee410d55fd71ae7c59e13f57ae47f.jpg",
+      artistsNames: "Khắc Việt, ACV",
+    },
+    {
+      encodeId:"Z60A60FU",
+      title: "Cứu Vãn Kịp Không",
+      thumbnailM:
+      "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
+      thumbnail:
+      "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
+      artistsNames: "Vương Anh Tú",
+    },
+
+  ],
   isLyric: false,
 };
 const initialState1 = {
@@ -28,7 +51,8 @@ const initialState1 = {
     thumnail: "",
     artists: [],
   },
-  srcAudio: "https://vnso-zn-10-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1663213044~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=09d94935a37dcd4ba69b8ca82f3b81ca",
+  srcAudio:
+    "https://vnso-zn-10-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1663213044~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=09d94935a37dcd4ba69b8ca82f3b81ca",
   currentTime: 0,
   duration: 0,
   volume: 0.5,
@@ -94,11 +118,11 @@ const audioReducer = (state = initialState, action) => {
         ...state,
         isLyric: action.payload,
       };
-      // case "ACTION_SET_SONG":
-      //   return {
-      //     ...state,
-      //     state: action.payload,
-      //   };
+    // case "ACTION_SET_SONG":
+    //   return {
+    //     ...state,
+    //     state: action.payload,
+    //   };
     default:
       return state;
   }
