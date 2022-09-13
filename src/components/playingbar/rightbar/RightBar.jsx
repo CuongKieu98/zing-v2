@@ -19,12 +19,25 @@ const icons = [
     className: "card-small-icon ",
   },
 ];
+const iconsMedia = [
+  {
+    icon: <FavoriteBorderIcon sx={{ fontSize: 20 }} />,
+    title: "Thêm vào thư viện",
+
+    className: "card-small-icon ",
+  },
+  {
+    icon: <MoreHorizIcon sx={{ fontSize: 20 }} />,
+    title: "Xem thêm",
+    className: "card-small-icon ",
+  },
+];
 
 const RightBar = (props) => {
-  const { bg ,tracks} = props;
+  const { bg, tracks ,refbar} = props;
 
   return (
-    <div className="right-bar" style={{ backgroundColor: `${bg.bgRightbar}` }}>
+    <div className="right-bar" style={{ backgroundColor: `${bg.bgRightbar}` }} ref={refbar}>
       <div className="right-bar__container-bar">
         <div className="right-bar__header">
           <div className="level tabs-bar">
@@ -47,36 +60,46 @@ const RightBar = (props) => {
             </div>
           </div>
         </div>
-        <Content tracks={tracks} bg={bg}/>
+        <Content tracks={tracks} bg={bg} />
       </div>
     </div>
   );
 };
 
-const Content = ({tracks,bg}) =>{
-    console.log(tracks);
-    return (
-        <div className="right-bar__content">
-            <div className="right-bar__content__main" tabIndex={0}>
-                <div className="right-bar__content__main__section">
-                    <div className="right-bar__content__list">
-                        <div className="right-bar__content__items">
-                            <div className="media-item is-active" style={{ backgroundColor: `${bg.activeMedia}` }}>
-                                <Media item={{
-                                  encodeId:tracks.songId,
-                                  title: tracks.infoSong.title,
-                                  thumbnailM: tracks.infoSong.thumbnailM,
-                                  thumbnail: tracks.infoSong.thumbnailM,
-                                  artistsNames: tracks.infoSong.artistsNames,
-                                }} tracks={tracks} className={"is-40"}/>
+const Content = ({ tracks, bg }) => {
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div className="right-bar__content">
+      <div className="right-bar__content__main" tabIndex={0}>
+        <div className="right-bar__content__main__section">
+          <div className="right-bar__content__list">
+            <div className="right-bar__content__items">
+              <div
+                className="media-item is-active"
+                style={{ backgroundColor: `${bg.activeMedia}` }}
+              >
+                <Media
+                  item={{
+                    encodeId: tracks.songId,
+                    title: tracks.infoSong.title,
+                    thumbnailM: tracks.infoSong.thumbnailM,
+                    thumbnail: tracks.infoSong.thumbnailM,
+                    artistsNames: tracks.infoSong.artistsNames,
+                  }}
+                  tracks={tracks}
+                  className={"is-40"}
+                  right={iconsMedia}
+                />
+              </div>
+              <div className="next-song">
+                <h3>Tiếp theo</h3>
+              </div>
             </div>
+          </div>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default RightBar;

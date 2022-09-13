@@ -25,11 +25,11 @@ const PlayingBar = () => {
   const bg = reducer.bgReducer;
   const tracks = reducer.audioReducer;
 
-  console.log(tracks);
   const audioRef = useRef(null);
-
+  const rightBarRef = useRef(null);
 
   const [valueVolume, setValueVolume] = useState(50);
+  const [openRight, setOpenRight] = useState(false);
 
   const handleClick = () => {
     return;
@@ -37,7 +37,15 @@ const PlayingBar = () => {
   const handleChangeVol = (event, newValue) => {
     setValueVolume(newValue);
   };
-  const openRightBar = () => {};
+  const openRightBar = () => {
+    if (!openRight) {
+      setOpenRight(true);
+      rightBarRef.current.classList.add("is-open");
+    } else {
+      rightBarRef.current.classList.remove("is-open");
+      setOpenRight(false);
+    }
+  };
 
   const icons = [
     {
@@ -81,7 +89,7 @@ const PlayingBar = () => {
 
   return (
     <div className="playing-bar">
-      <RightBar bg={bg} tracks={tracks}/>
+      <RightBar bg={bg} tracks={tracks} refbar={rightBarRef} />
       <div
         className="playing-bar__controls"
         style={{ backgroundColor: `${bg.bglayout}` }}
@@ -126,7 +134,7 @@ const PlayingBar = () => {
                 icon={{
                   icon: <PlaylistPlayIcon sx={{ fontSize: 20 }} />,
                   title: "Danh sách phát",
-                  onClick: (e) => handleClick(e, "D"),
+                  onClick: (e) => openRightBar(e, "D"),
                   className: "card-small-icon ",
                   customClass: " show-bg-square",
                 }}
