@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import images from "../../../assets/images";
 import Media from "../../media/Media";
+import { useSelector } from "react-redux";
+import { actionSelector } from "../../../redux/selectors/selectors";
 const ChartHome = () => {
+  const tracks = useSelector(actionSelector).audioReducer;
   const [chart, setChart] = useState([]);
   const dataSize = 4;
   useEffect(() => {
@@ -23,9 +26,9 @@ const ChartHome = () => {
       <div className="bg-alpha"></div>
       <div className="chart-home__header">
         <Link to={"/zing-chart"}>#zingchart</Link>
-        <Link to={"/zing-chart"} style={{paddingTop:10}}>
+        <Link to={"/zing-chart"} style={{ paddingTop: 10 }}>
           {" "}
-          <PlayCircleIcon sx={{ fontSize: 36 }}/>
+          <PlayCircleIcon sx={{ fontSize: 36 }} />
         </Link>
       </div>
       <div className="chart-home__content">
@@ -46,7 +49,7 @@ const ChartHome = () => {
       </div>
       <div className="is-center">
         <Link to={"/zing-chart"} className="show-more">
-        {chart.length === 0 ? "Đang tải..." : "Xem thêm"}
+          {chart.length === 0 ? "Đang tải..." : "Xem thêm"}
         </Link>
       </div>
     </div>

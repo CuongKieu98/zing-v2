@@ -4,3 +4,9 @@ export const changeBg =(bg) =>{
         payload: bg
     }
 }
+export const togglePlay = (isPlay) =>{
+    return {
+        type:"ACTION_PLAY",
+        payload:isPlay
+    }
+}

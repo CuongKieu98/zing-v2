@@ -10,7 +10,7 @@ import Action from "../action/Action";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 
 const Media = (props) => {
-  const { left, right, item } = props;
+  const { left, right, item,onClick } = props;
   const numRef = useRef(null);
   const bg = useSelector(actionSelector).bgReducer;
 

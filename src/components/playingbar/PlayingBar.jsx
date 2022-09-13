@@ -16,10 +16,16 @@ import TabRoundedIcon from "@mui/icons-material/TabRounded";
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import { useRef } from "react";
+import { useEffect } from "react";
 //icon
 
 const PlayingBar = () => {
-  const bg = useSelector(actionSelector).bgReducer;
+  const reducer = useSelector(actionSelector);
+  const bg = reducer.bgReducer;
+  const tracks = reducer.audioReducer;
+
+  console.log(tracks);
+  const audioRef = useRef(null);
   const rightbarRef = useRef(null);
 
   const [valueVolume, setValueVolume] = useState(50);
@@ -88,18 +94,11 @@ const PlayingBar = () => {
         >
           <div className="playing-bar__controls__left level-left">
             <div className="level__item is-narrow">
-              <Media
-                right={icons}
-                item={{
-                  artistsNames: "Vương Anh Tú",
-                  title: "Cứu Vãn Kịp Không",
-                  thumbnailM: "/",
-                }}
-              />
+              <Media right={icons} item={tracks.infoSong} />
             </div>
           </div>
           <div className="playing-bar__controls__center">
-            <Controls />
+            <Controls audioRef={audioRef} tracks={tracks} />
           </div>
           <div className="playing-bar__controls__right">
             {iconR.map((item, index) => (

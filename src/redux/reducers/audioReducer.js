@@ -3,6 +3,24 @@ import { ActionTypes } from "@mui/base";
 const initialState = {
   isPlay: false,
   isMute: false,
+  songId: "ZZFDAZ89",
+  infoSong: {
+    title: "Waiting For You",
+    thumbnailM: "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/e/7/7/2/e772358978fef8a02eefd34f6a4ca6f3.jpg",
+    thumbnail: "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/e/7/7/2/e772358978fef8a02eefd34f6a4ca6f3.jpg",
+    artistsNames: "MONO, Onionn",
+  },
+  srcAudio: "https://vnso-zn-10-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1663213044~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=09d94935a37dcd4ba69b8ca82f3b81ca",
+  currentTime: 0,
+  duration: 266,
+  volume: 0.5,
+  isLoop: false,
+  playingList: [],
+  isLyric: false,
+};
+const initialState1 = {
+  isPlay: false,
+  isMute: false,
   songId: "",
   infoSong: {
     title: "",
@@ -10,7 +28,7 @@ const initialState = {
     thumnail: "",
     artists: [],
   },
-  srcAudio: "",
+  srcAudio: "https://vnso-zn-10-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1663213044~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=09d94935a37dcd4ba69b8ca82f3b81ca",
   currentTime: 0,
   duration: 0,
   volume: 0.5,

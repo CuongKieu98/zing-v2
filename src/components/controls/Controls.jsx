@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./controls.scss";
 import Action from "../action/Action";
 //icon
@@ -14,20 +14,52 @@ import Previous from "./Previous";
 import PlayPause from "./PlayPause";
 import NextSong from "./NextSong";
 import Loop from "./Loop";
+import { useDispatch } from "react-redux";
 //icon
 
-const Controls = () => {
-  const [isPlay, setIsPlay] = useState(false);
-  const duration = 200; // seconds
+const Controls = (props) => {
+  const { tracks } = props;
+  const dispatch = useDispatch();
+  const audioRef = useRef(null);
+
+  const [duration, setDuration] = useState(tracks.duration || 0); // seconds
   const [position, setPosition] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [seekValue, setSeekValue] = useState(0);
+
   function formatDuration(value) {
-    const minute = Math.floor(value / 60);
-    const secondLeft = value - minute * 60;
-    return `0${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
+    var m = Math.floor(value / 60);
+    var s = Math.floor(value % 60);
+    if (isNaN(m) || isNaN(s)) {
+      m = 0;
+      s = 0;
+    }
+    return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
   }
+  const checkNaN = (val) => {
+    if (isNaN(val)) {
+      return 0;
+    }
+    return val;
+  };
 
-
+  const handleChange = (event, value) =>{
+    let compute = (value * audioRef.current.duration) / 100;
+    audioRef.current.currentTime = compute;
+  }
+  const onPlaying = () => {
+    setPosition(audioRef.current.currentTime);
+    setSeekValue(
+      (audioRef.current.currentTime /
+        checkNaN(audioRef.current.duration)) *
+        100
+    );
+  };
+  const onLoad = () => {
+    setTimeout(() => {
+      setPosition(audioRef.current?.currentTime);
+    }, 1000);
+  };
   return (
     <>
       <div className="level__item">
@@ -37,23 +69,29 @@ const Controls = () => {
           {/* previous song */}
           <Previous />
           {/* Play/Pause */}
-          <PlayPause isPlay={isPlay} />
+          <PlayPause audioRef={audioRef} />
           {/* next song */}
           <NextSong />
           {/* loop */}
           <Loop />
         </div>
       </div>
+      <audio
+        src={tracks.srcAudio}
+        ref={audioRef}
+        onTimeUpdate={onPlaying}
+        onLoadedMetadata={onLoad}
+      >
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
       <div className="level__item mb-5">
         <span className="time left">{formatDuration(position)}</span>
         <Slider
           aria-label="time-indicator"
           size="small"
-          value={position}
-          min={0}
-          step={1}
-          max={duration}
-          onChange={(_, value) => setPosition(value)}
+          value={seekValue || 0}
+          onChange={handleChange}
           sx={{ color: "white" }}
         />
         <span className="time right">{formatDuration(duration)}</span>
