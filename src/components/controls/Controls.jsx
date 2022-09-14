@@ -64,7 +64,7 @@ const Controls = (props) => {
           {/* Play/Pause */}
           <PlayPause audioRef={audioRef} tracks={tracks}/>
           {/* next song */}
-          <NextSong />
+          <NextSong audioRef={audioRef} tracks={tracks}/>
           {/* loop */}
           <Loop />
         </div>

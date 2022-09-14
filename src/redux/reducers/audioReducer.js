@@ -38,22 +38,22 @@ const initialState = {
       artistsNames: "Vương Anh Tú",
     },
     {
-      encodeId:"Z60A60FU2",
-      title: "Cứu Vãn Kịp Không 2",
+      encodeId:"ZZFDAZ89",
+      title: "Waiting For You",
       thumbnailM:
       "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
       thumbnail:
       "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
-      artistsNames: "Vương Anh Tú",
+      artistsNames: "MONO, Onionn",
     },
     {
-      encodeId:"Z60A60FU3",
-      title: "Cứu Vãn Kịp Không 3",
+      encodeId:"ZZDFBFD8",
+      title: "Em Nên Dừng Lại",
       thumbnailM:
       "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
       thumbnail:
       "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
-      artistsNames: "Vương Anh Tú",
+      artistsNames: "Khang Việt",
     },
 
   ],
