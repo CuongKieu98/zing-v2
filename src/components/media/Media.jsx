@@ -39,7 +39,6 @@ const Media = (props) => {
 
   const handlePlay = async (e) => {
     if (tracks.songId === item.encodeId && tracks.isPlay) {
-
       return;
     } else {
       setLoading(true);

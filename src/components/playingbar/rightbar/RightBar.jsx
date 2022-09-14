@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Action from "../../action/Action";
+import Media from "../../media/Media";
 import "./rightbar.scss";
 
 //icon
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import Media from "../../media/Media";
+import AlarmIcon from '@mui/icons-material/Alarm';
+//drag drop item
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 const icons = [
   {
-    icon: <FavoriteBorderIcon sx={{ fontSize: 20 }} />,
-    title: "Thêm vào thư viện",
+    icon: <AlarmIcon sx={{ fontSize: 20 }} />,
+    title: "Hẹn giờ dừng phát nhạc",
     className: "card-small-icon ",
   },
   {
     icon: <MoreHorizIcon sx={{ fontSize: 20 }} />,
-    title: "Xem thêm",
+    title: "Khác",
     className: "card-small-icon ",
   },
 ];
@@ -34,10 +37,14 @@ const iconsMedia = [
 ];
 
 const RightBar = (props) => {
-  const { bg, tracks ,refbar} = props;
+  const { bg, tracks, refbar } = props;
 
   return (
-    <div className="right-bar" style={{ backgroundColor: `${bg.bgRightbar}` }} ref={refbar} >
+    <div
+      className="right-bar"
+      style={{ backgroundColor: `${bg.bgRightbar}` }}
+      ref={refbar}
+    >
       <div className="right-bar__container-bar">
         <div className="right-bar__header">
           <div className="level tabs-bar">
@@ -52,7 +59,7 @@ const RightBar = (props) => {
             <div className="level-right">
               <div className="level">
                 {icons.map((item, index) => (
-                  <div className="level__item" key={index}>
+                  <div className="level__item" style={{padding:"5px 5px"}} key={index}>
                     <Action icon={item} />
                   </div>
                 ))}
@@ -67,6 +74,17 @@ const RightBar = (props) => {
 };
 
 const Content = ({ tracks, bg }) => {
+  const [data, setData] = useState(tracks.playingList || []);
+
+  const onDragEnd = (result) => {
+    console.log(result);
+    if (!result.destination) return;
+    const { source, destination } = result;
+    const [remove] = data.splice(source.index, 1);
+    const newData = data.splice(destination.index, 0, remove);
+    console.log(newData);
+    console.log(tracks);
+  };
 
   return (
     <div className="right-bar__content">
@@ -94,20 +112,39 @@ const Content = ({ tracks, bg }) => {
               <div className="next-song">
                 <h3>Tiếp theo</h3>
               </div>
-              {tracks.playingList.map((item,index) =>(
-              <div
-              className="media-item "
-              key={index}
-            >
-              <Media
-                item={item}
-                tracks={tracks}
-                className={"is-40"}
-                right={iconsMedia}
-              />
-              </div>
-              ))}
-
+              <DragDropContext onDragEnd={onDragEnd}>
+                <Droppable droppableId="1">
+                  {(provided) => (
+                    <div {...provided.draggableProps} ref={provided.innerRef}>
+                      {data.map((item, index) => (
+                        <Draggable
+                          key={item.encodeId}
+                          draggableId={item.encodeId}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <div
+                              className="media-item "
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              
+                            >
+                              <Media
+                                item={item}
+                                tracks={tracks}
+                                className={"is-40"}
+                                right={iconsMedia}
+                              />
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DragDropContext>
             </div>
           </div>
         </div>
