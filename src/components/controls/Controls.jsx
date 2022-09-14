@@ -53,6 +53,7 @@ const Controls = (props) => {
       setPosition(audioRef.current?.currentTime);
     }, 1000);
   };
+
   return (
     <>
       <div className="level__item">

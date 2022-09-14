@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
 import { Navigation } from "swiper";
 import banners from "../../assets/banner";
+import "swiper/css/navigation";
+
 
 import "./slidehome.scss";
 const bannersSlide = [
@@ -37,10 +39,11 @@ const SlideHome = () => {
   return (
     <div className="slide-home">
       <Swiper
-        modules={[Autoplay]}
+        modules={[Autoplay,Navigation]}
         grabCursor={true}
         spaceBetween={0}
         slidesPerView={2}
+        navigation={true} 
         loop={true}
         breakpoints={{
           600: {

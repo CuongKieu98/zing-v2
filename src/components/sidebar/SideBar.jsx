@@ -14,6 +14,7 @@ import MusicVideoIcon from "@mui/icons-material/MusicVideo";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import images from "../../assets/images";
 
 const sibarNav = [
   {
@@ -35,6 +36,7 @@ const sibarNav = [
     display: "Radio",
     path: "/radio",
     icon: <GraphicEqIcon />,
+    img: images.liveimg,
   },
   {
     display: "Theo Dõi",
@@ -117,7 +119,11 @@ const SideBar = (props) => {
               >
                 <Link to={item.path}>
                   <i>{item.icon}</i>
-                  <span>{item.display}</span>
+                  <span>
+                    {item.display}
+                  
+                  </span>
+                  {item.img && <img src={item.img} alt="" style={{marginLeft:"8px"}}/>}
                 </Link>
               </li>
             ))}

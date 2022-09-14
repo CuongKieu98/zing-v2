@@ -1,13 +1,14 @@
-@use "../../scss/" as *;
+@use "../../../scss/" as *;
 
-.slide-home{
+
+.slide-radio{
   &:hover{
     .swiper-button-next,.swiper-button-prev{
       opacity: 1 !important;
     }
   }
 }
-.slide-item__content_banner{
+.slide-radio__content_banner{
     flex: 1;
     @include flex(center, center);
     position: relative;
@@ -16,7 +17,7 @@
 
     img {
         width: 100%;
-      border-radius: $border-radius-slide;
+      border-radius: $border-radius-slide-radio;
       box-shadow: $box-shadow;
 
     //   transform: scale(0);

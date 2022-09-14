@@ -44,9 +44,9 @@ const NextSong = ({ audioRef, tracks }) => {
           return;
         }
       });
-      // dispatch(togglePlay(true));
+      dispatch(togglePlay(true));
 
-      // audioRef.current.play();
+      audioRef.current.play();
     }else{
       window.alert("Vui lòng thêm danh sách phát")
     }

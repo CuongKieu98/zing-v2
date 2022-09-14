@@ -222,3 +222,54 @@ body ::-webkit-scrollbar-track {
   width: 40px !important;
   height: 40px !important;
 }
+
+.swiper-button-prev{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 55px !important;
+  height: 55px !important;
+  color: $white !important;
+  border-radius: 50% !important;
+
+  top: 50% !important;
+  left: 25px !important;
+  background-color: hsla(0,0%,100%,.15) !important;
+  box-shadow: 0 2px 4px 0 rgb(226 102 102 / 15%) !important;
+  @include mobile {
+    display: none !important;
+  }
+  opacity: 0;
+  &:hover{
+    opacity: 1;
+  
+  }
+  &::after{
+    font-size: 17px !important;
+  }
+}
+.swiper-button-next{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 55px !important;
+  height: 55px !important;
+  color: $white !important;
+  border-radius: 50% !important;
+
+  top: 50% !important;
+  right: 25px !important;
+  background-color: hsla(0,0%,100%,.15) !important;
+  box-shadow: 0 2px 4px 0 rgb(226 102 102 / 15%) !important;
+  @include mobile {
+    display: none !important;
+  }
+  opacity: 0;
+  &:hover{
+    opacity: 1;
+
+  }
+  &::after{
+    font-size: 17px !important;
+  }
+}

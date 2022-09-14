@@ -19,7 +19,6 @@ const ChartHome = () => {
   const tracks = useSelector(actionSelector).audioReducer;
   const [chart, setChart] = useState([]);
   const dataSize = 4;
-  console.log(tracks);
 
   useEffect(() => {
     getCharthome().then((res) => {
