@@ -13,7 +13,7 @@ const Loop = () => {
           icon: <RepeatRoundedIcon sx={{ fontSize: 20 }} />,
           title: "Phát lại tất cả",
           onClick: (e) => handleLoop(e, "Phát lại"),
-          className: "card-small-icon ",
+          className: "card-icon ",
         }}
         className={"mg-07"}
       />

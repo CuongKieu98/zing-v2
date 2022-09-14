@@ -69,4 +69,25 @@
     }
     line-height: 0;
   }
+  .card-tablet-icon {
+    width: 30px;
+    height: 30px;
+    @include flex(center, center);
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    @include tablet {
+      display: none;
+    }
+    line-height: 0;
+  }
+  .card-icon {
+    width: 30px;
+    height: 30px;
+    @include flex(center, center);
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    line-height: 0;
+  }
 }

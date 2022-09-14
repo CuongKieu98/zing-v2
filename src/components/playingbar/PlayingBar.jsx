@@ -66,19 +66,19 @@ const PlayingBar = () => {
       icon: <YouTubeIcon sx={{ fontSize: 20 }} />,
       title: "Xem MV",
       onClick: (e) => handleClick(e, "favorite"),
-      className: "card-small-icon ",
+      className: "card-tablet-icon ",
     },
     {
       icon: <LyricsIcon sx={{ fontSize: 20 }} />,
       title: "Xem lời bài hát",
       onClick: (e) => handleClick(e, "Khác"),
-      className: "card-small-icon ",
+      className: "card-tablet-icon ",
     },
     {
       icon: <TabRoundedIcon sx={{ fontSize: 20 }} />,
       title: "Chế độ cửa sổ",
       onClick: (e) => handleClick(e, "Khác"),
-      className: "card-small-icon ",
+      className: "card-tablet-icon ",
     },
     {
       icon: <VolumeUpRoundedIcon sx={{ fontSize: 20 }} />,

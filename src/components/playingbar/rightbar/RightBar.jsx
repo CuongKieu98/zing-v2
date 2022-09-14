@@ -6,9 +6,10 @@ import "./rightbar.scss";
 //icon
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import AlarmIcon from '@mui/icons-material/Alarm';
+import AlarmIcon from "@mui/icons-material/Alarm";
 //drag drop item
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import styled from "styled-components";
 
 const icons = [
   {
@@ -36,6 +37,31 @@ const iconsMedia = [
   },
 ];
 
+const DragItem = styled.div`
+  border-radius: 4px;
+  background-color: ${(props) => props.bgActive};
+  &:hover {
+    background-color: ${(props) => props.hoverActive ? props.bgActive : props.hover};
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.3),
+      inset 0 1px 1px rgba(25, 255, 255, 0.05);
+    .opacity {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 4px;
+      background-color: ${(props) => props.opacity};
+    }
+    .center {
+      visibility: visible;
+    }
+  }
+  .center {
+    visibility: ${(props) => (props.hoverActive ? "visible" : "hidden")};
+  }
+`;
+
 const RightBar = (props) => {
   const { bg, tracks, refbar } = props;
 
@@ -59,7 +85,11 @@ const RightBar = (props) => {
             <div className="level-right">
               <div className="level">
                 {icons.map((item, index) => (
-                  <div className="level__item" style={{padding:"5px 5px"}} key={index}>
+                  <div
+                    className="level__item"
+                    style={{ padding: "5px 5px" }}
+                    key={index}
+                  >
                     <Action icon={item} />
                   </div>
                 ))}
@@ -77,13 +107,10 @@ const Content = ({ tracks, bg }) => {
   const [data, setData] = useState(tracks.playingList || []);
 
   const onDragEnd = (result) => {
-    console.log(result);
     if (!result.destination) return;
     const { source, destination } = result;
     const [remove] = data.splice(source.index, 1);
     const newData = data.splice(destination.index, 0, remove);
-    console.log(newData);
-    console.log(tracks);
   };
 
   return (
@@ -92,7 +119,7 @@ const Content = ({ tracks, bg }) => {
         <div className="right-bar__content__main__section">
           <div className="right-bar__content__list">
             <div className="right-bar__content__items">
-              <div
+              {/* <div
                 className="media-item is-active"
                 style={{ backgroundColor: `${bg.activeMedia}` }}
               >
@@ -108,9 +135,9 @@ const Content = ({ tracks, bg }) => {
                   className={"is-40"}
                   right={iconsMedia}
                 />
-              </div>
+              </div> */}
               <div className="next-song">
-                <h3>Tiếp theo</h3>
+                <h3>Danh sách đang phát</h3>
               </div>
               <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="1">
@@ -123,20 +150,37 @@ const Content = ({ tracks, bg }) => {
                           index={index}
                         >
                           {(provided, snapshot) => (
-                            <div
-                              className="media-item "
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              
-                            >
-                              <Media
-                                item={item}
-                                tracks={tracks}
-                                className={"is-40"}
-                                right={iconsMedia}
-                              />
-                            </div>
+                            <>
+                              <DragItem
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                isDragging={
+                                  snapshot.isDragging &&
+                                  !snapshot.isDropAnimating
+                                }
+                                hover={`${bg.alphaBg}`}
+                                opacity={`${bg.darkAlpha}`}
+                                bgActive={
+                                  item.encodeId === tracks.songId
+                                    ? `${bg.activeMedia}`
+                                    : ""
+                                }
+                                hoverActive={item.encodeId === tracks.songId}
+                              >
+                                <Media
+                                  item={item}
+                                  tracks={tracks}
+                                  className={"is-40"}
+                                  right={iconsMedia}
+                                />
+                              </DragItem>
+                              {item.encodeId === tracks.songId && (
+                                <div className="next-song">
+                                  <h3>Tiếp theo</h3>
+                                </div>
+                              )}
+                            </>
                           )}
                         </Draggable>
                       ))}

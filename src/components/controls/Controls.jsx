@@ -17,9 +17,7 @@ const Controls = (props) => {
   const dispatch = useDispatch();
   const audioRef = useRef(null);
 
-  const [duration, setDuration] = useState(0); // seconds
-  const [position, setPosition] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [position, setPosition] = useState(0);;
   const [seekValue, setSeekValue] = useState(0);
 
   function formatDuration(value) {
@@ -64,7 +62,7 @@ const Controls = (props) => {
           {/* previous song */}
           <Previous />
           {/* Play/Pause */}
-          <PlayPause audioRef={audioRef} />
+          <PlayPause audioRef={audioRef} tracks={tracks}/>
           {/* next song */}
           <NextSong />
           {/* loop */}

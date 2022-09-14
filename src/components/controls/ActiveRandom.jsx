@@ -14,7 +14,7 @@ const ActiveRandom = () => {
           icon: <ShuffleRoundedIcon sx={{ fontSize: 20 }} />,
           title: "Bật phát ngẫu nhiên",
           onClick: (e) => handleActive(e, "favorite"),
-          className: "card-small-icon ",
+          className: "card-icon ",
         }}
         className={"mg-07"}
       />

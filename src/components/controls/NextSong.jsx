@@ -11,7 +11,7 @@ const NextSong = () => {
         icon={{
           icon: <SkipNextRoundedIcon sx={{ fontSize: 20 }} />,
           onClick: (e) => handleNext(e, "Khác"),
-          className: "card-small-icon ",
+          className: "card-icon ",
         }}
         className={"mg-07"}
       />

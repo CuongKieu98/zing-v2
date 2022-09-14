@@ -11,7 +11,7 @@ const Previous = () => {
         icon={{
           icon: <SkipPreviousRoundedIcon sx={{ fontSize: 20 }} />,
           onClick: (e) => handlePrev(e, "favorite"),
-          className: "card-small-icon ",
+          className: "card-icon ",
         }}
         className={"mg-07"}
       />

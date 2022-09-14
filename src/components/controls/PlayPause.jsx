@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Action from "../action/Action";
 import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import { useDispatch } from "react-redux";
 import { togglePlay } from "../../redux/actions/actions";
 
-const PlayPause = ({ audioRef }) => {
+const PlayPause = ({ audioRef ,tracks}) => {
   const dispatch = useDispatch();
-  const [isPlay, setIsPlay] = useState(false);
+  const [isPlay, setIsPlay] = useState(tracks.isPlay);
   const handleTogglePlay = () => {
     if (!isPlay) {
       setIsPlay(true);
@@ -18,6 +18,7 @@ const PlayPause = ({ audioRef }) => {
     }
     dispatch(togglePlay(!isPlay));
   };
+
   return (
     <>
       <Action

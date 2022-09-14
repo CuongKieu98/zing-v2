@@ -39,6 +39,7 @@ const Media = (props) => {
 
   const handlePlay = async (e) => {
     if (tracks.songId === item.encodeId && tracks.isPlay) {
+      
       return;
     } else {
       setLoading(true);
@@ -52,13 +53,22 @@ const Media = (props) => {
         })
       );
       await getInfoSong(item.encodeId).then((res) => {
-        dispatch(setDurTime(res.data.duration));
+        try {
+          dispatch(setDurTime(res.data.duration));
+        } catch (error) {
+          console.log(error);
+          setLoading(false);
+          return
+        }
+
       });
       await getSong(item.encodeId).then((res) => {
         try {
           dispatch(setSrcAudio(res.data[128]));
         } catch (error) {
           console.log(error);
+          setLoading(false);
+          return
         }
       });
       setLoading(false);
