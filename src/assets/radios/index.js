@@ -12,6 +12,12 @@ const radios = {
     radio8 : require('../radios/radio8.png'),
     radio9 : require('../radios/radio9.jpg'),
     radio10 : require('../radios/radio10.jpg'),
+    seradio : require('../radios/seradio.png'),
+    seradio2 : require('../radios/seradio2.png'),
+    seradio3 : require('../radios/seradio3.png'),
+    seradio4 : require('../radios/seradio4.png'),
+    seradio5 : require('../radios/seradio5.png'),
+
 
 
 

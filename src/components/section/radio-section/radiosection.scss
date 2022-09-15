@@ -1,27 +1,176 @@
 @use "../../../scss/" as *;
 
-
-.slide-radio{
-  &:hover{
-    .swiper-button-next,.swiper-button-prev{
-      opacity: 1 !important;
+.slide-radio {
+  .title{
+    padding-left: 15px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    opacity: 1;
+    transform: translateY(calc(-50% - 10px));
+    width: 38px !important;
+    height: 38px !important;
+    color: $black !important;
+    background-color: $white !important;
+    &.swiper-button-disabled {
+      opacity: 0.1 !important;
     }
   }
+  .swiper-button-next {
+    right: 0 !important;
+  }
+  .swiper-button-prev {
+    left: 0 !important;
+  }
 }
-.slide-radio__content_banner{
-    flex: 1;
-    @include flex(center, center);
-    position: relative;
-    padding: 0 10px;
-  
+.slide-radio__content_banner {
+  flex: 1;
+  @include flex(center, center);
+  position: relative;
+  padding: 0 10px;
 
-    img {
-        width: 100%;
-      border-radius: $border-radius-slide-radio;
-      box-shadow: $box-shadow;
+  img {
+    width: 100%;
+    border-radius: $border-radius-slide-radio;
+    box-shadow: $box-shadow;
 
     //   transform: scale(0);
     //   transition: transform 0.7s ease;
+  }
+}
+.card-radio {
+  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+  &__img {
+    display: block;
+    position: relative;
+    border-radius: 4px;
+    .svg-icon {
+      display: block;
+      max-width: 100%;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      transform: rotate(-90deg);
     }
-   
+    &:hover {
+      cursor: pointer;
+      .banner {
+        transform: scale(1.1) translateZ(0);
+      }
+      .opacity {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $dark-alpha;
+        border-radius: 999px;
+      }
+      .actions {
+        visibility: visible;
+      }
+      .card-radio__action {
+        display: block;
+      }
+    }
+    img {
+      border-radius: 5px;
+      overflow: hidden;
+      transition: transform 0.7s;
+    }
+    figure {
+      line-height: 0;
+      height: 0;
+      padding-bottom: 100%;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .live {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      bottom: 0;
+      z-index: 3;
+      line-height: 0;
+      width: 25%;
+    }
+    .host {
+      overflow: hidden;
+      border-radius: 999px;
+      line-height: 0;
+      padding: 0;
+      position: absolute;
+      top: 85.3%;
+      left: 85.3%;
+      transform: translate(-60%, -60%);
+      z-index: 3;
+      width: 36%;
+      height: auto;
+      background-color: transparent;
+    }
+  }
+
+  &__content {
+    text-align: center;
+    padding-top: 8px;
+    h3 {
+      margin-top: 8px;
+      text-transform: capitalize;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.36;
+      color: $txt-color;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    h4 {
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.36;
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+      //white-space: nowrap;
+      color: $txt-color-secondary;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+  &__action {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+    border-radius: 999px;
+    cursor: pointer;
+
+    .action {
+      position: absolute;
+      top: calc(50% - 22.5px);
+      left: calc(50% - 22.5px);
+    }
+  }
+  @include tablet {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  @include mobile {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }

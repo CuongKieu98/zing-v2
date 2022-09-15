@@ -41,6 +41,13 @@
         color: $main-color;
       }
     }
+    &.no-bg-hover:hover{
+      background-color: unset;
+      filter: brightness(0.9);
+      // i{
+      //   color: $main-color;
+      // }
+    }
     &:hover {
       background-color: $hover-tooltip-opacity;
     }

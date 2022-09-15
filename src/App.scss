@@ -252,11 +252,11 @@ body ::-webkit-scrollbar-track {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  width: 55px !important;
-  height: 55px !important;
+  width: 55px ;
+  height: 55px ;
   color: $white !important;
   border-radius: 50% !important;
-
+  //transform: translateY(calc(-50% - 25px));
   top: 50% !important;
   right: 25px !important;
   background-color: hsla(0,0%,100%,.15) !important;

@@ -1,0 +1,12 @@
+@use "./index.scss" as *;
+
+.week-card {
+  &__item {
+    @include flex(center,center);
+    @include mobile {
+        display: block;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+  }
+}

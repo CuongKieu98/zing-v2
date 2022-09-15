@@ -47,6 +47,12 @@
           }
         }
       }
+      .radio-live{
+
+        @include tablet {
+          display: none;
+        }
+      }
     }
     &__divide {
       position: relative;

@@ -1,4 +1,5 @@
 import images from "../images"
+import radios from "../radios"
 
 const SECTION_1 = [
     {
@@ -138,6 +139,23 @@ const SECTION_5 = [
         astist: "aespa,NCT Dream,NewJeans...",
       },
 ]
+
+const RADIO_1 = [{
+  img: radios.seradio5,
+  title:"Đắp Chăn Nằm Nghe Tun Kể"
+},{
+  img: radios.seradio,
+  title:"XONE with Stars"
+},{
+  img: radios.seradio2,
+  title:"How2Money x Doctor Housing"
+},{
+  img: radios.seradio3,
+  title:"HIEU.TV"
+},{
+  img: radios.seradio4,
+  title:"Tri Kỷ Cảm Xúc"
+},]
 export {
-    SECTION_1,SECTION_2,SECTION_3,SECTION_4
+    SECTION_1,SECTION_2,SECTION_3,SECTION_4,RADIO_1
 }

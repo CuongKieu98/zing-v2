@@ -21,7 +21,7 @@ const Section = (props) => {
         <div className="section__items">
           <div className="section__items__item">
             {list.map((item, index) => (
-              <Card
+              <CardMedia
                 key={index}
                 img={item.img}
                 title={item.title}
@@ -35,7 +35,7 @@ const Section = (props) => {
   );
 };
 
-const Card = (props) => {
+const CardMedia = (props) => {
   const { img, title, content } = props;
 
   const bg = useSelector(actionSelector).bgReducer;
@@ -65,25 +65,27 @@ const Card = (props) => {
   ];
 
   return (
-    <div className="card">
-      <div className="card__img">
+    <div className="card-media">
+      <div className="card-media__img">
         <figure style={{ backgroundColor: `${bg.bgLoading}` }}>
           <img src={img} alt="" />
         </figure>
         <div className="opacity"></div>
-        <div className="card__action">
+        <div className="card-media__action">
           <Actions icons={icons} />
         </div>
       </div>
-      <div className="card__content">
+      <div className="card-media__content">
         <h3>
           <Link to={"/"}>
             <span>{title}</span>
           </Link>
         </h3>
-        <h4>
-          <span>{content}</span>
-        </h4>
+        {content && (
+          <h4>
+            <span>{content}</span>
+          </h4>
+        )}
       </div>
     </div>
   );

@@ -123,7 +123,7 @@ const SideBar = (props) => {
                     {item.display}
                   
                   </span>
-                  {item.img && <img src={item.img} alt="" style={{marginLeft:"8px"}}/>}
+                  {item.img && <img className="radio-live" src={item.img} alt="" style={{marginLeft:"8px"}}/>}
                 </Link>
               </li>
             ))}
