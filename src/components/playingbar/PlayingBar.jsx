@@ -18,18 +18,21 @@ import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import { useRef } from "react";
 import { useEffect } from "react";
 import RightBar from "./rightbar/RightBar";
+import NowPlaying from "./nowplaying/NowPlaying";
 //icon
 
 const PlayingBar = () => {
   const reducer = useSelector(actionSelector);
   const bg = reducer.bgReducer;
   const tracks = reducer.audioReducer;
+  const nowPlayingRef = useRef(null);
 
   const audioRef = useRef(null);
   const rightBarRef = useRef(null);
 
   const [valueVolume, setValueVolume] = useState(50);
   const [openRight, setOpenRight] = useState(false);
+  const [openNP,setOpenNP] = useState(false);
 
   const handleClick = () => {
     return;
@@ -46,6 +49,16 @@ const PlayingBar = () => {
       setOpenRight(false);
     }
   };
+  const handleNowPlaying = () =>{
+    if(!openNP){
+      nowPlayingRef.current.classList.add("on-show");
+      setOpenNP(true)
+    }else{
+      nowPlayingRef.current.classList.remove("on-show");
+      setOpenNP(false)
+    }
+
+  }
 
   const icons = [
     {
@@ -88,7 +101,10 @@ const PlayingBar = () => {
   ];
 
   return (
-    <div className="playing-bar">
+    <div className="playing-bar" onClick={handleNowPlaying}>
+      <div className="on-playing-bar" ref={nowPlayingRef}>
+          <NowPlaying bg={bg} tracks={tracks}/>
+      </div>
       <RightBar bg={bg} tracks={tracks} refbar={rightBarRef} />
       <div
         className="playing-bar__controls"

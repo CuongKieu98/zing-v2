@@ -8,7 +8,8 @@ import { togglePlay } from "../../redux/actions/actions";
 const PlayPause = ({ audioRef ,tracks}) => {
   const dispatch = useDispatch();
   const [isPlay, setIsPlay] = useState(tracks.isPlay);
-  const handleTogglePlay = () => {
+  const handleTogglePlay = (e) => {
+    e.stopPropagation();
     if (!isPlay) {
       setIsPlay(true);
       audioRef.current.play();
@@ -35,7 +36,7 @@ const PlayPause = ({ audioRef ,tracks}) => {
           ) : (
             <PauseRoundedIcon sx={{ fontSize: 32 }} />
           ),
-          onClick: (e) => handleTogglePlay(),
+          onClick: (e) => handleTogglePlay(e),
           className: "border-icon ",
           customClass: " no-bg",
         }}

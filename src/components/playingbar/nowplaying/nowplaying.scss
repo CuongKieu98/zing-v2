@@ -1,0 +1,135 @@
+@use "../../../scss/" as *;
+
+.now-playing-bg {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+.np__content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 90px);
+  position: relative;
+  top: 0;
+  z-index: 1;
+  &__header {
+    padding: 20px;
+    position: relative;
+    .left {
+      position: absolute;
+      top: 15px;
+      display: flex;
+      font-size: 12px;
+      align-items: center;
+      max-width: 50%;
+      &__btn {
+        border: none;
+        border-radius: 999px;
+        background-color: hsla(0, 0%, 100%, 0.1);
+        color: white;
+      }
+      .left-content {
+        margin-left: 10px;
+        min-width: 0;
+        max-width: max-content;
+        text-align: left;
+        align-self: center;
+        .title {
+          display: flex;
+          white-space: nowrap;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.36;
+          text-overflow: clip;
+          align-items: center;
+          padding-right: 10px;
+        }
+        .subtitle {
+          margin-top: 2px;
+          color: hsla(0deg, 0%, 100%, 0.5);
+          display: block;
+          font-size: 12px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          max-width: 100%;
+          line-height: normal;
+
+          h4 {
+            font-weight: 400;
+          }
+        }
+      }
+    }
+    .tabs {
+      display: flex;
+      align-self: center;
+      justify-content: center;
+      background-color: $alpha-bg;
+      border-radius: 15px;
+      padding: 3px;
+      width: -webkit-max-content;
+      width: -moz-max-content;
+      width: max-content;
+      margin: auto;
+      position: relative;
+      background-color: hsla(0, 0%, 100%, 0.1);
+      border-radius: 999px;
+      .tabs-item {
+        font-size: 12px;
+        color: hsla(0, 0%, 100%, 0.5);
+        padding: 7px 50px;
+        font-weight: 700;
+        @include tablet {
+          padding: 5px 25px;
+        }
+        &.is-active {
+          background-color: hsla(0, 0%, 100%, 0.1);
+          border-radius: 999px;
+          color: $white;
+        }
+      }
+      @include mobile {
+        display: none;
+      }
+    }
+    .right {
+      position: absolute;
+      top: 20px;
+      display: flex;
+      right: 10px;
+      font-size: 12px;
+      align-items: center;
+      max-width: 50%;
+    }
+  }
+  &__body {
+    @include flex(center, center);
+
+    flex-direction: column;
+    flex: 1 1;
+    overflow: hidden;
+    @include mobile{
+        padding-top: 5rem;
+    }
+    .card__content {
+      //transform: translate(35px, -35px) scale(1.21212);
+      transition: transform 0.5s ease;
+      width: 320px;
+      height: 320px;
+      @include mobile {
+        width: 200px;
+        height: 200px;
+      }
+      &__img {
+        width: 100%;
+        height: 100%;
+        border-radius: 999px;
+        overflow: hidden;
+        line-height: 0;
+      }
+    }
+  }
+}

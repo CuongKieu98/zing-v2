@@ -22,6 +22,9 @@
       background-size: cover;
     }
     &__left {
+      @include mobile {
+        display: none;
+      }
       position: relative;
       width: 30%;
       z-index: 1;
@@ -53,5 +56,20 @@
         margin: 0 20px;
       }
     }
+  }
+  .on-playing-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    transition: 0.5s ease;
+
+    &.on-show{
+      transform: translateY(100%);
+      transition: 0.5s ease;
+    }
+    
   }
 }
