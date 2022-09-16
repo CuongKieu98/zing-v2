@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Action from "../../action/Action";
 import Media from "../../media/Media";
 import "./rightbar.scss";
@@ -10,6 +10,7 @@ import AlarmIcon from "@mui/icons-material/Alarm";
 //drag drop item
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
+import { TrackChangesSharp } from "@mui/icons-material";
 
 const icons = [
   {
@@ -65,6 +66,7 @@ const DragItem = styled.div`
 const RightBar = (props) => {
   const { bg, tracks, refbar } = props;
 
+
   return (
     <div
       className="right-bar"
@@ -106,6 +108,11 @@ const RightBar = (props) => {
 const Content = ({ tracks, bg }) => {
   const [data, setData] = useState(tracks.playingList || []);
 
+  useEffect(() =>{
+    setData(tracks.playingList);
+    console.log(tracks.playingList);
+  },[tracks.playingList])
+
   const onDragEnd = (result) => {
     if (!result.destination) return;
     const { source, destination } = result;
@@ -119,23 +126,7 @@ const Content = ({ tracks, bg }) => {
         <div className="right-bar__content__main__section">
           <div className="right-bar__content__list">
             <div className="right-bar__content__items">
-              {/* <div
-                className="media-item is-active"
-                style={{ backgroundColor: `${bg.activeMedia}` }}
-              >
-                <Media
-                  item={{
-                    encodeId: tracks.songId,
-                    title: tracks.infoSong.title,
-                    thumbnailM: tracks.infoSong.thumbnailM,
-                    thumbnail: tracks.infoSong.thumbnailM,
-                    artistsNames: tracks.infoSong.artistsNames,
-                  }}
-                  tracks={tracks}
-                  className={"is-40"}
-                  right={iconsMedia}
-                />
-              </div> */}
+
               <div className="next-song">
                 <h3>Danh sách đang phát</h3>
               </div>

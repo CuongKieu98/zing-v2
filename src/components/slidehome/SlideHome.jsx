@@ -42,7 +42,7 @@ const SlideHome = () => {
         modules={[Autoplay,Navigation]}
         grabCursor={true}
         spaceBetween={0}
-        slidesPerView={2}
+        slidesPerView={1}
         navigation={true} 
         loop={true}
         breakpoints={{

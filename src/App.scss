@@ -185,6 +185,12 @@ body ::-webkit-scrollbar-track {
   color: rgba(74, 144, 226, 0);
   font-family: "Roboto", sans-serif;
   white-space: nowrap;
+  @include tablet {
+    font-size: 26px;
+  }
+  @include mobile {
+    font-size: 20px !important;
+  }
 }
 .top-1 {
   -webkit-text-stroke: 1px #4a90e2;
@@ -210,6 +216,7 @@ body ::-webkit-scrollbar-track {
   padding: 5px 25px;
   -webkit-mask-image: linear-gradient(359deg, $white 0.1%, #000 10%);
   &:hover {
+    cursor: pointer;
     background-color: hsla(0, 0%, 100%, 0.1) ;
     color: $txt-color;
   }
@@ -271,5 +278,21 @@ body ::-webkit-scrollbar-track {
   }
   &::after{
     font-size: 17px !important;
+  }
+}
+.sort{
+  @include flex(center,center);
+  width: 18px;
+  height: 36px;
+  flex-direction: column;
+  color: $txt-color-secondary;
+  .sort-num{
+    @include flex (center,center);
+    align-self: center;
+    width: 18px;
+    height: 18px;
+  }
+  @include mobile{
+    display: none;
   }
 }

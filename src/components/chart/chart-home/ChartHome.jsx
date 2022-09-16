@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./charthome.scss";
 import {
   getCharthome,
-  getInfoSong,
-  getLyric,
-  getSong,
+
 } from "../../../api/musicApi";
 import { Link } from "react-router-dom";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
@@ -13,17 +11,19 @@ import Media from "../../media/Media";
 import { useDispatch, useSelector } from "react-redux";
 import { actionSelector } from "../../../redux/selectors/selectors";
 
+
 const ChartHome = () => {
   const dispatch = useDispatch();
 
   const tracks = useSelector(actionSelector).audioReducer;
   const [chart, setChart] = useState([]);
+
   const dataSize = 4;
+
 
   useEffect(() => {
     getCharthome().then((res) => {
       setChart(res.data.RTChart.items?.slice(0, dataSize));
-      console.log(res.data.RTChart.items?.slice(0, dataSize));
     });
   }, []);
 
@@ -57,7 +57,9 @@ const ChartHome = () => {
             </div>
           ))}
         </div>
+
       </div>
+
       <div className="is-center">
         <Link to={"/zing-chart"} className="show-more">
           {chart.length === 0 ? "Đang tải..." : "Xem thêm"}

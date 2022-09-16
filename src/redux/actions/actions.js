@@ -34,3 +34,9 @@ export const setDurTime = (sec) =>{
         payload:sec
     }
 }
+export const setPlayList = (song) =>{
+    return {
+        type:"ACTION_SET_PLAYLIST",
+        payload:song
+    }
+}

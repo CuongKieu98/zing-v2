@@ -20,42 +20,41 @@ const initialState = {
   isLoop: false,
   playingList: [
     {
-      encodeId:"Z60BAWEO",
+      encodeId: "Z60BAWEO",
       title: "Em Lấy Chồng",
       thumbnailM:
-      "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/5/1/5/e/515ee410d55fd71ae7c59e13f57ae47f.jpg",
+        "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/5/1/5/e/515ee410d55fd71ae7c59e13f57ae47f.jpg",
       thumbnail:
-      "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/5/1/5/e/515ee410d55fd71ae7c59e13f57ae47f.jpg",
+        "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/5/1/5/e/515ee410d55fd71ae7c59e13f57ae47f.jpg",
       artistsNames: "Khắc Việt, ACV",
     },
     {
-      encodeId:"Z60A60FU",
+      encodeId: "Z60A60FU",
       title: "Cứu Vãn Kịp Không",
       thumbnailM:
-      "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
+        "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
       thumbnail:
-      "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
+        "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
       artistsNames: "Vương Anh Tú",
     },
     {
-      encodeId:"ZZFDAZ89",
+      encodeId: "ZZFDAZ89",
       title: "Waiting For You",
       thumbnailM:
-      "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
+        "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
       thumbnail:
-      "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
+        "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
       artistsNames: "MONO, Onionn",
     },
     {
-      encodeId:"ZZDFBFD8",
+      encodeId: "ZZDFBFD8",
       title: "Em Nên Dừng Lại",
       thumbnailM:
-      "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
+        "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
       thumbnail:
-      "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
+        "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/b/e/6/4/be64a8856566400dc3e2b959f252f363.jpg",
       artistsNames: "Khang Việt",
     },
-
   ],
   isLyric: false,
 };
@@ -129,7 +128,7 @@ const audioReducer = (state = initialState, action) => {
     case "ACTION_SET_PLAYLIST":
       return {
         ...state,
-        playingList: action.payload,
+        playingList: [...state.playingList, action.payload],
       };
     case "ACTION_SET_LYRIC":
       return {

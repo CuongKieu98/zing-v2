@@ -11,7 +11,7 @@ import ChartHome from "../components/chart/chart-home/ChartHome";
 import RadioSection from "../components/section/radio-section/RadioSection";
 import Card from "../components/card/Card";
 import images from "../assets/images";
-import CARD_TYPE from "../consts/CARD_TYPE";
+
 
 const Home = () => {
   return (
