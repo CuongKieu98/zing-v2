@@ -3,6 +3,7 @@ import { ActionTypes } from "@mui/base";
 const initialState = {
   isPlay: false,
   isMute: false,
+  isPopup:false,
   songId: "ZZFDAZ89",
   infoSong: {
     title: "Waiting For You",
@@ -13,7 +14,7 @@ const initialState = {
     artistsNames: "MONO, Onionn",
   },
   srcAudio:
-    "https://vnso-zn-24-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1663389445~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=94b572330d8347d103cf3ac6baf1fb00",
+    "https://vnso-zn-23-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1663743434~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=e6c0c17087f9dd98fff6ca5ee7d8ce92",
   currentTime: 0,
   duration: 266,
   volume: 0.5,
@@ -57,6 +58,7 @@ const initialState = {
     },
   ],
   isLyric: false,
+  lyric:"",
 };
 const initialState1 = {
   isPlay: false,
@@ -133,8 +135,13 @@ const audioReducer = (state = initialState, action) => {
     case "ACTION_SET_LYRIC":
       return {
         ...state,
-        isLyric: action.payload,
+        lyric: [action.payload],
       };
+      case "ACTION_SET_POPUP":
+        return {
+          ...state,
+          isPopup: action.payload,
+        };
     // case "ACTION_SET_SONG":
     //   return {
     //     ...state,

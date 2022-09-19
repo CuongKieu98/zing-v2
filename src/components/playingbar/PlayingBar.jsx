@@ -19,12 +19,15 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import RightBar from "./rightbar/RightBar";
 import NowPlaying from "./nowplaying/NowPlaying";
+import { setPopup } from "../../redux/actions/actions";
 //icon
 
 const PlayingBar = () => {
   const reducer = useSelector(actionSelector);
   const bg = reducer.bgReducer;
   const tracks = reducer.audioReducer;
+  const dispatch = useDispatch();
+
   const nowPlayingRef = useRef(null);
 
   const audioRef = useRef(null);
@@ -32,7 +35,7 @@ const PlayingBar = () => {
 
   const [valueVolume, setValueVolume] = useState(50);
   const [openRight, setOpenRight] = useState(false);
-  const [openNP,setOpenNP] = useState(false);
+  const [openNP, setOpenNP] = useState(false);
 
   const handleClick = () => {
     return;
@@ -40,25 +43,30 @@ const PlayingBar = () => {
   const handleChangeVol = (event, newValue) => {
     setValueVolume(newValue);
   };
-  const openRightBar = () => {
+  const openRightBar = (e) => {
+    e.stopPropagation();
     if (!openRight) {
       setOpenRight(true);
       rightBarRef.current.classList.add("is-open");
+     
     } else {
       rightBarRef.current.classList.remove("is-open");
       setOpenRight(false);
+     
     }
   };
-  const handleNowPlaying = () =>{
-    if(!openNP){
-      nowPlayingRef.current.classList.add("on-show");
-      setOpenNP(true)
-    }else{
-      nowPlayingRef.current.classList.remove("on-show");
-      setOpenNP(false)
-    }
 
-  }
+  const handleNowPlaying = () => {
+    if (!openNP) {
+      nowPlayingRef.current.classList.add("on-show");    
+      setOpenNP(true);
+      dispatch(setPopup(true));
+    } else {
+      nowPlayingRef.current.classList.remove("on-show");
+      setOpenNP(false);
+      dispatch(setPopup(false));
+    }
+  };
 
   const icons = [
     {
@@ -101,11 +109,12 @@ const PlayingBar = () => {
   ];
 
   return (
-    <div className="playing-bar" onClick={handleNowPlaying}>
+    <div className="playing-bar" >
       <div className="on-playing-bar" ref={nowPlayingRef}>
-          <NowPlaying bg={bg} tracks={tracks}/>
+        <NowPlaying bg={bg} tracks={tracks} />
       </div>
       <RightBar bg={bg} tracks={tracks} refbar={rightBarRef} />
+
       <div
         className="playing-bar__controls"
         style={{ backgroundColor: `${bg.bglayout}` }}
@@ -119,7 +128,7 @@ const PlayingBar = () => {
           }}
         >
           <div className="playing-bar__controls__left level-left">
-            <div className="level__item is-narrow">
+            <div className="level__item is-narrow" onClick={handleNowPlaying}>
               <Media right={icons} item={tracks.infoSong} />
             </div>
           </div>
@@ -145,12 +154,12 @@ const PlayingBar = () => {
             <div className="level__item is-narrow">
               <span className="divide"></span>
             </div>
-            <div className="level__item is-narrow" >
+            <div className="level__item is-narrow">
               <Action
                 icon={{
                   icon: <PlaylistPlayIcon sx={{ fontSize: 20 }} />,
                   title: "Danh sách phát",
-                  onClick: (e) => openRightBar(e, "D"),
+                  onClick: (e) => openRightBar(e),
                   className: "card-small-icon ",
                   customClass: " show-bg-square",
                 }}

@@ -2,14 +2,20 @@
 
 .media {
   align-items: center;
-  display: flex;
-  text-align: left;
-  padding: 10px;
   border-radius: 5px;
-  justify-content: space-between;
+  display: flex;
+  padding: 10px;
+  text-align: left;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   &__left {
     display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
     margin-right: 10px;
+
+    width: 50%;
     &__rank {
       width: 85px;
       @include flex(center, center);
@@ -40,8 +46,13 @@
     }
   }
   &__thumb {
-    position: relative;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    flex-shrink: 0;
+    margin-right: 10px;
     overflow: hidden;
+    position: relative;
     -webkit-animation-play-state: paused;
     animation-play-state: paused;
     -webkit-animation-name: spin;
@@ -63,13 +74,12 @@
     }
   }
   &__content {
-    margin-left: 10px;
-    min-width: 0;
-    max-width: -webkit-max-content;
-    max-width: -moz-max-content;
-    max-width: max-content;
-    text-align: left;
-    align-self: center;
+    display: flex;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
 
 
     h3 {
@@ -82,10 +92,10 @@
 
       align-items: center;
       padding-right: 10px;
-      &.is-mark {
-        -webkit-mask-image: linear-gradient(270deg, transparent 0.5%, #000 10%);
-        mask-image: linear-gradient(270deg, transparent 0.5%, #000 10%);
-      }
+      // &.is-mark {
+      //   -webkit-mask-image: linear-gradient(270deg, transparent 0.5%, #000 10%);
+      //   mask-image: linear-gradient(270deg, transparent 0.5%, #000 10%);
+      // }
       @include mobile {
         max-width: 130px;
       }
@@ -108,6 +118,11 @@
     }
   }
   &__right {
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    font-size: 16px;
+    line-height: 1.56;
     margin-left: 10px;
     .duration{
       font-size: 12px;

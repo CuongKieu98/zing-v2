@@ -2,6 +2,7 @@ import React from "react";
 import Section from "../components/section/Section";
 import SlideHome from "../components/slidehome/SlideHome";
 import {
+  RANK,
   SECTION_1,
   SECTION_2,
   SECTION_3,
@@ -20,7 +21,6 @@ const Home = () => {
       <Section title={"Có thể bạn muốn nghe"} list={SECTION_1} />
       <Section title={"Nhạc mới mỗi ngày"} list={SECTION_2} />
       <Section title={"Top 100"} list={SECTION_4} />
-      <ChartHome />
       <div className="week-card mt-3" >
         <div className="week-card__item">
           <Card img={images.rankvn} />

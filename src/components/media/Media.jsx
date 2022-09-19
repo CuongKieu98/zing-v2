@@ -14,12 +14,13 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import images from "../../assets/images";
 import {
   setDurTime,
+  setLyric,
   setPlayList,
   setSongId,
   setSongInfo,
   setSrcAudio,
 } from "../../redux/actions/actions";
-import { getInfoSong, getSong } from "../../api/musicApi";
+import { getInfoSong, getLyric, getSong } from "../../api/musicApi";
 import { useState } from "react";
 import { PlaceOutlined } from "@mui/icons-material";
 import stringUtils from "../../utils/stringUtils";
@@ -89,6 +90,15 @@ const Media = (props) => {
           return;
         }
       });
+      await getLyric(item.encodeId).then((res) => {
+        try {
+          dispatch(setLyric(res.data.file));
+        } catch (error) {
+          console.log(error);
+          setLoading(false);
+          return;
+        }
+      });
       await getSong(item.encodeId).then((res) => {
         try {
           dispatch(setSrcAudio(res.data[128]));
@@ -98,6 +108,7 @@ const Media = (props) => {
           return;
         }
       });
+ 
       setLoading(false);
     }
   };

@@ -15,6 +15,7 @@
   top: 0;
   z-index: 1;
   &__header {
+    display: flex;
     padding: 20px;
     position: relative;
     .left {
@@ -106,30 +107,56 @@
     }
   }
   &__body {
-    @include flex(center, center);
-
-    flex-direction: column;
+    display: flex;
     flex: 1 1;
+    flex-direction: column;
     overflow: hidden;
-    @include mobile{
-        padding-top: 5rem;
-    }
-    .card__content {
-      //transform: translate(35px, -35px) scale(1.21212);
-      transition: transform 0.5s ease;
-      width: 320px;
-      height: 320px;
-      @include mobile {
-        width: 200px;
-        height: 200px;
-      }
-      &__img {
-        width: 100%;
+    .body__list {
+      align-items: center;
+      color: $white;
+      display: flex;
+      flex-grow: 1;
+      &__wrapper {
+        align-items: center;
         height: 100%;
-        border-radius: 999px;
-        overflow: hidden;
-        line-height: 0;
+        overflow-x: hidden;
+        padding-top: 12px;
+        position: relative;
+        width: 100%;
+        .wrapper__content {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          &__card {
+            max-width: 100%;
+            padding: 15px;
+            .card__content__img {
+              animation-timing-function: linear;
+              display: flex;
+              justify-content: center;
+              position: relative;
+              img {
+                border-radius: 999px;
+              }
+            }
+          }
+        }
       }
+    }
+    @include mobile {
+      padding-top: 5rem;
+    }
+  }
+  &__bottom {
+    margin-top: 10px;
+    .content__text {
+      margin: auto;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      color: $white;
     }
   }
 }

@@ -41,6 +41,9 @@
     &__center{
       flex-grow: 1;
     max-width: 40vw;
+    @include mobile {
+      max-width: 90vw;
+    }
     }
     &__right{
       width: 30%;
@@ -55,6 +58,9 @@
         background-color: $border-player;
         margin: 0 20px;
       }
+      @include mobile {
+        display: none;
+      }
     }
   }
   .on-playing-bar{
@@ -65,9 +71,10 @@
     bottom: 0;
     right: 0;
     transition: 0.5s ease;
+    transform: translateY(100%);
 
     &.on-show{
-      transform: translateY(100%);
+      transform: translateY(0%);
       transition: 0.5s ease;
     }
     

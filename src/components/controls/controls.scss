@@ -15,6 +15,15 @@
   font-size: 12px;
   font-weight: 500;
   color: $txt-color;
-
-
+}
+.is-mobile {
+  display: none;
+  @include mobile {
+    display: flex;
+  }
+}
+.non-mobile {
+  @include mobile {
+    display: none;
+  }
 }

@@ -19,13 +19,6 @@ const PlayPause = ({ audioRef ,tracks}) => {
     }
     dispatch(togglePlay(!isPlay));
   };
-  useEffect(() =>{
-    setIsPlay(tracks.isPlay);
-    if(tracks.isPlay){
-      audioRef.current.play();
-    } 
-    //when audio change => play
-  },[tracks.srcAudio])
 
   return (
     <>
