@@ -9,18 +9,43 @@
     overflow: hidden;
     border-radius: 4px;
     flex-shrink: 0;
+
     &:hover {
       cursor: pointer;
-      .opacity{
+      .opacity {
         visibility: visible;
       }
+      img{
+        transform: scale(1.1) translateZ(0);
+
+      }
     }
-    figure{
-        line-height: 0;
-        height: 0;
-        padding-bottom: 100%;
-        border-radius: 5px;
-        overflow: hidden;
+    figure {
+      line-height: 0;
+      border-radius: 5px;
+      overflow: hidden;
+      img{
+        transition: .7s ease;
+      }
+
+
+    }
+    .card-action {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      bottom: auto;
+      right: auto;
+      z-index: 98;
+      transform: translateX(-50%) translateY(-50%);
+      display: -moz-flex;
+      display: flex;
+      justify-content: space-around;
+      -ms-flex-pack: distribute;
+      align-items: center;
+      -ms-flex-align: center;
+      visibility: hidden;
+      width: 80%;
     }
   }
 }

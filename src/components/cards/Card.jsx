@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import themes from "../../assets/theme";
 import { actionSelector } from "../../redux/selectors/selectors";
 
+import "./card.scss"
+
 const Card = (props) => {
   const { image, className, customImg, actions, content } = props;
   const bg = useSelector(actionSelector).bgReducer;
@@ -15,7 +17,7 @@ const Card = (props) => {
           <img src={themes.lodon} alt="" />
         </figure>
         <div className="opacity"></div>
-        <div className="card-actions">{actions}</div>
+        <div className="card-actions"></div>
       </div>
       {content && <div className="card-content">{content}</div>}
     </div>

@@ -18,9 +18,7 @@ import Media from "../media/Media";
 import { actionSelector } from "../../redux/selectors/selectors";
 import Button from "../button/Button";
 import Modal from "../modal/Modal";
-
-
-
+import Card from "../cards/Card";
 
 const headerNav = [
   {
@@ -55,8 +53,7 @@ const Header = () => {
   const bg = reducer.bgReducer;
   const tracks = reducer.audioReducer;
   const ulsRef = useRef();
-  const [openDialog,setOpenDialog] = useState(false)
-
+  const [openDialog, setOpenDialog] = useState(false);
 
   const debounced = useDebounce(searchValue, 800);
 
@@ -74,13 +71,12 @@ const Header = () => {
     }
   };
 
-  const handleOpenDialog = () =>{
+  const handleOpenDialog = () => {
     setOpenDialog(true);
-  }
-  const handleCloseDialog = () =>{
+  };
+  const handleCloseDialog = () => {
     setOpenDialog(false);
-
-  }
+  };
 
   useEffect(() => {
     const shrinkHeader = () => {
@@ -256,24 +252,78 @@ const Header = () => {
           </div>
         </div>
       </div>
-        <Modal onOpen={openDialog} onClose={handleCloseDialog} />
+      <Modal onOpen={openDialog} onClose={handleCloseDialog}>
+        {<Theme />}
+      </Modal>
     </div>
   );
 };
 
-const Theme = props =>{
-
+const Theme = (props) => {
   return (
     <div className="container-theme">
-      <h3 className="title">
-        Dynamic
-      </h3>
+      <h3 className="title">Dynamic</h3>
       <div className="columns is-mutiline">
-        
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
+        <div className="column theme-modal mb-2">
+          <Card className="" customImg="" content={"London"} />
+        </div>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
 export default Header;

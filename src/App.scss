@@ -49,8 +49,10 @@ ul {
   list-style-type: none;
 }
 
-img {
-  max-width: 100%;
+img,
+video {
+  height: auto;
+  width: 100%;
 }
 
 iframe {
@@ -138,7 +140,13 @@ body ::-webkit-scrollbar-track {
   border-radius: 4px;
 }
 .opacity {
-  visibility: visible;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $dark-alpha-50;
+  visibility: hidden;
 }
 .level {
   display: flex;
@@ -306,4 +314,26 @@ body ::-webkit-scrollbar-track {
   @include mobile {
     display: none !important;
   }
+}
+.columns{
+  display: flex;
+  box-lines: multiple;
+  flex-wrap: wrap;
+  position: relative;
+  margin: 0 -15px;
+}
+.column{
+  display: block;
+  flex-shrink: 1;
+  padding: 0 15px;
+}
+
+
+
+//material custom
+
+.title{
+  font-size: 18px;
+  color: $txt-color;
+  margin-bottom: 10px;
 }

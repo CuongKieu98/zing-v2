@@ -1,1 +1,17 @@
 @use "../../scss/" as *;
+
+.modal-dialog{
+    background-color: $primary-bg;
+    .main-title{
+        font-size: 24px;
+        padding: 20px 30px;
+        margin: 0;
+    }
+
+}
+.close-btn{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    margin: 0;
+}

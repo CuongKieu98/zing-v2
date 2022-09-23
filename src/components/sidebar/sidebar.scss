@@ -153,6 +153,9 @@
       }
     }
   }
+  .radio-live{
+    width: 34px;
+  }
 }
 .sidebar-scroll{
   height: 100%;
@@ -160,4 +163,5 @@
   @include mobile{
     display: none;
   }
+
 }

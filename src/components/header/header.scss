@@ -217,3 +217,20 @@
     margin-right: 12px;
   }
 }
+.container-theme{
+  .theme-modal{
+    padding-left: 7px;
+    padding-right: 7px;
+    width: 16.66667%;
+    @include tablet {
+      width: 33.3333%;
+    }
+    @include mobile {
+      width: 50%;
+    }
+
+  }
+  .columns{
+    margin: 0;
+  }
+}
