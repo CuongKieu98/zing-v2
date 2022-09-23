@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Section from "../components/section/Section";
 import SlideHome from "../components/slidehome/SlideHome";
 import {
@@ -15,6 +15,7 @@ import images from "../assets/images";
 
 
 const Home = () => {
+
   return (
     <div className="container-main">
       <SlideHome />

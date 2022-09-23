@@ -16,14 +16,8 @@
   font-weight: 500;
   color: $txt-color;
 }
-.is-mobile {
-  display: none;
-  @include mobile {
-    display: flex;
-  }
-}
-.non-mobile {
-  @include mobile {
-    display: none;
+@include mobile {
+  .border-icon{
+    border: none !important;
   }
 }

@@ -18,13 +18,14 @@
 
 .header {
   height: $header-height;
-  position: fixed;
+  @include flex(center, unset);
+  position: absolute;
+  right: 0;
   top: 0;
-  left: 0;
   width: 100%;
   z-index: 99;
   transition: height 0.3s ease, background-color 0.3s ease;
-
+  padding: 0 2.2rem;
   &.shrink {
     height: $header-shrink-height;
     background-color: $body-bg;
@@ -41,53 +42,178 @@
   }
 
   &__nav {
-    @include flex(center,unset);
+    @include flex(center, unset);
     & > * ~ * {
-        margin-left: 2rem;
+      margin-left: 2rem;
     }
 
-    li{
-        padding: 5px 0;
-        font-weight: 700;
-        position: relative;
-        font-size: 1.5rem;
+    li {
+      padding: 5px 0;
+      font-weight: 700;
+      position: relative;
+      font-size: 1.5rem;
 
-        &::after{
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            transition: width 0.5s ease;
-            height: 2px;
-            background-color: $main-color;
-        }
-    
-        &.active::after,
-        &:hover::after {
-            width: 100%;
-        } 
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        transition: width 0.5s ease;
+        height: 2px;
+        background-color: $main-color;
+      }
+
+      &.active::after,
+      &:hover::after {
+        width: 100%;
+      }
     }
 
     @include mobile {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        height: 5rem;
-        width: 100%;
-        background-color: $body-bg;
-        padding: 0 2rem;
-        box-shadow: $box-shadow;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 5rem;
+      width: 100%;
+      background-color: $body-bg;
+      padding: 0 2rem;
+      box-shadow: $box-shadow;
 
-        @include flex(center, space-between);
+      @include flex(center, space-between);
 
-        & > * ~ * {
-            margin-left: 0;
-        }
-
+      & > * ~ * {
+        margin-left: 0;
+      }
+    }
+  }
+  .level {
+    width: 100%;
+  }
+  .level-left {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  .search {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    &__container {
+      position: relative;
+      border-radius: 20px;
+      height: 40px;
+      background-color: $alpha-bg;
+      &.is-copalse {
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 1px 5px 0 rgb(0 0 0 / 20%);
+        //background-color: var(--primary-bg);
+        border: 1px solid transparent;
+      }
+      .icon-close{
+        right: 5px;
+        left: auto;
+        font-size: 14px;
+        top: 0;
+        position: absolute;
+        cursor: pointer;
+      }
     }
 
-    
+    .input-wrapper {
+      position: absolute;
+      top: 0;
+      left: 38px;
+      right: 10px;
+      bottom: 0;
+      input {
+        margin: 0;
+        display: inline-block;
+        width: 95%;
+        font-size: 14px !important;
+        color: $search-text;
+        background-clip: padding-box;
+        border: 0;
+        position: relative;
+        top: 2px;
+        height: 34px;
+        padding: 5px 0;
+        line-height: 34px;
+        background-color: transparent;
+        word-break: normal;
+        font: inherit;
+        &::placeholder {
+          color: $search-text;
+        }
+      }
+    }
+    .action__icon {
+      top: 5px;
+    }
+    .suggest__list {
+      position: absolute;
+      overflow: hidden;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      z-index: 5;
+      display: block;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 6px 0 rgb(32 33 36 / 28%);
+      padding: 13px 10px;
+      color: $white;
+      &__container {
+        max-height: 300px;
+        overflow-y: auto;
+        .search-title {
+          font-size: 14px;
+          font-weight: 700;
+          padding: 0 10px 8px;
+          display: flex;
+          justify-content: space-between;
+        }
+
+      }
+      &__item {
+        display: flex;
+        align-items: baseline;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        figure{
+          width: 52px;
+          height: 52px;
+        }
+        &:hover {
+          background-color: $alpha-bg;
+          .duration {
+            display: none;
+          }
+          .level__item {
+            display: flex;
+          }
+          .opacity {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 4px;
+            background-color: $dark-alpha;
+          }
+          .center {
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+  .setting-item{
+    position: relative;
+    margin-right: 12px;
   }
 }

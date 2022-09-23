@@ -1,7 +1,26 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./header.scss";
-import { Link, useLocation } from "react-router-dom";
-import logo from "../../assets/tmovie.png";
+import { useLocation } from "react-router-dom";
+
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import SearchIcon from "@mui/icons-material/Search";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import ColorLensIcon from "@mui/icons-material/ColorLens";
+import SettingsIcon from "@mui/icons-material/Settings";
+import PersonIcon from "@mui/icons-material/Person";
+import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
+
+import Action from "../action/Action";
+import { useDebounce } from "../../hooks";
+import { useSelector } from "react-redux";
+import Media from "../media/Media";
+import { actionSelector } from "../../redux/selectors/selectors";
+import Button from "../button/Button";
+import Modal from "../modal/Modal";
+
+
+
 
 const headerNav = [
   {
@@ -26,43 +45,235 @@ const Header = () => {
   const { pathname } = useLocation();
   const headerRef = useRef(null);
   const active = headerNav.findIndex((e) => e.path === pathname);
+  const inputRef = useRef(null);
+  const [isShow, setIsShow] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+  const [isColapse, setIsColapse] = useState("");
+  const [loading, setLoading] = useState(false);
+  const reducer = useSelector(actionSelector);
+  const bg = reducer.bgReducer;
+  const tracks = reducer.audioReducer;
+  const ulsRef = useRef();
+  const [openDialog,setOpenDialog] = useState(false)
+
+
+  const debounced = useDebounce(searchValue, 800);
+
+  const handleClear = () => {
+    setSearchValue("");
+    inputRef.current.focus();
+  };
+  const onFocusInput = (isFocus) => {
+    if (isFocus) {
+      setIsColapse("is-copalse");
+      setIsShow(true);
+    } else {
+      setIsColapse("");
+      setIsShow(false);
+    }
+  };
+
+  const handleOpenDialog = () =>{
+    setOpenDialog(true);
+  }
+  const handleCloseDialog = () =>{
+    setOpenDialog(false);
+
+  }
 
   useEffect(() => {
     const shrinkHeader = () => {
       if (
-        document.getElementsByClassName("main")[0]?.scrollTop > 100 ||
-        document.getElementById("boxm")[0]?.scrollTop > 100
+        document.getElementsByClassName("main")[0]?.scrollTop > 50 ||
+        document.getElementById("boxm")[0]?.scrollTop > 50
       ) {
-      
         headerRef.current.classList.add("shrink");
       } else {
         headerRef.current.classList.remove("shrink");
       }
     };
-  
+
     document.getElementById("boxm").addEventListener("scroll", shrinkHeader);
     return () => {
-      document.getElementById("boxm").removeEventListener("scroll", shrinkHeader);
+      document
+        .getElementById("boxm")
+        .removeEventListener("scroll", shrinkHeader);
     };
   }, []);
 
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, !isShow);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, !isShow);
+    };
+  }, []);
+  const handleClickOutside = (event) => {
+    if (inputRef.current && inputRef.current.contains(event.target)) {
+      return;
+    }
+    if (ulsRef.current && !ulsRef.current.contains(event.target)) {
+      setIsColapse("");
+      setIsShow(false);
+    }
+  };
   return (
     <div ref={headerRef} className="header">
-      <div className="header__wrap container">
-        <div className="logo">
-          <img src={logo} alt="" />
-          <Link to={"/"}>ZingMusic</Link>
+      <div className="level">
+        <div className="level-left">
+          <Action
+            icon={{
+              icon: <ArrowBackIcon sx={{ fontSize: 20 }} />,
+              className: "card-icon ",
+              customClass: " no-bg",
+            }}
+            className={"mg-07"}
+          />
+          <Action
+            icon={{
+              icon: <ArrowForwardIcon sx={{ fontSize: 20 }} />,
+              className: "card-icon ",
+              customClass: " no-bg",
+            }}
+            className={"mg-07"}
+          />
+          <form className="search">
+            <div
+              className={"search__container " + isColapse}
+              style={{
+                backgroundColor: isColapse === "" ? bg.alphaBg : bg.primaryBg,
+              }}
+            >
+              <Action
+                icon={{
+                  icon: <SearchIcon sx={{ fontSize: 30 }} />,
+                  className: "card-icon ",
+                  customClass: " no-bg",
+                }}
+                className={"mg-07"}
+              />
+              <div className="input-wrapper">
+                <input
+                  ref={inputRef}
+                  onFocus={() => onFocusInput(true)}
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                  type="text"
+                  className="input-placeholder"
+                  placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
+                />
+              </div>
+              {searchValue.length > 0 && (
+                <Action
+                  icon={{
+                    icon: <CloseRoundedIcon sx={{ fontSize: 20 }} />,
+                    className: "card-icon ",
+                    customClass: " no-bg",
+                    onClick: handleClear,
+                  }}
+                  className={"mg-07 icon-close"}
+                />
+              )}
+            </div>
+
+            {isShow && (
+              <ul
+                className="suggest__list"
+                style={{ backgroundColor: bg.primaryBg }}
+                ref={ulsRef}
+              >
+                <div className="suggest__list__container">
+                  <div className="search-title">Gợi ý kết quả</div>
+                  <li className="suggest__list__item">
+                    <Media item={tracks.infoSong} />
+                  </li>
+                  <li className="suggest__list__item">
+                    <Media item={tracks.infoSong} />
+                  </li>
+                  <li className="suggest__list__item">
+                    <Media item={tracks.infoSong} />
+                  </li>
+                  <li className="suggest__list__item">
+                    <Media item={tracks.infoSong} />
+                  </li>
+                  <li className="suggest__list__item">
+                    <Media item={tracks.infoSong} />
+                  </li>
+                  <li className="suggest__list__item">
+                    <Media item={tracks.infoSong} />
+                  </li>
+                </div>
+              </ul>
+            )}
+          </form>
         </div>
-        <ul className="header__nav">
-          {headerNav.map((e, i) => (
-            <li key={i} className={`${i === active ? "active" : ""}`}>
-              <Link to={e.path}>{e.display}</Link>
-            </li>
-          ))}
-        </ul>
+        <div className="level-right">
+          <div className="setting-item">
+            <Button
+              className={"bg-circle is-40"}
+              onClick={handleOpenDialog}
+              style={{
+                backgroundColor: bg.alphaBg,
+              }}
+            >
+              <ColorLensIcon sx={{ fontSize: 20, color: bg.settingIconText }} />
+            </Button>
+          </div>
+          <div className="setting-item hide-on-mobile">
+            <Button
+              className={"bg-circle is-40"}
+              onClick={() => console.log("gaga")}
+              style={{
+                backgroundColor: bg.alphaBg,
+              }}
+            >
+              <FileUploadOutlinedIcon
+                sx={{ fontSize: 20, color: bg.settingIconText }}
+              />
+            </Button>
+          </div>
+          <div className="setting-item hide-on-mobile">
+            <Button
+              className={"bg-circle is-40"}
+              onClick={() => console.log("gaga")}
+              style={{
+                backgroundColor: bg.alphaBg,
+              }}
+            >
+              <SettingsIcon sx={{ fontSize: 20, color: bg.settingIconText }} />
+            </Button>
+          </div>
+          <div className="setting-item">
+            <Button
+              className={"bg-circle is-40"}
+              onClick={() => console.log("gaga")}
+              style={{
+                backgroundColor: bg.alphaBg,
+              }}
+            >
+              <PersonIcon sx={{ fontSize: 20, color: bg.settingIconText }} />
+            </Button>
+          </div>
+        </div>
       </div>
+        <Modal onOpen={openDialog} onClose={handleCloseDialog} />
     </div>
   );
 };
+
+const Theme = props =>{
+
+  return (
+    <div className="container-theme">
+      <h3 className="title">
+        Dynamic
+      </h3>
+      <div className="columns is-mutiline">
+        
+      </div>
+
+    </div>
+  )
+}
 
 export default Header;

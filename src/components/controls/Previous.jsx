@@ -13,7 +13,7 @@ const Previous = () => {
           onClick: (e) => handlePrev(e, "favorite"),
           className: "card-icon ",
         }}
-        className={"mg-07"}
+        className={"mg-07 hide-on-mobile"}
       />
     </>
   );

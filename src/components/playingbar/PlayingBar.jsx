@@ -111,7 +111,7 @@ const PlayingBar = () => {
   return (
     <div className="playing-bar" >
       <div className="on-playing-bar" ref={nowPlayingRef}>
-        <NowPlaying bg={bg} tracks={tracks} />
+        <NowPlaying bg={bg} tracks={tracks} onClick={handleNowPlaying}/>
       </div>
       <RightBar bg={bg} tracks={tracks} refbar={rightBarRef} />
 

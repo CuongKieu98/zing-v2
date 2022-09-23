@@ -1,0 +1,26 @@
+@use "../../scss/" as *;
+
+.card-container {
+  max-width: 100%;
+  position: relative;
+  .card-image {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    flex-shrink: 0;
+    &:hover {
+      cursor: pointer;
+      .opacity{
+        visibility: visible;
+      }
+    }
+    figure{
+        line-height: 0;
+        height: 0;
+        padding-bottom: 100%;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+  }
+}

@@ -4,12 +4,14 @@ import "./lyric.scss";
 
 const Lyric = ({ data, tracks }) => {
   const lrcRef = useRef([]);
+  const ulRef = useRef(null);
+
 
   return (
     <div className="lyric">
       <div className="column is-multiline">
         <div className="column is-full">
-          <ul className="lyric__content">
+          <ul className="lyric__content" ref={ulRef}>
             {data &&
               data.map((item, index, arr) => {
                 const prevTime = arr[

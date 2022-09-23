@@ -15,6 +15,7 @@ import WidgetsIcon from "@mui/icons-material/Widgets";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import images from "../../assets/images";
+import Button from "../button/Button";
 
 const sibarNav = [
   {
@@ -96,11 +97,17 @@ const sideBarv2 = [
 const SideBar = (props) => {
   const { pathname } = useLocation();
   const active = sibarNav.findIndex((e) => e.path === pathname);
-
   const bg = useSelector(actionSelector).bgReducer;
-
+  
   return (
-    <div className="sidebar" style={{ backgroundColor: `${bg.bgSidebar}` }}>
+    <aside className="sidebar" style={{ backgroundColor: `${bg.bgSidebar}` }}>
+      <nav className="navbar">
+        <div className="navbar__brand">
+          <div className="navbar__brand__item">
+            <div className="logo" style={{ background: images.logo }}></div>
+          </div>
+        </div>
+      </nav>
       <div className="sidebar__wrapper">
         <nav className="sidebar__wrapper__menu">
           <ul>
@@ -119,11 +126,15 @@ const SideBar = (props) => {
               >
                 <Link to={item.path}>
                   <i>{item.icon}</i>
-                  <span>
-                    {item.display}
-                  
-                  </span>
-                  {item.img && <img className="radio-live" src={item.img} alt="" style={{marginLeft:"8px"}}/>}
+                  <span>{item.display}</span>
+                  {item.img && (
+                    <img
+                      className="radio-live"
+                      src={item.img}
+                      alt=""
+                      style={{ marginLeft: "8px" }}
+                    />
+                  )}
                 </Link>
               </li>
             ))}
@@ -132,7 +143,7 @@ const SideBar = (props) => {
       </div>
       <div className="sidebar__wrapper__divide"></div>
       <SideBarScroll active={active} />
-    </div>
+    </aside>
   );
 };
 
@@ -156,7 +167,7 @@ const SideBarScroll = (props) => {
                   className={`${index === props.active ? "active" : ""}`}
                 >
                   <Link to={item.path}>
-                    <i>{item.icon}</i>
+                    <i className="icon-side">{item.icon}</i>
                     <span>{item.display}</span>
                   </Link>
                 </li>

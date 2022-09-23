@@ -13,46 +13,62 @@
     z-index: 2;
     width: 100%;
     bottom: 0;
+    @include mobile {
+      bottom: 45px;
+    }
     &__container {
       height: 90px;
-      min-width: 768px;
+      // min-width: 768px;
       padding: 0 20px;
       background-position: 50%;
       background-repeat: no-repeat;
       background-size: cover;
+      @include mobile {
+        height: 45px;
+      }
     }
     &__left {
-      @include mobile {
-        display: none;
-      }
       position: relative;
       width: 30%;
       z-index: 1;
-      .level__item.is-narrow{
+      @include mobile {
+        width: 60%;
+      }
+      .level__item.is-narrow {
         width: 100%;
+
       }
       .media {
         padding: 0;
         transition: transform 0.5s;
         cursor: inherit;
         width: 100%;
+        figure{
+          @include mobile {
+            width: 40px;
+            height: 40px;
+          }
+        }
       }
     }
-    &__center{
+    &__center {
       flex-grow: 1;
-    max-width: 40vw;
-    @include mobile {
-      max-width: 90vw;
+      max-width: 40vw;
+      @include mobile {
+        max-width: 90vw;
+        .level__item{
+          justify-content: right;
+        }
+      }
     }
-    }
-    &__right{
+    &__right {
       width: 30%;
-      @include flex(center,flex-end);
-      .duration-bar{
+      @include flex(center, flex-end);
+      .duration-bar {
         width: 70px;
         cursor: pointer;
       }
-      .divide{
+      .divide {
         height: 33px;
         width: 1px;
         background-color: $border-player;
@@ -63,7 +79,7 @@
       }
     }
   }
-  .on-playing-bar{
+  .on-playing-bar {
     position: fixed;
     top: 0;
     left: 0;
@@ -73,10 +89,9 @@
     transition: 0.5s ease;
     transform: translateY(100%);
 
-    &.on-show{
+    &.on-show {
       transform: translateY(0%);
       transition: 0.5s ease;
     }
-    
   }
 }

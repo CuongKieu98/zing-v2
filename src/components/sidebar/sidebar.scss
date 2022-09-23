@@ -1,16 +1,32 @@
 @use "../../scss/" as *;
 
 .sidebar {
-  width: 300px;
-  padding-top: $header-height;
-  padding-bottom: 50px;
-  transition: 0.5s ease;
+  position: relative;
+  z-index: 100;
+  width: 240px;
+  height: 100%;
+  padding-top: 70px;
+  padding-bottom: 54px;
   @include tablet {
     width: 70px;
-  }
+    padding-bottom: 55px;
+    transition: width .3s ease-out;
 
-  @include mobile {
-    display: none;
+  }
+  @include mobile{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 300;
+    height: 45px;
+    background-color: #37075d !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    padding: 0;
+
   }
   &__wrapper {
     @include flex(center, center);
@@ -40,6 +56,11 @@
             }
 
             span {
+              @include mobile {
+                display: inline-block !important;
+                font-weight: 400;
+                font-size: 10px;
+              }
               @include tablet {
                 display: none;
               }
@@ -47,11 +68,41 @@
           }
         }
       }
+
       .radio-live{
 
         @include tablet {
           display: none;
         }
+      }
+      @include mobile{
+        height: 45px;
+        ul{
+          height: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          li{
+            width: 100%;
+            a{
+              height: 100%;
+              width: 100%;
+              padding: 0;
+              flex-direction: column;
+              justify-content: center;
+         
+              align-items: center;
+              white-space: nowrap;
+              text-decoration: none;
+              i{
+                font-size: 2rem !important;
+                margin-right: 0;
+              }
+              
+            }
+          }
+        }
+
       }
     }
     &__divide {
@@ -68,8 +119,45 @@
       }
     }
   }
+  .logo{
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    background: url('../../assets/images/logo.svg') 50%/contain no-repeat;
+    @include tablet {
+      width: 45px;
+      height: 45px;
+      background: url('../../assets/images/logosmall.svg') 50%/contain no-repeat;;
+    }
+    @include mobile {
+      display: none;
+    }
+  }
+  .navbar{
+    width: 240px;
+    &__brand{
+      width: 240px;
+      height: 70px;
+      position: fixed;
+      top: 0;
+      padding: 0 25px 0 28px;
+      display: flex;
+      align-items: center;
+      @include tablet {
+        justify-content: center;
+        width: 70px;
+        padding: 0;
+      }
+      &__item{
+
+      }
+    }
+  }
 }
 .sidebar-scroll{
   height: 100%;
   overflow: hidden auto;
+  @include mobile{
+    display: none;
+  }
 }

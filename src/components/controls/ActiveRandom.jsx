@@ -16,7 +16,7 @@ const ActiveRandom = () => {
           onClick: (e) => handleActive(e, "favorite"),
           className: "card-icon ",
         }}
-        className={"mg-07"}
+        className={"mg-07 hide-on-mobile"}
       />
     </>
   );

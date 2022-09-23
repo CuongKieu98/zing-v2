@@ -15,7 +15,7 @@ const Loop = () => {
           onClick: (e) => handleLoop(e, "Phát lại"),
           className: "card-icon ",
         }}
-        className={"mg-07"}
+        className={"mg-07 hide-on-mobile"}
       />
     </>
   );

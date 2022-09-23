@@ -17,7 +17,6 @@ html {
   @include mobile {
     font-size: 60%;
   }
-
 }
 
 body {
@@ -169,6 +168,14 @@ body ::-webkit-scrollbar-track {
   align-items: center;
   justify-content: flex-start;
 }
+.level-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
 .action-bar {
   display: flex;
   align-items: center;
@@ -218,20 +225,20 @@ body ::-webkit-scrollbar-track {
   -webkit-mask-image: linear-gradient(359deg, $white 0.1%, #000 10%);
   &:hover {
     cursor: pointer;
-    background-color: hsla(0, 0%, 100%, 0.1) ;
+    background-color: hsla(0, 0%, 100%, 0.1);
     color: $txt-color;
   }
 }
-.is-64{
+.is-64 {
   width: 64px;
   height: 64px;
 }
-.is-40{
+.is-40 {
   width: 40px !important;
   height: 40px !important;
 }
 
-.swiper-button-prev{
+.swiper-button-prev {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -242,58 +249,61 @@ body ::-webkit-scrollbar-track {
 
   top: 50% !important;
   left: 25px !important;
-  background-color: hsla(0,0%,100%,.15) !important;
+  background-color: hsla(0, 0%, 100%, 0.15) !important;
   box-shadow: 0 2px 4px 0 rgb(226 102 102 / 15%) !important;
   @include mobile {
     display: none !important;
   }
   opacity: 0;
-  &:hover{
+  &:hover {
     opacity: 1;
-  
   }
-  &::after{
+  &::after {
     font-size: 17px !important;
   }
 }
-.swiper-button-next{
+.swiper-button-next {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  width: 55px ;
-  height: 55px ;
+  width: 55px;
+  height: 55px;
   color: $white !important;
   border-radius: 50% !important;
   //transform: translateY(calc(-50% - 25px));
   top: 50% !important;
   right: 25px !important;
-  background-color: hsla(0,0%,100%,.15) !important;
+  background-color: hsla(0, 0%, 100%, 0.15) !important;
   box-shadow: 0 2px 4px 0 rgb(226 102 102 / 15%) !important;
   @include mobile {
     display: none !important;
   }
   opacity: 0;
-  &:hover{
+  &:hover {
     opacity: 1;
-
   }
-  &::after{
+  &::after {
     font-size: 17px !important;
   }
 }
-.sort{
-  @include flex(center,center);
+.sort {
+  @include flex(center, center);
   width: 18px;
   height: 36px;
   flex-direction: column;
   color: $txt-color-secondary;
-  .sort-num{
-    @include flex (center,center);
+  .sort-num {
+    @include flex(center, center);
     align-self: center;
     width: 18px;
     height: 18px;
   }
-  @include mobile{
+  @include mobile {
     display: none;
+  }
+}
+.hide-on-mobile {
+  @include mobile {
+    display: none !important;
   }
 }

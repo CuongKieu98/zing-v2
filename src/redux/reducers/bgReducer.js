@@ -16,7 +16,10 @@ export const initialState = {
     borderPlayer: "1px solid hsla(0,0%,100%,0.1)",
     //rightbar
     bgRightbar:"#5d218c",
-    activeMedia:"#ed2b91"
+    activeMedia:"#ed2b91",
+    //header
+    primaryBg:"#6a39af",
+    settingIconText:"#d8d8d8",
 };
 const bgReducer = (state=initialState,action) => {
     switch (action.type){

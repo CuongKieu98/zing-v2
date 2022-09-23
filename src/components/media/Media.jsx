@@ -70,6 +70,7 @@ const Media = (props) => {
       return;
     } else {
       setLoading(true);
+      dispatch(setLyric(""));
       dispatch(setSongId(item.encodeId));
       Duplicate(item.encodeId);
 
@@ -90,15 +91,15 @@ const Media = (props) => {
           return;
         }
       });
-      await getLyric(item.encodeId).then((res) => {
-        try {
-          dispatch(setLyric(res.data.file));
-        } catch (error) {
-          console.log(error);
-          setLoading(false);
-          return;
-        }
-      });
+      // await getLyric(item.encodeId).then((res) => {
+      //   try {
+      //     dispatch(setLyric(res.data.file));
+      //   } catch (error) {
+      //     console.log(error);
+      //     setLoading(false);
+      //     return;
+      //   }
+      // });
       await getSong(item.encodeId).then((res) => {
         try {
           dispatch(setSrcAudio(res.data[128]));

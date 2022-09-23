@@ -83,6 +83,7 @@
         color: hsla(0, 0%, 100%, 0.5);
         padding: 7px 50px;
         font-weight: 700;
+      
         @include tablet {
           padding: 5px 25px;
         }
@@ -90,6 +91,7 @@
           background-color: hsla(0, 0%, 100%, 0.1);
           border-radius: 999px;
           color: $white;
+          transition: .5 ease;
         }
       }
       @include mobile {

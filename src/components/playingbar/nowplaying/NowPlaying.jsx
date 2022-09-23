@@ -10,12 +10,17 @@ import images from "../../../assets/images";
 import stringUtils from "../../../utils/stringUtils";
 import { useEffect } from "react";
 import Lyric from "../../lyric/Lyric";
+import { getLyric } from "../../../api/musicApi";
+import { useDispatch } from "react-redux";
+import { setLyric } from "../../../redux/actions/actions";
 
 const NowPlaying = (props) => {
   const { bg, tracks, onClick } = props;
   const [dataLyric, setDataLyric] = useState([]);
-  const [lyric, setLyric] = useState("");
+  const [lyrics, setLyrics] = useState("");
   const [activeTab, setActiveTab] = useState(1);
+
+  const dispatch = useDispatch();
   // const dataL = dataLyric.map(item => item[0])
 
   // const dataMap = (data) =>{
@@ -36,14 +41,26 @@ const NowPlaying = (props) => {
 
   // },[tracks.currentTime])
 
+
   const handleChangeTab = (value) => {
     if (activeTab === value) return;
     setActiveTab(value);
+    if (value === 2 && tracks.lyric[0].length === 0) {
+      getLyric(tracks.songId).then((res) => {
+        try {
+          dispatch(setLyric(res.data.file));
+          parseFile(res.data.file);
+        } catch (error) {
+          console.log(error);
+          return;
+        }
+      });
+    }
   };
 
   useEffect(() => {
-    parseFile(tracks.lyric.length > 0 && tracks.lyric);
-  }, [tracks.lyric]);
+    setActiveTab(1);
+  }, [tracks.songId]);
   const parseFile = (filePath) => {
     if (filePath && filePath !== null) {
       fetch(filePath)
@@ -77,6 +94,7 @@ const NowPlaying = (props) => {
                     icon={{
                       icon: <ExpandMoreRoundedIcon sx={{ fontSize: 20 }} />,
                       className: "card-icon ",
+                      onClick: onClick,
                     }}
                   />
                 </button>
@@ -93,14 +111,14 @@ const NowPlaying = (props) => {
           </div>
           <ul className="tabs">
             <li
-              className="tabs-item is-active"
+              className={"tabs-item " + (activeTab === 1 ? "is-active" : "")}
               value={1}
               onClick={() => handleChangeTab(1)}
             >
               Danh sách phát
             </li>
             <li
-              className="tabs-item "
+              className={"tabs-item " + (activeTab === 2 ? "is-active" : "")}
               value={2}
               onClick={() => handleChangeTab(2)}
             >
@@ -140,7 +158,7 @@ const NowPlaying = (props) => {
             <div className="np__content__bottom">
               <div className="content__text">
                 <div className="content_text_title">
-                  <span>{lyric}</span>
+                  <span>{lyrics}</span>
                 </div>
               </div>
             </div>

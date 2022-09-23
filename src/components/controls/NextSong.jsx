@@ -4,6 +4,7 @@ import SkipNextRoundedIcon from "@mui/icons-material/SkipNextRounded";
 import { useDispatch } from "react-redux";
 import {
   setDurTime,
+  setLyric,
   setSongId,
   setSongInfo,
   setSrcAudio,
@@ -19,6 +20,7 @@ const NextSong = ({ audioRef, tracks }) => {
       // audioRef.current.pause();
       // dispatch(togglePlay(false));
       const indexSong = findIndexSong();
+      dispatch(setLyric(""));
       dispatch(setSongId(tracks.playingList[indexSong].encodeId));
       dispatch(
         setSongInfo({
@@ -45,7 +47,6 @@ const NextSong = ({ audioRef, tracks }) => {
         }
       });
       dispatch(togglePlay(true));
-
       audioRef.current.play();
     }else{
       window.alert("Vui lòng thêm danh sách phát")

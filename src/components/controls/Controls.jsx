@@ -63,7 +63,7 @@ const Controls = (props) => {
 
   return (
     <>
-      <div className="level__item mb-5 is-mobile">
+      {/* <div className="level__item mb-5 is-mobile">
         <span className="time left">{formatDuration(position)}</span>
         <Slider
           aria-label="time-indicator"
@@ -75,7 +75,7 @@ const Controls = (props) => {
 
         />
         <span className="time right">{formatDuration(tracks.duration)}</span>
-      </div>
+      </div> */}
       <div className="level__item">
         <div className="action-bar">
           {/* acitve random song */}
@@ -101,7 +101,7 @@ const Controls = (props) => {
         Your browser does not support the
         <code>audio</code> element.
       </audio>
-      <div className="level__item mb-5 non-mobile">
+      <div className="level__item mb-5 hide-on-mobile">
         <span className="time left">{formatDuration(position)}</span>
         <Slider
           aria-label="time-indicator"

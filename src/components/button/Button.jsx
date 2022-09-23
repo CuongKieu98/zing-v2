@@ -3,29 +3,19 @@ import PropTypes from "prop-types";
 import "./button.scss";
 
 const Button = (props) => {
-  const { className, onClick, children } = props;
+  const { className, onClick, style, children } = props;
   return (
     <button
       className={"btn " + className}
       onClick={onClick ? () => onClick() : null}
+      style={style}
+      tabIndex={0}
     >
-      {children}
+      <i className="icon-btn">{children}</i>
     </button>
   );
 };
 
-const OutLineButton = (props) => {
-  const { className, onClick, children } = props;
-
-  return (
-    <Button
-      className={"btn-outline " + className}
-      onClick={onClick ? () => onClick() : null}
-    >
-      {children}
-    </Button>
-  );
-};
 Button.propTypes = {
   onClick: PropTypes.func,
 };
