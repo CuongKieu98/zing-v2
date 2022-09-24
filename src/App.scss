@@ -273,7 +273,16 @@
   --link-text-hover: #239292;
   --chart-bg-img-alpha: rgb(206 217 217/0.9);
 }
-
+[data-theme=blue] {
+  --primary-bg: #192f60;
+  --layout-bg: #101f3f;
+  --sidebar-popup-bg: #1d2a49;
+  --alpha-layout-bg: rgba(16,31,63,0.8);
+  --queue-player-popup-bg: #223c75;
+  --blur-queue-bg: rgba(16,31,63,0.9019607843137255);
+  --chart-bg-img-alpha: rgba(16,31,63,0.9);
+  --linear-gradient-bg: linear-gradient(180deg,#1b2f5a,#182e5d);
+}
 //them//
 .theme-dynamic-zma {
   --layout-bg: #37075d;

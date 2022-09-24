@@ -143,13 +143,10 @@ const Header = () => {
           <form className="search">
             <div
               className={"search__container " + isColapse}
-              style={{
-                backgroundColor: isColapse === "" ? bg.alphaBg : bg.primaryBg,
-              }}
             >
               <Action
                 icon={{
-                  icon: <SearchIcon sx={{ fontSize: 30 }} />,
+                  icon: <SearchIcon sx={{ fontSize: 30 ,color:"var(--text-placeholder)"}} />,
                   className: "card-icon ",
                   customClass: " no-bg",
                 }}
@@ -182,7 +179,6 @@ const Header = () => {
             {isShow && (
               <ul
                 className="suggest__list"
-                style={{ backgroundColor: bg.primaryBg }}
                 ref={ulsRef}
               >
                 <div className="suggest__list__container">
@@ -215,23 +211,17 @@ const Header = () => {
             <Button
               className={"bg-circle is-40"}
               onClick={handleOpenDialog}
-              style={{
-                backgroundColor: bg.alphaBg,
-              }}
             >
-              <ColorLensIcon sx={{ fontSize: 20, color: bg.settingIconText }} />
+              <ColorLensIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)"  }} />
             </Button>
           </div>
           <div className="setting-item hide-on-mobile">
             <Button
               className={"bg-circle is-40"}
               onClick={() => console.log("gaga")}
-              style={{
-                backgroundColor: bg.alphaBg,
-              }}
             >
               <FileUploadOutlinedIcon
-                sx={{ fontSize: 20, color: bg.settingIconText }}
+                sx={{ fontSize: 20, color: "var(--setting-icon-text)"  }}
               />
             </Button>
           </div>
@@ -239,22 +229,16 @@ const Header = () => {
             <Button
               className={"bg-circle is-40"}
               onClick={() => console.log("gaga")}
-              style={{
-                backgroundColor: bg.alphaBg,
-              }}
             >
-              <SettingsIcon sx={{ fontSize: 20, color: bg.settingIconText }} />
+              <SettingsIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)" }} />
             </Button>
           </div>
           <div className="setting-item">
             <Button
               className={"bg-circle is-40"}
               onClick={() => console.log("gaga")}
-              style={{
-                backgroundColor: bg.alphaBg,
-              }}
             >
-              <PersonIcon sx={{ fontSize: 20, color: bg.settingIconText }} />
+              <PersonIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)"  }} />
             </Button>
           </div>
         </div>
@@ -280,6 +264,7 @@ const Theme = (props) => {
     localStorage.setItem('datatheme',theme.datatheme);
     dispatch(setMode(theme.class))
     dispatch(setColor(theme.datatheme))
+    
     
   }
   useEffect(() => {

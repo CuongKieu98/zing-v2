@@ -107,10 +107,10 @@
       &.is-copalse {
         border-radius: 20px 20px 0 0;
         box-shadow: 0 1px 5px 0 rgb(0 0 0 / 20%);
-        //background-color: var(--primary-bg);
+        background-color: var(--primary-bg);
         border: 1px solid transparent;
       }
-      .icon-close{
+      .icon-close {
         right: 5px;
         left: auto;
         font-size: 14px;
@@ -131,7 +131,7 @@
         display: inline-block;
         width: 95%;
         font-size: 14px !important;
-        color: $search-text;
+        color: var(--search-text);
         background-clip: padding-box;
         border: 0;
         position: relative;
@@ -143,7 +143,7 @@
         word-break: normal;
         font: inherit;
         &::placeholder {
-          color: $search-text;
+          color: var(--search-text);
         }
       }
     }
@@ -162,7 +162,8 @@
       border-bottom-right-radius: 20px;
       box-shadow: 0 4px 6px 0 rgb(32 33 36 / 28%);
       padding: 13px 10px;
-      color: $white;
+      color: var(--text-primary);
+      background-color: var(--primary-bg);
       &__container {
         max-height: 300px;
         overflow-y: auto;
@@ -173,7 +174,6 @@
           display: flex;
           justify-content: space-between;
         }
-
       }
       &__item {
         display: flex;
@@ -184,7 +184,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         cursor: pointer;
-        figure{
+        figure {
           width: 52px;
           height: 52px;
         }
@@ -212,13 +212,13 @@
       }
     }
   }
-  .setting-item{
+  .setting-item {
     position: relative;
     margin-right: 12px;
   }
 }
-.container-theme{
-  .theme-modal{
+.container-theme {
+  .theme-modal {
     padding-left: 7px;
     padding-right: 7px;
     width: 16.66667%;
@@ -228,12 +228,11 @@
     @include mobile {
       width: 50%;
     }
-
   }
-  .columns{
+  .columns {
     margin: 0;
   }
-  .title.prl-7{
+  .title.prl-7 {
     padding: 0 7px;
   }
 }

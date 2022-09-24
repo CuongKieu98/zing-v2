@@ -274,21 +274,25 @@ const THEME_ARTIST = [
     background:themes.jennieBg,
     img: themes.jennie,
     title: "Jennie Kim",
-    class:"theme-dynamic-jennie"
+    class:"theme-dynamic-jennie",
+    datatheme:"gray",
+
   },
   {
     id:"jisoo",
     background:themes.jisooBg,
     img: themes.jisoo,
     title: "Jisoo",
-    class:"theme-dynamic-jisoo"
+    class:"theme-dynamic-jisoo",
+    datatheme:"light",
   },
   {
     id:"rose",
     background:themes.roseBg,
     img: themes.rose,
     title: "Rosé",
-    class:"theme-dynamic-rose"
+    class:"theme-dynamic-rose",
+    datatheme:"blue",
   },
 ];
 export { SECTION_1, SECTION_2, SECTION_3, SECTION_4, RADIO_1 ,THEME_DYNAMIC,THEME_2,THEME_ARTIST};
