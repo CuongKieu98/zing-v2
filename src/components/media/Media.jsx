@@ -189,7 +189,7 @@ const Media = (props) => {
         <div className="media__content ">
           <h3 className="is-mark level-left">{item.title}</h3>
           <h4 className="is-mark">
-            <Link to={"/"}>{item.artistsNames}</Link>
+          {item.artistsNames}
           </h4>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import images from "../images";
 import radios from "../radios";
+import themes from "../theme";
 
 const SECTION_1 = [
   {
@@ -167,5 +168,115 @@ const RADIO_1 = [
   },
 ];
 
-
-export { SECTION_1, SECTION_2, SECTION_3, SECTION_4, RADIO_1};
+const THEME_DYNAMIC = [
+  {
+    id:"london",
+    background:themes.lodonBg,
+    img: themes.lodon,
+    title: "London",
+    class:"theme-dynamic-london"
+  },
+  {
+    id:"light",
+    background:"white-color",
+    img: themes.lightdart,
+    title: "Sáng Tối",
+    class:"theme-dynamic-light"
+  },
+  {
+    id:"blue",
+    background:"blue-color",
+    img: themes.blue,
+    title: "Xanh Da Trời",
+    class:"theme-dynamic-blue"
+  },
+  {
+    id:"pink",
+    background:"pink-color",
+    img: themes.pink,
+    title: "Hồng",
+    class:"theme-dynamic-pink"
+  },
+  {
+    id:"brown",
+    background:"brown-color",
+    img: themes.brown,
+    title: "Nâu",
+    class:"theme-dynamic-brown"
+  },
+];
+const THEME_2 = [
+  {
+    id:"xone",
+    background:themes.xoneBg,
+    img: themes.xone,
+    title: "XONE",
+    class:"theme-dynamic-xone"
+  },
+  {
+    id:"zma",
+    background:themes.zmabg,
+    img: themes.zma,
+    title: "Zing Music Awards",
+    class:"theme-dynamic-zma"
+  },
+  {
+    id:"eiffel",
+    background:themes.eiffelBg,
+    img: themes.eiffel,
+    title: "Tháp Eiffel",
+    class:"theme-dynamic-eiffel"
+  },
+];
+const THEME_ARTIST = [
+  {
+    id:"jack",
+    background:themes.jackBg,
+    img: themes.jack,
+    title: "Jack",
+    class:"theme-dynamic-jack"
+  },
+  {
+    id:"iu",
+    background:themes.iuBg,
+    img: themes.iu,
+    title: "IU",
+    class:"theme-dynamic-iu"
+  },
+  {
+    id:"jichangwook",
+    background:themes.jichangwookBg,
+    img: themes.jichangwook,
+    title: "Ji Chang Wook",
+    class:"theme-dynamic-jichangwook"
+  },
+  {
+    id:"lisa",
+    background:themes.lisaBg,
+    img: themes.lisa,
+    title: "Lisa",
+    class:"theme-dynamic-lisa"
+  },
+  {
+    id:"jennie",
+    background:themes.jennieBg,
+    img: themes.jennie,
+    title: "Jennie Kim",
+    class:"theme-dynamic-jennie"
+  },
+  {
+    id:"jisoo",
+    background:themes.jisooBg,
+    img: themes.jisoo,
+    title: "Jisoo",
+    class:"theme-dynamic-jisoo"
+  },
+  {
+    id:"rose",
+    background:themes.roseBg,
+    img: themes.rose,
+    title: "Rosé",
+    class:"theme-dynamic-rose"
+  },
+];
+export { SECTION_1, SECTION_2, SECTION_3, SECTION_4, RADIO_1 ,THEME_DYNAMIC,THEME_2,THEME_ARTIST};

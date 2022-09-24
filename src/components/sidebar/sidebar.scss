@@ -152,6 +152,9 @@
 
       }
     }
+    @include mobile{
+      display: none;
+    }
   }
   .radio-live{
     width: 34px;

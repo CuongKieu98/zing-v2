@@ -19,6 +19,11 @@ import { actionSelector } from "../../redux/selectors/selectors";
 import Button from "../button/Button";
 import Modal from "../modal/Modal";
 import Card from "../cards/Card";
+import {
+  THEME_2,
+  THEME_ARTIST,
+  THEME_DYNAMIC,
+} from "../../assets/fake-data/db";
 
 const headerNav = [
   {
@@ -123,7 +128,7 @@ const Header = () => {
               className: "card-icon ",
               customClass: " no-bg",
             }}
-            className={"mg-07"}
+            className={"mg-07 hide-on-mobile"}
           />
           <Action
             icon={{
@@ -131,7 +136,7 @@ const Header = () => {
               className: "card-icon ",
               customClass: " no-bg",
             }}
-            className={"mg-07"}
+            className={"mg-07 hide-on-mobile"}
           />
           <form className="search">
             <div
@@ -252,7 +257,11 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Modal onOpen={openDialog} onClose={handleCloseDialog}>
+      <Modal
+        onOpen={openDialog}
+        onClose={handleCloseDialog}
+        title={"Giao Diện"}
+      >
         {<Theme />}
       </Modal>
     </div>
@@ -262,65 +271,44 @@ const Header = () => {
 const Theme = (props) => {
   return (
     <div className="container-theme">
-      <h3 className="title">Dynamic</h3>
+      <h3 className="title prl-7">Dynamic</h3>
       <div className="columns is-mutiline">
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
-        <div className="column theme-modal mb-2">
-          <Card className="" customImg="" content={"London"} />
-        </div>
+        {THEME_DYNAMIC.map((item, index) => (
+          <div className="column theme-modal mb-2" key={index}>
+            <Card
+              image={item.img}
+              className=""
+              customImg=""
+              content={item.title}
+            />
+          </div>
+        ))}
+      </div>
+      <h3 className="title prl-7">Chủ Đề</h3>
+      <div className="columns is-mutiline">
+        {THEME_2.map((item, index) => (
+          <div className="column theme-modal mb-2" key={index}>
+            <Card
+              image={item.img}
+              className=""
+              customImg=""
+              content={item.title}
+            />
+          </div>
+        ))}
+      </div>
+      <h3 className="title prl-7">Nghệ Sĩ</h3>
+      <div className="columns is-mutiline">
+        {THEME_ARTIST.map((item, index) => (
+          <div className="column theme-modal mb-2" key={index}>
+            <Card
+              image={item.img}
+              className=""
+              customImg=""
+              content={item.title}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

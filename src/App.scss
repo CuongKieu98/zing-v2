@@ -315,25 +315,29 @@ body ::-webkit-scrollbar-track {
     display: none !important;
   }
 }
-.columns{
+.columns {
   display: flex;
   box-lines: multiple;
   flex-wrap: wrap;
   position: relative;
   margin: 0 -15px;
 }
-.column{
+.column {
   display: block;
   flex-shrink: 1;
   padding: 0 15px;
 }
 
-
-
 //material custom
 
-.title{
+h1.title,
+h3.title {
   font-size: 18px;
-  color: $txt-color;
+  color: $text-primary;
   margin-bottom: 10px;
+}
+.title {
+  font-weight: 700;
+  text-transform: capitalize;
+  display: block;
 }
