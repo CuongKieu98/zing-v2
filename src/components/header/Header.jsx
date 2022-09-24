@@ -24,6 +24,8 @@ import {
   THEME_ARTIST,
   THEME_DYNAMIC,
 } from "../../assets/fake-data/db";
+import { useDispatch } from "react-redux";
+import { setColor, setMode } from "../../redux/actions/actions";
 
 const headerNav = [
   {
@@ -269,6 +271,28 @@ const Header = () => {
 };
 
 const Theme = (props) => {
+  const dispatch = useDispatch();
+  const [currTheme,setCurrThem] = useState("zma");
+
+  const setTheme = theme =>{
+    setCurrThem(theme.id);
+    localStorage.setItem('theme',theme.class);
+    localStorage.setItem('datatheme',theme.datatheme);
+    dispatch(setMode(theme.class))
+    dispatch(setColor(theme.datatheme))
+    
+  }
+  useEffect(() => {
+
+    const allTheme2 = THEME_DYNAMIC.concat(THEME_2,THEME_ARTIST);
+
+    const themeClass = allTheme2.find(e => e.class === localStorage.getItem('theme', 'theme-dynamic-zma'))
+     
+
+    if (themeClass !== undefined) setCurrThem(themeClass.id)
+
+
+}, []);
   return (
     <div className="container-theme">
       <h3 className="title prl-7">Dynamic</h3>
@@ -280,6 +304,7 @@ const Theme = (props) => {
               className=""
               customImg=""
               content={item.title}
+              onClick={() => setTheme(item)}
             />
           </div>
         ))}
@@ -293,6 +318,7 @@ const Theme = (props) => {
               className=""
               customImg=""
               content={item.title}
+              onClick={() => setTheme(item)}
             />
           </div>
         ))}
@@ -306,6 +332,7 @@ const Theme = (props) => {
               className=""
               customImg=""
               content={item.title}
+              onClick={() => setTheme(item)}
             />
           </div>
         ))}

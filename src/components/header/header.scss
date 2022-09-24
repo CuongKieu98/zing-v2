@@ -28,7 +28,7 @@
   padding: 0 2.2rem;
   &.shrink {
     height: $header-shrink-height;
-    background-color: $body-bg;
+    background-color: var(--layout-bg);
   }
 
   &__wrap {
@@ -77,7 +77,7 @@
       left: 0;
       height: 5rem;
       width: 100%;
-      background-color: $body-bg;
+      background-color: var(--layout-bg);
       padding: 0 2rem;
       box-shadow: $box-shadow;
 
@@ -103,7 +103,7 @@
       position: relative;
       border-radius: 20px;
       height: 40px;
-      background-color: $alpha-bg;
+      background-color: var(--alpha-bg);
       &.is-copalse {
         border-radius: 20px 20px 0 0;
         box-shadow: 0 1px 5px 0 rgb(0 0 0 / 20%);
@@ -189,7 +189,7 @@
           height: 52px;
         }
         &:hover {
-          background-color: $alpha-bg;
+          background-color: var(--alpha-bg);
           .duration {
             display: none;
           }
@@ -203,7 +203,7 @@
             top: 0;
             left: 0;
             border-radius: 4px;
-            background-color: $dark-alpha;
+            background-color: var(--dark-alpha-50);
           }
           .center {
             visibility: visible;

@@ -174,35 +174,40 @@ const THEME_DYNAMIC = [
     background:themes.lodonBg,
     img: themes.lodon,
     title: "London",
-    class:"theme-dynamic-london"
+    class:"theme-dynamic-london",
+    datatheme:"light"
   },
   {
     id:"light",
     background:"white-color",
     img: themes.lightdart,
     title: "Sáng Tối",
-    class:"theme-dynamic-light"
+    class:"theme-dynamic-light",
+    datatheme:"light"
   },
   {
     id:"blue",
     background:"blue-color",
     img: themes.blue,
     title: "Xanh Da Trời",
-    class:"theme-dynamic-blue"
+    class:"theme-dynamic-blue",
+    datatheme:"blue-light"
   },
   {
     id:"pink",
     background:"pink-color",
     img: themes.pink,
     title: "Hồng",
-    class:"theme-dynamic-pink"
+    class:"theme-dynamic-pink",
+    datatheme:"pink-light"
   },
   {
     id:"brown",
     background:"brown-color",
     img: themes.brown,
     title: "Nâu",
-    class:"theme-dynamic-brown"
+    class:"theme-dynamic-brown",
+    datatheme:"gray"
   },
 ];
 const THEME_2 = [
@@ -211,21 +216,24 @@ const THEME_2 = [
     background:themes.xoneBg,
     img: themes.xone,
     title: "XONE",
-    class:"theme-dynamic-xone"
+    class:"theme-dynamic-xone",
+    datatheme:"dark",
   },
   {
     id:"zma",
     background:themes.zmabg,
     img: themes.zma,
     title: "Zing Music Awards",
-    class:"theme-dynamic-zma"
+    class:"theme-dynamic-zma",
+    datatheme:"blue"
   },
   {
     id:"eiffel",
     background:themes.eiffelBg,
     img: themes.eiffel,
     title: "Tháp Eiffel",
-    class:"theme-dynamic-eiffel"
+    class:"theme-dynamic-eiffel",
+    datatheme:"dark",
   },
 ];
 const THEME_ARTIST = [
@@ -234,28 +242,32 @@ const THEME_ARTIST = [
     background:themes.jackBg,
     img: themes.jack,
     title: "Jack",
-    class:"theme-dynamic-jack"
+    class:"theme-dynamic-jack",
+    datatheme:"brown",
   },
   {
     id:"iu",
     background:themes.iuBg,
     img: themes.iu,
     title: "IU",
-    class:"theme-dynamic-iu"
+    class:"theme-dynamic-iu",
+    datatheme:"gray",
   },
   {
     id:"jichangwook",
     background:themes.jichangwookBg,
     img: themes.jichangwook,
     title: "Ji Chang Wook",
-    class:"theme-dynamic-jichangwook"
+    class:"theme-dynamic-jichangwook",
+    datatheme:"green-light",
   },
   {
     id:"lisa",
     background:themes.lisaBg,
     img: themes.lisa,
     title: "Lisa",
-    class:"theme-dynamic-lisa"
+    class:"theme-dynamic-lisa",
+    datatheme:"pink-light",
   },
   {
     id:"jennie",

@@ -16,14 +16,40 @@ import SideBar from "./components/sidebar/SideBar";
 import PlayingBar from "./components/playingbar/PlayingBar";
 import { actionSelector } from "./redux/selectors/selectors";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { setColor, setMode } from "./redux/actions/actions";
 
 function App() {
   const bg = useSelector(actionSelector).bgReducer;
+
+  const theme = useSelector(actionSelector).ThemeReducer;
+  console.log(theme);
+  //const [dataTheme ,setDataTheme] = useState("blue");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const themeClass = localStorage.getItem("theme", "theme-dynamic-zma");
+    const dataClass = localStorage.getItem("datatheme", "blue");
+    if (themeClass === null) {
+      dispatch(setMode("theme-dynamic-zma"));
+      dispatch(setColor("blue"));
+    } else {
+      dispatch(setColor(dataClass));
+      dispatch(setMode(themeClass));
+    }
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       <div
-        className="bg-layout"
-        style={{ backgroundImage: `url(${bg.bg})` ,backgroundSize:"1920px auto",backgroundRepeat:"reqeat"}}
+        data-theme={theme.color}
+        className={`bg-layout ${theme.mode}`}
+        style={{
+          backgroundImage: `url(${bg.bg})`,
+          backgroundSize: "1920px auto",
+          backgroundRepeat: "reqeat",
+        }}
       >
         <SideBar />
         <div

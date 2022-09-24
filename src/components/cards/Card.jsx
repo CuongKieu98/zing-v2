@@ -7,12 +7,12 @@ import { actionSelector } from "../../redux/selectors/selectors";
 import "./card.scss";
 
 const Card = (props) => {
-  const { image, className, customImg, actions, content } = props;
+  const { image, className, customImg, actions, content ,onClick} = props;
   const bg = useSelector(actionSelector).bgReducer;
 
   return (
     <div className="card-container">
-      <div className={"card-image " + className}>
+      <div className={"card-image " + className} onClick={onClick}>
         <figure className={"image " + customImg}>
           <img src={image} alt="" />
         </figure>
