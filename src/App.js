@@ -24,19 +24,28 @@ function App() {
   const bg = useSelector(actionSelector).bgReducer;
 
   const theme = useSelector(actionSelector).ThemeReducer;
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const themeClass = localStorage.getItem("theme", "theme-dynamic-zma");
+    const themeClass = localStorage.getItem("theme");
 
-    const dataClass = localStorage.getItem("datatheme", "blue");
+    const dataClass = localStorage.getItem("datatheme");
+    console.log(dataClass);
     if (themeClass === null) {
       dispatch(setMode("theme-dynamic-zma"));
-
-      dispatch(setColor("blue"));
+      dispatch(
+        setColor({
+          background:
+            "/static/media/zma-bg.b3c1beb7f654c48c7ad4c258332a72ba.svg",
+          class: "theme-dynamic-zma",
+          datatheme: "blue",
+          id: "zma",
+          img: "/static/media/zma.2c293d93e1c69a0999ad.jpg",
+          title: "Zing Music Awards",
+        })
+      );
     } else {
-      dispatch(setColor(dataClass));
+      dispatch(setColor(JSON.parse(dataClass)));
 
       dispatch(setMode(themeClass));
     }
@@ -45,10 +54,10 @@ function App() {
   return (
     <BrowserRouter>
       <div
-        data-theme={theme.color}
+        data-theme={theme.color?.datatheme}
         className={`bg-layout ${theme.mode}`}
         style={{
-          backgroundImage: `url(${bg.bg})`,
+          backgroundImage: `url(${theme.color?.background})`,
           backgroundSize: "1920px auto",
           backgroundRepeat: "reqeat",
         }}

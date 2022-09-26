@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { setLyric } from "../../../redux/actions/actions";
 
 const NowPlaying = (props) => {
-  const { bg, tracks, onClick } = props;
+  const { bg, tracks, theme, onClick } = props;
   const [dataLyric, setDataLyric] = useState([]);
   const [lyrics, setLyrics] = useState("");
   const [activeTab, setActiveTab] = useState(1);
@@ -40,7 +40,6 @@ const NowPlaying = (props) => {
   //   return
 
   // },[tracks.currentTime])
-
 
   const handleChangeTab = (value) => {
     if (activeTab === value) return;
@@ -82,7 +81,12 @@ const NowPlaying = (props) => {
     <div className="now-playing">
       <div
         className="now-playing-bg"
-        style={{ backgroundImage: `url(${bg.bg})` }}
+        style={{
+          backgroundImage: `url(${theme.color?.background})`,
+          backgroundColor: "var(--layout-bg)",
+          backgroundRepeat: "repeat",
+          backgroundSize: "1920px auto",
+        }}
       ></div>
       <div className="np__content">
         <div className="np__content__header">

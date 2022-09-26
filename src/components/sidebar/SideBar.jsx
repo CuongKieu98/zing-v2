@@ -100,7 +100,7 @@ const SideBar = (props) => {
   const bg = useSelector(actionSelector).bgReducer;
   
   return (
-    <aside className="sidebar" style={{ backgroundColor: `${bg.bgSidebar}` }}>
+    <aside className="sidebar">
       <nav className="navbar">
         <div className="navbar__brand">
           <div className="navbar__brand__item">
@@ -118,8 +118,9 @@ const SideBar = (props) => {
                 style={
                   index === active
                     ? {
-                        backgroundColor: `${bg.bgSidebar}`,
-                        borderLeft: `${bg.bgSidebarBorderActive}`,
+                        backgroundColor:"var(--alpha-bg)",
+                        borderLeft: "3px solid var(--purple-primary)",
+                        color:"var(--text-item-hover)"
                       }
                     : null
                 }

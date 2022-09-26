@@ -1,7 +1,7 @@
 @use "../../scss/" as *;
 
 .modal-dialog{
-    background-color: $primary-bg;
+    background-color:var(--primary-bg);
     .main-title{
         font-size: 24px ;
         padding: 20px 30px;

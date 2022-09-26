@@ -7,14 +7,15 @@
   min-width: 45px;
   font-size: 12px;
   font-weight: 500;
-  color: $txt-color;
+  color:var(--player-text);
 }
 .time.right {
   margin-left: 10px;
   min-width: 45px;
   font-size: 12px;
   font-weight: 500;
-  color: $txt-color;
+  color:var(--player-text);
+
 }
 @include mobile {
   .border-icon{

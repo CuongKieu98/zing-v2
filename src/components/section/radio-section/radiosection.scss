@@ -73,7 +73,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background-color: $dark-alpha;
+        background-color: var(--dark-alpha-50);
         border-radius: 999px;
       }
       .actions {

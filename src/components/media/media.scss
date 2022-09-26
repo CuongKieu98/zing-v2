@@ -21,7 +21,7 @@
       @include flex(center, center);
       font-size: 12px;
       margin-right: 10px;
-      color: $txt-color;
+      color: var(--song-item-action);
       font-weight: 700;
       span {
         width: 60px;
@@ -89,7 +89,7 @@
       font-weight: 500;
       line-height: 1.36;
       text-overflow: clip;
-
+      color: var(--text-primary);
       align-items: center;
       padding-right: 10px;
       // &.is-mark {
@@ -102,7 +102,7 @@
     }
     h4 {
       margin-top: 2px;
-      color: $txt-color-secondary;
+      color: var(--text-secondary);
       display: block;
       font-size: 12px;
       white-space: nowrap;
@@ -127,7 +127,7 @@
     .duration{
       font-size: 12px;
     width: 46px;
-    color: hsla(0deg, 0%, 100%, 0.5);
+    color: var(--song-item-action);
     }
   }
   &__action {

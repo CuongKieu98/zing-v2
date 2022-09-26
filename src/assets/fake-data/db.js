@@ -179,7 +179,7 @@ const THEME_DYNAMIC = [
   },
   {
     id:"light",
-    background:"white-color",
+    background:"",
     img: themes.lightdart,
     title: "Sáng Tối",
     class:"theme-dynamic-light",
@@ -187,7 +187,7 @@ const THEME_DYNAMIC = [
   },
   {
     id:"blue",
-    background:"blue-color",
+    background:"",
     img: themes.blue,
     title: "Xanh Da Trời",
     class:"theme-dynamic-blue",
@@ -195,7 +195,7 @@ const THEME_DYNAMIC = [
   },
   {
     id:"pink",
-    background:"pink-color",
+    background:"",
     img: themes.pink,
     title: "Hồng",
     class:"theme-dynamic-pink",
@@ -203,7 +203,7 @@ const THEME_DYNAMIC = [
   },
   {
     id:"brown",
-    background:"brown-color",
+    background:"",
     img: themes.brown,
     title: "Nâu",
     class:"theme-dynamic-brown",

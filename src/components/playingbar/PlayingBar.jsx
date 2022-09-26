@@ -26,6 +26,7 @@ const PlayingBar = () => {
   const reducer = useSelector(actionSelector);
   const bg = reducer.bgReducer;
   const tracks = reducer.audioReducer;
+  const theme = reducer.ThemeReducer;
   const dispatch = useDispatch();
 
   const nowPlayingRef = useRef(null);
@@ -111,20 +112,19 @@ const PlayingBar = () => {
   return (
     <div className="playing-bar" >
       <div className="on-playing-bar" ref={nowPlayingRef}>
-        <NowPlaying bg={bg} tracks={tracks} onClick={handleNowPlaying}/>
+        <NowPlaying bg={bg} tracks={tracks} theme={theme} onClick={handleNowPlaying}/>
       </div>
       <RightBar bg={bg} tracks={tracks} refbar={rightBarRef} />
 
       <div
         className="playing-bar__controls"
-        style={{ backgroundColor: `${bg.bglayout}` }}
       >
         <div
           className="level playing-bar__controls__container"
           style={{
-            backgroundImage: `url(${bg.themePlaying})`,
-            backgroundColor: `${bg.playerbg}`,
-            borderTop: `${bg.borderPlayer}`,
+            //backgroundImage: `url(${bg.themePlaying})`,
+            backgroundColor: "var(--player-bg)",
+            borderTop: "1px solid var(--border-player)",
           }}
         >
           <div className="playing-bar__controls__left level-left">

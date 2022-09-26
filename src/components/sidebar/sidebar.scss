@@ -7,6 +7,7 @@
   height: 100%;
   padding-top: 70px;
   padding-bottom: 54px;
+  background-color: var(--sidebar-bg);
   @include tablet {
     width: 70px;
     padding-bottom: 55px;
@@ -20,7 +21,7 @@
     width: 100%;
     z-index: 300;
     height: 45px;
-    background-color: #37075d !important;
+    background-color: var(--layout-bg) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     overflow: hidden;
@@ -42,7 +43,7 @@
 
         li {
           font-weight: 600;
-          color: $txt-color;
+          color:var(--navigation-text);
           border-left: 3px solid transparent;
 
           a {
@@ -147,9 +148,6 @@
         justify-content: center;
         width: 70px;
         padding: 0;
-      }
-      &__item{
-
       }
     }
     @include mobile{

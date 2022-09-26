@@ -248,23 +248,24 @@ const Header = () => {
         onClose={handleCloseDialog}
         title={"Giao Diện"}
       >
-        {<Theme />}
+        {<Theme onClose={handleCloseDialog}/>}
       </Modal>
     </div>
   );
 };
 
 const Theme = (props) => {
+  const {onClose} = props;
   const dispatch = useDispatch();
   const [currTheme,setCurrThem] = useState("zma");
 
   const setTheme = theme =>{
     setCurrThem(theme.id);
     localStorage.setItem('theme',theme.class);
-    localStorage.setItem('datatheme',theme.datatheme);
+    localStorage.setItem('datatheme',JSON.stringify(theme));
     dispatch(setMode(theme.class))
-    dispatch(setColor(theme.datatheme))
-    
+    dispatch(setColor(theme))
+    onClose();
     
   }
   useEffect(() => {

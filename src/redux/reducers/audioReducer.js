@@ -14,7 +14,7 @@ const initialState = {
     artistsNames: "MONO, Onionn",
   },
   srcAudio:
-    "https://vnso-zn-23-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1663743434~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=e6c0c17087f9dd98fff6ca5ee7d8ce92",
+    "https://vnso-zn-10-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1664269029~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=8aa3c95d8475da7acc3af1b96f66eb49",
   currentTime: 0,
   duration: 266,
   volume: 0.5,

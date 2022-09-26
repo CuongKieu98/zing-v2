@@ -36,7 +36,7 @@
       hsla(0, 0%, 100%, 0)
     );
     .items {
-      color: $white;
+      color: var(--white);
       font-weight: 700;
       font-size: inherit;
       line-height: inherit;

@@ -4,12 +4,12 @@
   overflow: hidden;
   border-radius: 4px;
   .list-item-border {
-    border-bottom: 1px solid $border-secondary;
+    border-bottom: 1px solid var(--border-secondary);
     .level__item {
       display: none;
     }
     &:hover {
-      background-color: $alpha-bg;
+      background-color: var(--alpha-bg);
       .duration {
         display: none;
       }
@@ -23,7 +23,7 @@
         top: 0;
         left: 0;
         border-radius: 4px;
-        background-color: $dark-alpha;
+        background-color: var(--dark-alpha-50);
       }
       .center {
         visibility: visible;

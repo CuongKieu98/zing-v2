@@ -8,7 +8,6 @@ import "./card.scss";
 
 const Card = (props) => {
   const { image, className, customImg, actions, content ,onClick} = props;
-  const bg = useSelector(actionSelector).bgReducer;
 
   return (
     <div className="card-container">
