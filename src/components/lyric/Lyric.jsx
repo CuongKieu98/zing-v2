@@ -68,12 +68,7 @@ const Lyric = ({ data, tracks }) => {
                     swiperRef?.current?.swiper.slideTo(index)
                   }
                   return (
-                    <SwiperSlide  className={
-                      (item[0].time.slice(0, -3) <= tracks.currentTime &&
-                      prevTime > tracks.currentTime
-                        ? "swiper-slide-next"
-                        : "")
-                    } key={index}>
+                    <SwiperSlide  key={index}>
                       <li
                         className={
                           "items " +
