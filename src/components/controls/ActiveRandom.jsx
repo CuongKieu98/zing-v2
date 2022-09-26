@@ -2,6 +2,7 @@ import React from "react";
 import Action from "../action/Action";
 
 import ShuffleRoundedIcon from "@mui/icons-material/ShuffleRounded";
+import Button from "../button/Button";
 
 const ActiveRandom = () => {
   const handleActive = () => {
@@ -9,15 +10,15 @@ const ActiveRandom = () => {
   };
   return (
     <>
-      <Action
-        icon={{
-          icon: <ShuffleRoundedIcon sx={{ fontSize: 20 }} />,
-          title: "Bật phát ngẫu nhiên",
-          onClick: (e) => handleActive(e, "favorite"),
-          className: "card-icon ",
-        }}
-        className={"mg-07 hide-on-mobile"}
-      />
+      <Button
+        className={"is-32 no-bg mg-07 hide-on-mobile"}
+        onClick={(e) => handleActive(e)}
+        customIcon={"is-hover-circle"}
+      >
+        <ShuffleRoundedIcon
+          sx={{ fontSize: 22, color: "var(--setting-icon-text)" }}
+        />
+      </Button>
     </>
   );
 };

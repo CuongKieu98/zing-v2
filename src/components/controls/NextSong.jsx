@@ -11,11 +11,11 @@ import {
   togglePlay,
 } from "../../redux/actions/actions";
 import { getInfoSong, getSong } from "../../api/musicApi";
+import Button from "../button/Button";
 const NextSong = ({ audioRef, tracks }) => {
   const dispatch = useDispatch();
 
   const handleNext = async () => {
-
     if (tracks.playingList.length > 0) {
       // audioRef.current.pause();
       // dispatch(togglePlay(false));
@@ -48,8 +48,8 @@ const NextSong = ({ audioRef, tracks }) => {
       });
       dispatch(togglePlay(true));
       audioRef.current.play();
-    }else{
-      window.alert("Vui lòng thêm danh sách phát")
+    } else {
+      window.alert("Vui lòng thêm danh sách phát");
     }
     return;
   };
@@ -66,14 +66,15 @@ const NextSong = ({ audioRef, tracks }) => {
   };
   return (
     <>
-      <Action
-        icon={{
-          icon: <SkipNextRoundedIcon sx={{ fontSize: 20 }} />,
-          onClick: (e) => handleNext(e, "Khác"),
-          className: "card-icon ",
-        }}
-        className={"mg-07"}
-      />
+      <Button
+        className={"is-32 no-bg mg-07"}
+        onClick={(e) => handleNext(e)}
+        customIcon={"is-hover-circle"}
+      >
+        <SkipNextRoundedIcon
+          sx={{ fontSize: 25, color: "var(--setting-icon-text)" }}
+        />
+      </Button>
     </>
   );
 };

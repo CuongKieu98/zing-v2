@@ -34,7 +34,6 @@ const images = {
     rankvn: require('../images/rankvn.jpg'),
     rankusuk: require('../images/rankusuk.jpg'),
     rankkpop: require('../images/rankkpop.jpg'),
-
     
 };
 export default images;

@@ -21,11 +21,31 @@ button {
     line-height: 66%;
     display: inline-block;
     font-size: 16px;
-    padding: 5px;
+    padding: 4px;
     border-radius: 50%;
+    &.is-hover-circle{
+      background-color: transparent;
+      &:hover{
+        background-color: hsla(0,0%,100%,.1);
+      }
+    }
+    &.is-hover-square{
+      background-color: transparent;
+      border-radius: 4px !important;
+      &:hover{
+        background-color: hsla(0,0%,100%,.1);
+      }
+    }
+  }
+  &.no-bg{
+    background-color: transparent;
+  }
+  &.square-bg{
+    border-radius: 4px;
   }
   &:hover{
     -webkit-filter: brightness(.9);
     filter: brightness(.9);
   }
+  
 }

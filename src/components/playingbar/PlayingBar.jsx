@@ -20,6 +20,7 @@ import { useEffect } from "react";
 import RightBar from "./rightbar/RightBar";
 import NowPlaying from "./nowplaying/NowPlaying";
 import { setPopup } from "../../redux/actions/actions";
+import Button from "../button/Button";
 //icon
 
 const PlayingBar = () => {
@@ -49,17 +50,15 @@ const PlayingBar = () => {
     if (!openRight) {
       setOpenRight(true);
       rightBarRef.current.classList.add("is-open");
-     
     } else {
       rightBarRef.current.classList.remove("is-open");
       setOpenRight(false);
-     
     }
   };
 
   const handleNowPlaying = () => {
     if (!openNP) {
-      nowPlayingRef.current.classList.add("on-show");    
+      nowPlayingRef.current.classList.add("on-show");
       setOpenNP(true);
       dispatch(setPopup(true));
     } else {
@@ -71,13 +70,13 @@ const PlayingBar = () => {
 
   const icons = [
     {
-      icon: <FavoriteBorderIcon sx={{ fontSize: 20 }} />,
+      icon: <FavoriteBorderIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)" }} />,
       title: "Thêm vào thư viện",
       onClick: (e) => handleClick(e, "favorite"),
       className: "card-small-icon ",
     },
     {
-      icon: <MoreHorizIcon sx={{ fontSize: 20 }} />,
+      icon: <MoreHorizIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)" }} />,
       title: "Xem thêm",
       onClick: (e) => handleClick(e, "Khác"),
       className: "card-small-icon ",
@@ -85,40 +84,43 @@ const PlayingBar = () => {
   ];
   const iconR = [
     {
-      icon: <YouTubeIcon sx={{ fontSize: 20 }} />,
+      icon: <YouTubeIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)" }} />,
       title: "Xem MV",
       onClick: (e) => handleClick(e, "favorite"),
-      className: "card-tablet-icon ",
+      className: "hide-on-tablet ",
     },
     {
-      icon: <LyricsIcon sx={{ fontSize: 20 }} />,
+      icon: <LyricsIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)" }} />,
       title: "Xem lời bài hát",
       onClick: (e) => handleClick(e, "Khác"),
-      className: "card-tablet-icon ",
+      className: "hide-on-tablet ",
     },
     {
-      icon: <TabRoundedIcon sx={{ fontSize: 20 }} />,
+      icon: <TabRoundedIcon sx={{ fontSize: 20 , color: "var(--setting-icon-text)"}} />,
       title: "Chế độ cửa sổ",
       onClick: (e) => handleClick(e, "Khác"),
-      className: "card-tablet-icon ",
+      className: "hide-on-tablet ",
     },
     {
-      icon: <VolumeUpRoundedIcon sx={{ fontSize: 20 }} />,
+      icon: <VolumeUpRoundedIcon sx={{ fontSize: 20 , color: "var(--setting-icon-text)"}} />,
       onClick: (e) => handleClick(e, "Khác"),
-      className: "card-small-icon ",
+      className: "hide-on-mobile ",
     },
   ];
 
   return (
-    <div className="playing-bar" >
+    <div className="playing-bar">
       <div className="on-playing-bar" ref={nowPlayingRef}>
-        <NowPlaying bg={bg} tracks={tracks} theme={theme} onClick={handleNowPlaying}/>
+        <NowPlaying
+          bg={bg}
+          tracks={tracks}
+          theme={theme}
+          onClick={handleNowPlaying}
+        />
       </div>
       <RightBar bg={bg} tracks={tracks} refbar={rightBarRef} />
 
-      <div
-        className="playing-bar__controls"
-      >
+      <div className="playing-bar__controls">
         <div
           className="level playing-bar__controls__container"
           style={{
@@ -138,7 +140,14 @@ const PlayingBar = () => {
           <div className="playing-bar__controls__right">
             {iconR.map((item, index) => (
               <div className="level__item is-narrow" key={index}>
-                <Action icon={item} className={"pd-3"} />
+                <Button
+                  className={"is-32 no-bg "+ item.className}
+                  onClick={(e) => console.log("test")}
+                  customIcon={"is-hover-circle"}
+                >
+                  {item.icon}
+                </Button>
+           
               </div>
             ))}
             <div className="level__item is-narrow">
@@ -155,16 +164,15 @@ const PlayingBar = () => {
               <span className="divide"></span>
             </div>
             <div className="level__item is-narrow">
-              <Action
-                icon={{
-                  icon: <PlaylistPlayIcon sx={{ fontSize: 20 }} />,
-                  title: "Danh sách phát",
-                  onClick: (e) => openRightBar(e),
-                  className: "card-small-icon ",
-                  customClass: " show-bg-square",
-                }}
-                className={"pd-3"}
-              />
+              <Button
+                className={"is-32 square-bg mg-07 hide-on-mobile"}
+                onClick={(e) => openRightBar(e)}
+                customIcon={"is-hover-square"}
+              >
+                <PlaylistPlayIcon
+                  sx={{ fontSize: 20, color: "var(--setting-icon-text)" }}
+                />
+              </Button>
             </div>
           </div>
         </div>

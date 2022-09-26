@@ -1,6 +1,7 @@
 import React from "react";
 import Action from "../action/Action";
 import RepeatRoundedIcon from "@mui/icons-material/RepeatRounded";
+import Button from "../button/Button";
 
 const Loop = () => {
   const handleLoop = () => {
@@ -8,15 +9,15 @@ const Loop = () => {
   };
   return (
     <>
-      <Action
-        icon={{
-          icon: <RepeatRoundedIcon sx={{ fontSize: 20 }} />,
-          title: "Phát lại tất cả",
-          onClick: (e) => handleLoop(e, "Phát lại"),
-          className: "card-icon ",
-        }}
-        className={"mg-07 hide-on-mobile"}
-      />
+      <Button
+        className={"is-32 no-bg mg-07 hide-on-mobile"}
+        onClick={(e) => handleLoop(e)}
+        customIcon={"is-hover-circle"}
+      >
+        <RepeatRoundedIcon
+          sx={{ fontSize: 22, color: "var(--setting-icon-text)" }}
+        />
+      </Button>
     </>
   );
 };

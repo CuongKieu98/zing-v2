@@ -4,8 +4,9 @@ import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import { useDispatch } from "react-redux";
 import { togglePlay } from "../../redux/actions/actions";
+import Button from "../button/Button";
 
-const PlayPause = ({ audioRef ,tracks}) => {
+const PlayPause = ({ audioRef, tracks }) => {
   const dispatch = useDispatch();
   const [isPlay, setIsPlay] = useState(tracks.isPlay);
   const handleTogglePlay = (e) => {
@@ -22,19 +23,21 @@ const PlayPause = ({ audioRef ,tracks}) => {
 
   return (
     <>
-      <Action
-        icon={{
-          icon: !isPlay ? (
-            <PlayArrowRoundedIcon sx={{ fontSize: 32 }} />
-          ) : (
-            <PauseRoundedIcon sx={{ fontSize: 32 }} />
-          ),
-          onClick: (e) => handleTogglePlay(e),
-          className: "border-icon ",
-          customClass: " no-bg",
-        }}
-        className={"mg-07"}
-      />
+      <Button
+        className={"is-40 no-bg mg-07"}
+        onClick={(e) => handleTogglePlay(e)}
+        customIcon={"border-icon"}
+      >
+        {!isPlay ? (
+          <PlayArrowRoundedIcon
+            sx={{ fontSize: 30, color: "var(--setting-icon-text)" }}
+          />
+        ) : (
+          <PauseRoundedIcon
+            sx={{ fontSize: 30, color: "var(--setting-icon-text)" }}
+          />
+        )}
+      </Button>
     </>
   );
 };

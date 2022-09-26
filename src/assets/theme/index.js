@@ -27,10 +27,7 @@ const themes = {
     lisaBg : require('../theme/lisa-bg.jpg'),
     jennieBg : require('../theme/jennie-bg.jpg'),
     jisooBg : require('../theme/jisoo-bg.jpg'),
-    roseBg : require('../theme/rose-bg.jpg'),
-
-
-
+    roseBg : require('../theme/rose-bg.jpg')
 
 };
 export default themes;

@@ -5,7 +5,7 @@ import "./footer.scss"
 const Footer = () => {
   return (
     <div className='footer'>
-      <h3>Đối tác âm nhạc</h3>
+      <h3 className='title'>Đối tác âm nhạc</h3>
       <div className="footer__partner">
         <div className='footer__partner__item'>
           <figure>
