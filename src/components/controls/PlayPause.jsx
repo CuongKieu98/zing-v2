@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Action from "../action/Action";
 import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import { useDispatch } from "react-redux";
@@ -20,6 +19,10 @@ const PlayPause = ({ audioRef, tracks }) => {
     }
     dispatch(togglePlay(!isPlay));
   };
+
+  useEffect(() =>{
+    setIsPlay(tracks.isPlay)
+  },[tracks.isPlay])
 
   return (
     <>

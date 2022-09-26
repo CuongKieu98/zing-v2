@@ -70,7 +70,6 @@ const RightBar = (props) => {
   return (
     <div
       className="right-bar"
-      style={{ backgroundColor: `${bg.bgRightbar}` }}
       ref={refbar}
     >
       <div className="right-bar__container-bar">
@@ -128,7 +127,7 @@ const Content = ({ tracks, bg }) => {
             <div className="right-bar__content__items">
 
               <div className="next-song">
-                <h3>Danh sách đang phát</h3>
+                <h3 className="title">Danh sách đang phát</h3>
               </div>
               <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="1">
@@ -154,7 +153,7 @@ const Content = ({ tracks, bg }) => {
                                 opacity={`${bg.darkAlpha}`}
                                 bgActive={
                                   item.encodeId === tracks.songId
-                                    ? `${bg.activeMedia}`
+                                    ? "var(--purple-primary)"
                                     : ""
                                 }
                                 hoverActive={item.encodeId === tracks.songId}
@@ -168,7 +167,7 @@ const Content = ({ tracks, bg }) => {
                               </DragItem>
                               {item.encodeId === tracks.songId && (
                                 <div className="next-song">
-                                  <h3>Tiếp theo</h3>
+                                  <h3 className="title">Tiếp theo</h3>
                                 </div>
                               )}
                             </>

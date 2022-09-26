@@ -1,5 +1,5 @@
 import React from "react";
-import Action from "../action/Action";
+
 import SkipNextRoundedIcon from "@mui/icons-material/SkipNextRounded";
 import { useDispatch } from "react-redux";
 import {
@@ -17,8 +17,6 @@ const NextSong = ({ audioRef, tracks }) => {
 
   const handleNext = async () => {
     if (tracks.playingList.length > 0) {
-      // audioRef.current.pause();
-      // dispatch(togglePlay(false));
       const indexSong = findIndexSong();
       dispatch(setLyric(""));
       dispatch(setSongId(tracks.playingList[indexSong].encodeId));

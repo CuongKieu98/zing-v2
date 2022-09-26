@@ -17,6 +17,40 @@
     @include mobile {
       bottom: 45px;
     }
+    &.opac {
+      @include mobile {
+        bottom: 0;
+      }
+      .playing-bar__controls__center{
+        display: flex;
+        flex-direction: column-reverse;
+        max-width: unset;
+        .hide-on-mobile{
+          display: flex !important;
+        }
+        .level__item{
+          @include mobile {
+            justify-content: center;
+            .border-icon{
+              border: 1px solid !important;
+            }
+            .action-bar{
+              padding-bottom: 10px;
+            }
+          }
+        }
+      }
+      .playing-bar__controls__left{
+        @include mobile{
+          display: none;
+        }
+      }
+      .playing-bar__controls__container{
+        @include mobile {
+          height: 90px;
+        }
+      }
+    }
     &__container {
       height: 90px;
       // min-width: 768px;

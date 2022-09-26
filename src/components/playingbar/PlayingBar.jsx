@@ -31,6 +31,7 @@ const PlayingBar = () => {
   const dispatch = useDispatch();
 
   const nowPlayingRef = useRef(null);
+  const playbarRef = useRef(null);
 
   const audioRef = useRef(null);
   const rightBarRef = useRef(null);
@@ -59,10 +60,12 @@ const PlayingBar = () => {
   const handleNowPlaying = () => {
     if (!openNP) {
       nowPlayingRef.current.classList.add("on-show");
+      playbarRef.current.classList.add("opac");
       setOpenNP(true);
       dispatch(setPopup(true));
     } else {
       nowPlayingRef.current.classList.remove("on-show");
+      playbarRef.current.classList.remove("opac");
       setOpenNP(false);
       dispatch(setPopup(false));
     }
@@ -120,7 +123,7 @@ const PlayingBar = () => {
       </div>
       <RightBar bg={bg} tracks={tracks} refbar={rightBarRef} />
 
-      <div className="playing-bar__controls">
+      <div className="playing-bar__controls" ref={playbarRef}>
         <div
           className="level playing-bar__controls__container"
           style={{

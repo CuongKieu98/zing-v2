@@ -124,29 +124,26 @@ const Header = () => {
     <div ref={headerRef} className="header">
       <div className="level">
         <div className="level-left">
-          <Action
-            icon={{
-              icon: <ArrowBackIcon sx={{ fontSize: 20 }} />,
-              className: "card-icon ",
-              customClass: " no-bg",
-            }}
-            className={"mg-07 hide-on-mobile"}
-          />
-          <Action
-            icon={{
-              icon: <ArrowForwardIcon sx={{ fontSize: 20 }} />,
-              className: "card-icon ",
-              customClass: " no-bg",
-            }}
-            className={"mg-07 hide-on-mobile"}
-          />
+          <Button className={"is-32 no-bg mg-07 hide-on-mobile"}>
+            <ArrowBackIcon
+              sx={{ fontSize: 20, color: "var(--setting-icon-text)" }}
+            />
+          </Button>
+          <Button className={"is-32 no-bg mg-07 hide-on-mobile"}>
+            <ArrowForwardIcon
+              sx={{ fontSize: 20, color: "var(--setting-icon-text)" }}
+            />
+          </Button>
+
           <form className="search">
-            <div
-              className={"search__container " + isColapse}
-            >
+            <div className={"search__container " + isColapse}>
               <Action
                 icon={{
-                  icon: <SearchIcon sx={{ fontSize: 30 ,color:"var(--text-placeholder)"}} />,
+                  icon: (
+                    <SearchIcon
+                      sx={{ fontSize: 30, color: "var(--text-placeholder)" }}
+                    />
+                  ),
                   className: "card-icon ",
                   customClass: " no-bg",
                 }}
@@ -164,23 +161,25 @@ const Header = () => {
                 />
               </div>
               {searchValue.length > 0 && (
-                <Action
-                  icon={{
-                    icon: <CloseRoundedIcon sx={{ fontSize: 20 }} />,
-                    className: "card-icon ",
-                    customClass: " no-bg",
-                    onClick: handleClear,
-                  }}
-                  className={"mg-07 icon-close"}
-                />
+                // <Action
+                //   icon={{
+                //     icon: <CloseRoundedIcon sx={{ fontSize: 20 }} />,
+                //     className: "card-icon ",
+                //     customClass: " no-bg",
+                //     onClick: handleClear,
+                //   }}
+                //   className={"mg-07 icon-close"}
+                // />
+                <Button className={"is-32 no-bg mg-07 icon-close"} onClick={handleClear}>
+                  <CloseRoundedIcon
+                    sx={{ fontSize: 20, color: "var(--setting-icon-text)" }}
+                  />
+                </Button>
               )}
             </div>
 
             {isShow && (
-              <ul
-                className="suggest__list"
-                ref={ulsRef}
-              >
+              <ul className="suggest__list" ref={ulsRef}>
                 <div className="suggest__list__container">
                   <div className="search-title">Gợi ý kết quả</div>
                   <li className="suggest__list__item">
@@ -208,20 +207,9 @@ const Header = () => {
         </div>
         <div className="level-right">
           <div className="setting-item">
-            <Button
-              className={"bg-circle is-40"}
-              onClick={handleOpenDialog}
-            >
-              <ColorLensIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)"  }} />
-            </Button>
-          </div>
-          <div className="setting-item hide-on-mobile">
-            <Button
-              className={"bg-circle is-40"}
-              onClick={() => console.log("gaga")}
-            >
-              <FileUploadOutlinedIcon
-                sx={{ fontSize: 20, color: "var(--setting-icon-text)"  }}
+            <Button className={"bg-circle is-40"} onClick={handleOpenDialog}>
+              <ColorLensIcon
+                sx={{ fontSize: 20, color: "var(--setting-icon-text)" }}
               />
             </Button>
           </div>
@@ -230,7 +218,19 @@ const Header = () => {
               className={"bg-circle is-40"}
               onClick={() => console.log("gaga")}
             >
-              <SettingsIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)" }} />
+              <FileUploadOutlinedIcon
+                sx={{ fontSize: 20, color: "var(--setting-icon-text)" }}
+              />
+            </Button>
+          </div>
+          <div className="setting-item hide-on-mobile">
+            <Button
+              className={"bg-circle is-40"}
+              onClick={() => console.log("gaga")}
+            >
+              <SettingsIcon
+                sx={{ fontSize: 20, color: "var(--setting-icon-text)" }}
+              />
             </Button>
           </div>
           <div className="setting-item">
@@ -238,7 +238,9 @@ const Header = () => {
               className={"bg-circle is-40"}
               onClick={() => console.log("gaga")}
             >
-              <PersonIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)"  }} />
+              <PersonIcon
+                sx={{ fontSize: 20, color: "var(--setting-icon-text)" }}
+              />
             </Button>
           </div>
         </div>
@@ -248,37 +250,34 @@ const Header = () => {
         onClose={handleCloseDialog}
         title={"Giao Diện"}
       >
-        {<Theme onClose={handleCloseDialog}/>}
+        {<Theme onClose={handleCloseDialog} />}
       </Modal>
     </div>
   );
 };
 
 const Theme = (props) => {
-  const {onClose} = props;
+  const { onClose } = props;
   const dispatch = useDispatch();
-  const [currTheme,setCurrThem] = useState("zma");
+  const [currTheme, setCurrThem] = useState("zma");
 
-  const setTheme = theme =>{
+  const setTheme = (theme) => {
     setCurrThem(theme.id);
-    localStorage.setItem('theme',theme.class);
-    localStorage.setItem('datatheme',JSON.stringify(theme));
-    dispatch(setMode(theme.class))
-    dispatch(setColor(theme))
+    localStorage.setItem("theme", theme.class);
+    localStorage.setItem("datatheme", JSON.stringify(theme));
+    dispatch(setMode(theme.class));
+    dispatch(setColor(theme));
     onClose();
-    
-  }
+  };
   useEffect(() => {
+    const allTheme2 = THEME_DYNAMIC.concat(THEME_2, THEME_ARTIST);
 
-    const allTheme2 = THEME_DYNAMIC.concat(THEME_2,THEME_ARTIST);
+    const themeClass = allTheme2.find(
+      (e) => e.class === localStorage.getItem("theme", "theme-dynamic-zma")
+    );
 
-    const themeClass = allTheme2.find(e => e.class === localStorage.getItem('theme', 'theme-dynamic-zma'))
-     
-
-    if (themeClass !== undefined) setCurrThem(themeClass.id)
-
-
-}, []);
+    if (themeClass !== undefined) setCurrThem(themeClass.id);
+  }, []);
   return (
     <div className="container-theme">
       <h3 className="title prl-7">Dynamic</h3>

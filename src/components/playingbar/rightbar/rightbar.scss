@@ -11,6 +11,7 @@
   bottom: 90px;
   transform: translateX(100%);
   transition: 0.5s ease;
+  background-color: var(--queue-player-popup-bg);;
   &.is-open{
   transform: none;
   
@@ -35,18 +36,18 @@
       .level-left {
         flex: 1 1;
         border-radius: 999px;
-        background-color: $alpha-bg;
+        background-color:  var(--alpha-bg);
         padding: 3px;
       }
       .level__item {
         border-radius: 999px;
         padding: 5px 0;
         cursor: pointer;
-        color: $navigation-text;
+        color:var(--navigation-text);
         &.is-active {
           box-shadow: 0 1px 3px 0 rgb(0 0 0 / 7%);
-          background-color: $tab-active-bg;
-          color: $txt-color;
+          background-color: var(--tab-active-bg);
+          color: var(--text-item-hover);
         }
         h6 {
           font-weight: 500;
@@ -82,7 +83,7 @@
       .media-item {
         border-radius: 4px;
         &:hover{
-          background-color:$alpha-bg;
+          background-color: var(--alpha-bg);
           box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.3),
           inset 0 1px 1px rgba(25, 255, 255, 0.05);
           .opacity {
@@ -92,7 +93,7 @@
             top: 0;
             left: 0;
             border-radius: 4px;
-            background-color: $dark-alpha;
+            background-color: var(--dark-alpha-50)
           }
           .center {
             visibility: visible;

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./controls.scss";
-import Action from "../action/Action";
+
 //icon
 
 import { Slider } from "@mui/material";
@@ -81,7 +81,7 @@ const Controls = (props) => {
           {/* acitve random song */}
           <ActiveRandom />
           {/* previous song */}
-          <Previous />
+          <Previous audioRef={audioRef} tracks={tracks} />
           {/* Play/Pause */}
           <PlayPause audioRef={audioRef} tracks={tracks} />
           {/* next song */}

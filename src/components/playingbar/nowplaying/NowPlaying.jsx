@@ -21,25 +21,7 @@ const NowPlaying = (props) => {
   const [activeTab, setActiveTab] = useState(1);
 
   const dispatch = useDispatch();
-  // const dataL = dataLyric.map(item => item[0])
 
-  // const dataMap = (data) =>{
-  //     console.log(data)
-
-  //   data.map((item,index) =>(
-  //     console.log(item[0])
-  //   ) )
-  // }
-  // console.log(dataMap(dataLyric));
-
-  // useEffect(() =>{
-  //   if(dataLyric.length > 0){
-  //     let data2 = dataL.findLast(it => it.time.slice(0, -3) <= tracks.currentTime)
-  //     setLyric(data2?.lyric || "");
-  //   }
-  //   return
-
-  // },[tracks.currentTime])
 
   const handleChangeTab = (value) => {
     if (activeTab === value) return;
@@ -104,12 +86,8 @@ const NowPlaying = (props) => {
                 </button>
               </div>
               <div className="left-content">
-                <div className="title">
-                  <h3>Em nên Dừng lại</h3>
-                </div>
-                <div className="subtitle">
-                  <h4>Khang Việt</h4>
-                </div>
+                  <h3 className="title" style={{marginBottom:"0"}}>Em nên Dừng lại</h3>
+                  <h4 className="subtitle">Khang Việt</h4>
               </div>
             </div>
           </div>
