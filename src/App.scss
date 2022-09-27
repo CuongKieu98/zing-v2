@@ -420,7 +420,9 @@ video {
 iframe {
   border: 0;
 }
-
+figure{
+  background-color: var(--loading-bg);
+}
 .container {
   max-width: 1660px;
   margin: auto;
@@ -712,4 +714,20 @@ h3.title {
   font-weight: 700;
   text-transform: capitalize;
   display: block;
+}
+h3.subtitle{
+  font-weight: 400;
+  display: block;
+}
+.subtitle{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  line-height: normal;
+  color: var(--text-secondary);
+}
+.duration{
+  color: var(--text-secondary);
+  font-size: 12px;
 }

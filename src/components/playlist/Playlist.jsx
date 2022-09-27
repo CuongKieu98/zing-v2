@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { actionSelector } from "../../redux/selectors/selectors";
-import Media from "../media/Media";
+import Media from "../media-song/Media";
+
 import "./playlist.scss";
 
 const Playlist = (props) => {
@@ -25,19 +26,10 @@ const Playlist = (props) => {
       <div className="playlist__content">
             <div className="playlist__content__item">
                 <div className="list-item">
-                <Media item={tracks.infoSong} className={"is-40"}/>
+                <Media tracks={tracks} customImg={"is-40"}/>
                 </div>
             </div>
-            <div className="playlist__content__item">
-                <div className="list-item">
-                <Media item={tracks.infoSong} className={"is-40"}/>
-                </div>
-            </div>
-            <div className="playlist__content__item">
-                <div className="list-item">
-                <Media item={tracks.infoSong} className={"is-40"}/>
-                </div>
-            </div>
+   
       </div>
     </div>
   );

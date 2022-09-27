@@ -1,26 +1,26 @@
 import { ActionTypes } from "@mui/base";
+import audios from "../../assets/fake-data/audio";
+import info from "../../assets/fake-data/info";
 
 const initialState = {
   isPlay: false,
   isMute: false,
   isPopup:false,
-  songId: "ZZFDAZ89",
+  songId: "1",
   infoSong: {
-    title: "Waiting For You",
-    thumbnailM:
-      "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/e/7/7/2/e772358978fef8a02eefd34f6a4ca6f3.jpg",
-    thumbnail:
-      "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/e/7/7/2/e772358978fef8a02eefd34f6a4ca6f3.jpg",
-    artistsNames: "MONO, Onionn",
+    title: "Mình Hãy Ngừng Lại Em Nhé",
+    thumbnailM: info.emnendunglai,
+    thumbnail: info.emnendunglai,
+    artistsNames:'Văn Võ,Ngọc Nhân',
     album: {
       encodeId: "6BZUUWW0",
-      title: "22",
+      title: "Mình Ngừng Lại Em Nhé (Single)",
     }
   },
   srcAudio:
-    "https://vnso-zn-10-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1664269029~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=8aa3c95d8475da7acc3af1b96f66eb49",
+  audios.minhngunglaiemnhe, 
   currentTime: 0,
-  duration: 266,
+  duration: 339,
   volume: 0.5,
   isLoop: false,
   playingList: [
@@ -62,22 +62,26 @@ const initialState = {
     },
   ],
   isLyric: false,
-  lyric:"",
+  lyric:info.minhngunglaiemnhelrc,
 };
 const initialState1 = {
   isPlay: false,
   isMute: false,
-  songId: "",
   infoSong: {
-    title: "",
-    thumnailM: "",
-    thumnail: "",
-    artists: [],
+    encodeId:"1",
+    title: "Mình Hãy Ngừng Lại Em Nhé",
+    thumbnailM: info.emnendunglai,
+    thumbnail: info.emnendunglai,
+    artistsNames:'Văn Võ,Ngọc Nhân',
+    album: {
+      encodeId: "6BZUUWW0",
+      title: "Mình Ngừng Lại Em Nhé (Single)",
+    },
+    srcAudio:audios.minhngunglaiemnhe,
+    currentTime: 0,
+    duration: 339, 
+    lyric:info.minhngunglaiemnhelrc,
   },
-  srcAudio:
-    "https://vnso-zn-10-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1663213044~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=09d94935a37dcd4ba69b8ca82f3b81ca",
-  currentTime: 0,
-  duration: 0,
   volume: 0.5,
   isLoop: false,
   playingList: [],

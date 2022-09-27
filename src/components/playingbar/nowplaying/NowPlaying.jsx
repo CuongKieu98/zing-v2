@@ -27,16 +27,21 @@ const NowPlaying = (props) => {
   const handleChangeTab = (value) => {
     if (activeTab === value) return;
     setActiveTab(value);
-    if (value === 2 && tracks.lyric[0].length === 0) {
-      getLyric(tracks.songId).then((res) => {
-        try {
-          dispatch(setLyric(res.data.file));
-          parseFile(res.data.file);
-        } catch (error) {
-          console.log(error);
-          return;
-        }
-      });
+    if (value === 2 ) {
+      if (tracks.lyric !== "") {
+        setLyric(tracks.lyric);
+        parseFile(tracks.lyric);
+      } else {
+        getLyric(tracks.songId).then((res) => {
+          try {
+            dispatch(setLyric(res.data.file));
+            parseFile(res.data.file);
+          } catch (error) {
+            console.log(error);
+            return;
+          }
+        });
+      }
     }
   };
 

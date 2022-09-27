@@ -1,0 +1,119 @@
+@use "../../scss/" as *;
+
+.media-song {
+  align-items: center;
+  display: flex;
+  text-align: left;
+  padding: 10px;
+  border-radius: 5px;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .media-song-left {
+    display: flex;
+    width: 50%;
+    margin-right: 10px;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    .song-prefix {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      margin-right: 10px;
+      color: var(--song-item-action);
+      font-weight: 700;
+    }
+    .song-thumb {
+      margin-right: 10px;
+      flex-shrink: 0;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      cursor: pointer;
+      .action-items {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        .thumb-action {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          bottom: auto;
+          right: auto;
+          z-index: 98;
+          transform: translateX(-50%) translateY(-50%);
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          -ms-flex-align: center;
+          visibility: hidden;
+          width: 80%;
+        }
+      }
+    }
+    .song-info {
+      overflow: hidden;
+      display: flex;
+      -moz-flex-direction: column;
+      flex-direction: column;
+      width: 100%;
+      .title-wrapper {
+        display: flex;
+        align-items: center;
+        .title-item {
+          display: flex;
+          align-items: center;
+          flex: 1 1;
+          line-height: 1.3;
+          text-transform: none;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          max-width: 100%;
+          line-height: normal;
+          .title {
+            font-size: 14px;
+            color: var(--text-primary) !important;
+          }
+        }
+      }
+      .subtitle-wrapper{
+        .subtitle{
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .media-song-center {
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: left;
+    align-self: center;
+    width: 0;
+    @include mobile {
+      visibility: hidden;
+    }
+    .album-info {
+      color: var(--song-item-action);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 100%;
+    }
+  }
+  .media-song-right {
+    margin-left: 10px;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    .hover-items {
+      display: none;
+    }
+  }
+}
