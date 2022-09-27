@@ -1,5 +1,23 @@
 @use "./index.scss" as *;
-
+.chart-header {
+  position: relative;
+  margin-bottom: 40px;
+  padding-top: 30px;
+  .chart-title {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    .title{
+      font-size: 40px;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--text-item-hover);
+    margin: 0;
+    text-transform: none;
+    }
+  }
+}
 .chart-song-items {
   overflow: hidden;
   border-radius: 4px;

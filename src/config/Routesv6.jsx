@@ -7,6 +7,7 @@ import Chart from "../pages/Chart";
 import Detail from "../pages/Detail";
 
 import Home from "../pages/Home";
+import Profile from "../pages/Profile";
 import Radio from "../pages/Radio";
 import TopMusic from "../pages/TopMusic";
 
@@ -20,6 +21,7 @@ const Routesv6 = () => {
       <Route path="/zing-chart" element={<Chart />} />
       <Route path="/top-100" element={<TopMusic />} />
       <Route path="/radio" element={<Radio />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 };

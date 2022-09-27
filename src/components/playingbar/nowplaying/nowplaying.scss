@@ -1,5 +1,7 @@
 @use "../../../scss/" as *;
-
+.now-playing{
+  height: 100%;
+}
 .now-playing-bg {
   top: 0;
   left: 0;
@@ -83,15 +85,16 @@
         color: var(--navigation-text);
         padding: 7px 50px;
         font-weight: 700;
-      
+        cursor: pointer;
+
         @include tablet {
           padding: 5px 25px;
         }
         &.is-active {
           background-color: hsla(0, 0%, 100%, 0.1);
           border-radius: 999px;
-          color:  var(--text-item-hover);
-          transition: .5 ease;
+          color: var(--text-item-hover);
+          transition: 0.5 ease;
         }
       }
       @include mobile {

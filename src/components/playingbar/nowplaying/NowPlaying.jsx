@@ -4,6 +4,8 @@ import "./nowplaying.scss";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
+import LyricsIcon from "@mui/icons-material/Lyrics";
+import TuneIcon from "@mui/icons-material/Tune";
 import { useSelector } from "react-redux";
 import { actionSelector } from "../../../redux/selectors/selectors";
 import images from "../../../assets/images";
@@ -21,7 +23,6 @@ const NowPlaying = (props) => {
   const [activeTab, setActiveTab] = useState(1);
 
   const dispatch = useDispatch();
-
 
   const handleChangeTab = (value) => {
     if (activeTab === value) return;
@@ -86,8 +87,10 @@ const NowPlaying = (props) => {
                 </button>
               </div>
               <div className="left-content">
-                  <h3 className="title" style={{marginBottom:"0"}}>Em nên Dừng lại</h3>
-                  <h4 className="subtitle">Khang Việt</h4>
+                <h3 className="title" style={{ marginBottom: "0" }}>
+                  {tracks.infoSong.title}
+                </h3>
+                <h4 className="subtitle">{tracks.infoSong.artistsNames}</h4>
               </div>
             </div>
           </div>
@@ -111,12 +114,23 @@ const NowPlaying = (props) => {
             <div className="level">
               <div className="level__item">
                 <button className="left__btn">
-                  <Action
-                    icon={{
-                      icon: <MoreVertRoundedIcon sx={{ fontSize: 20 }} />,
-                      className: "card-icon ",
-                    }}
-                  />
+                  {activeTab === 1 ? (
+                    <Action
+                      icon={{
+                        icon: <LyricsIcon sx={{ fontSize: 20 }} />,
+                        className: "card-icon ",
+                        onClick: () => handleChangeTab(2),
+                      }}
+                    />
+                  ) : (
+                    <Action
+                      icon={{
+                        icon: <TuneIcon sx={{ fontSize: 20 }} />,
+                        className: "card-icon ",
+                        onClick: () => handleChangeTab(1),
+                      }}
+                    />
+                  )}
                 </button>
               </div>
             </div>
@@ -130,7 +144,7 @@ const NowPlaying = (props) => {
                   <div className="wrapper__content">
                     <div className="wrapper__content__card">
                       <figure className="card__content__img">
-                        <img src={images.test3} alt="" />
+                        <img src={tracks.infoSong.thumbnailM} alt="" />
                       </figure>
                     </div>
                   </div>

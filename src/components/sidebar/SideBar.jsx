@@ -5,15 +5,16 @@ import { Link, useLocation } from "react-router-dom";
 import { actionSelector } from "../../redux/selectors/selectors";
 import "./sidebar.scss";
 
-import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import GraphicEqIcon from "@mui/icons-material/GraphicEq";
 import BarChartIcon from "@mui/icons-material/BarChart";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import MusicVideoIcon from "@mui/icons-material/MusicVideo";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import AdjustRoundedIcon from '@mui/icons-material/AdjustRounded';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import ArticleIcon from '@mui/icons-material/Article';
+
 import images from "../../assets/images";
 import Button from "../button/Button";
 
@@ -21,12 +22,12 @@ const sibarNav = [
   {
     display: "Cá Nhân",
     path: "/profile",
-    icon: <LibraryMusicIcon />,
+    icon: <AccountCircleRoundedIcon />,
   },
   {
     display: "Khám Phá",
     path: "/",
-    icon: <AutoAwesomeIcon />,
+    icon: <AdjustRoundedIcon />,
   },
   {
     display: "#zingchart",
@@ -42,7 +43,7 @@ const sibarNav = [
   {
     display: "Theo Dõi",
     path: "/follow",
-    icon: <LibraryAddIcon />,
+    icon: <ArticleIcon />,
   },
 ];
 

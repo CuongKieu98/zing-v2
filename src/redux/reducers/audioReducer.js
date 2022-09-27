@@ -12,6 +12,10 @@ const initialState = {
     thumbnail:
       "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/e/7/7/2/e772358978fef8a02eefd34f6a4ca6f3.jpg",
     artistsNames: "MONO, Onionn",
+    album: {
+      encodeId: "6BZUUWW0",
+      title: "22",
+    }
   },
   srcAudio:
     "https://vnso-zn-10-tf-mp3-s1-m-zmp3.zmdcdn.me/ccf7c0f1fcb115ef4ca0/7510813714486513959?authen=exp=1664269029~acl=/ccf7c0f1fcb115ef4ca0/*~hmac=8aa3c95d8475da7acc3af1b96f66eb49",

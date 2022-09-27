@@ -4,11 +4,13 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCharthome } from "../api/musicApi";
 import Media from "../components/media/Media";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import MicNoneIcon from '@mui/icons-material/MicNone';
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import MicNoneIcon from "@mui/icons-material/MicNone";
 import { actionSelector } from "../redux/selectors/selectors";
 import "../scss/_chart.scss";
+import Button from "../components/button/Button";
+import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 
 const iconsMedia = [
   {
@@ -53,13 +55,26 @@ const Chart = () => {
       });
   }, []);
 
-  const handleLoadMore = () =>{
-    if(itemChart.length === 0) return;
-    setDatasize(100)
-  }
- 
+  const handleLoadMore = () => {
+    if (itemChart.length === 0) return;
+    setDatasize(100);
+  };
+
   return (
     <div className="container-main">
+      <div className="chart-header">
+        <div className="chart-title">
+          <h3 className="title">#zingchart</h3>
+          <Button
+            className={"is-40 mg-07"}
+            customIcon={"is-hover-circle"}
+          >
+            <PlayArrowRoundedIcon
+              sx={{ fontSize: 30, color: "var(--setting-icon-text)" }}
+            />
+          </Button>
+        </div>
+      </div>
       <div className="list mb-3">
         {itemChart.slice(0, datasize).map((item, index) => (
           <div className="chart-song-items" key={index}>
@@ -78,11 +93,11 @@ const Chart = () => {
             </div>
           </div>
         ))}
-      <div className="is-center">
-        <div className="show-more" onClick={handleLoadMore}>
-          {itemChart.length === 0 ? "Đang tải..." : "Xem thêm"}
+        <div className="is-center">
+          <div className="show-more" onClick={handleLoadMore}>
+            {itemChart.length === 0 ? "Đang tải..." : "Xem thêm"}
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

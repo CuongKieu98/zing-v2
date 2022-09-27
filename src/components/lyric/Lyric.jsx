@@ -20,32 +20,6 @@ const Lyric = ({ data, tracks }) => {
       <div className="column is-multiline">
         <div className="column is-full">
           <ul className="lyric__content" ref={ulRef}>
-            {/* {data &&
-              data.map((item, index, arr) => {
-                const prevTime = arr[
-                  index + 1 >= arr.length ? index : index + 1
-                ][0].time.slice(0, -3);
-                if (lrcRef.current[index + 2]?.className.includes("current")) {
-                  lrcRef.current[index].scrollIntoView({
-                    behavior: "smooth",
-                  });
-                }
-                return (
-                  <li
-                    className={
-                      "items " +
-                      (item[0].time.slice(0, -3) <= tracks.currentTime &&
-                      prevTime > tracks.currentTime
-                        ? "current"
-                        : "")
-                    }
-                    key={index}
-                    ref={(ref) => (lrcRef.current[index] = ref)}
-                  >
-                    {item[0].lyric}
-                  </li>
-                );
-              })} */}
             <Swiper
               ref={swiperRef}
               direction={"vertical"}

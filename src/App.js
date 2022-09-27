@@ -30,7 +30,6 @@ function App() {
     const themeClass = localStorage.getItem("theme");
 
     const dataClass = localStorage.getItem("datatheme");
-    console.log(dataClass);
     if (themeClass === null) {
       dispatch(setMode("theme-dynamic-zma"));
       dispatch(
