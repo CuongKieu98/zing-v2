@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./media.scss";
 import Button from "../button/Button";
 
@@ -7,9 +7,26 @@ import SettingsVoiceRoundedIcon from "@mui/icons-material/SettingsVoiceRounded";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
 import MusicNoteRoundedIcon from "@mui/icons-material/MusicNoteRounded";
+import images from "../../assets/images";
+import { useDispatch } from "react-redux";
 
 const Media = (props) => {
-  const { prefixType, rightType, customImg, audio, className } = props;
+  const {
+    prefixType,
+    rightType,
+    customImg,
+    audio,
+    className,
+    onPlay,
+    tracks,
+    onPause,
+  } = props;
+  const dispatch = useDispatch();
+  const isNowPlaying = tracks.infoSong.encodeId === audio.encodeId;
+
+  // useEffect(() =>{
+
+  // },[audio.isPlay])
 
   return (
     <div className="media-song">
@@ -27,11 +44,24 @@ const Media = (props) => {
           <div className="opacity"></div>
           <div className="action-items">
             <div className="thumb-action">
-              <Button className={"is-32 no-bg "} customIcon={"is-hover-circle"}>
-                <PlayArrowRoundedIcon
-                  sx={{ fontSize: 25, color: "var(--setting-icon-text)" }}
+              {tracks.isPlay && isNowPlaying ? (
+                <img
+                  className="action__playing"
+                  src={images.iconplaying}
+                  alt=""
+                  onClick={onPause}
                 />
-              </Button>
+              ) : (
+                <Button
+                  className={"is-32 no-bg "}
+                  customIcon={"is-hover-circle"}
+                  onClick={() => onPlay(audio)}
+                >
+                  <PlayArrowRoundedIcon
+                    sx={{ fontSize: 25, color: "var(--setting-icon-text)" }}
+                  />
+                </Button>
+              )}
             </div>
           </div>
         </div>

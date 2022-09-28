@@ -10,6 +10,7 @@ const initialState = {
   isPopup: false,
   songId: "1",
   infoSong: {
+    encodeId: "1",
     title: "Mình Hãy Ngừng Lại Em Nhé",
     thumbnailM: info.emnendunglai,
     thumbnail: info.emnendunglai,
@@ -18,6 +19,10 @@ const initialState = {
       encodeId: "6BZUUWW0",
       title: "Mình Ngừng Lại Em Nhé (Single)",
     },
+    srcAudio: audios.minhngunglaiemnhe,
+    currentTime: 0,
+    duration: 339,
+    lyric: info.minhngunglaiemnhelrc,
   },
   srcAudio: audios.minhngunglaiemnhe,
   currentTime: 0,

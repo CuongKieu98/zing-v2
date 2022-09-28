@@ -325,7 +325,7 @@ const MY_PLAYLIST = [
     },
     srcAudio: audios.emnendunglai,
     currentTime: 0,
-    duration: 339,
+    duration: 370,
     lyric: info.emnendunglailrc,
   },
   {
@@ -340,7 +340,7 @@ const MY_PLAYLIST = [
     },
     srcAudio: audios.cochoicochiu,
     currentTime: 0,
-    duration: 339,
+    duration: 224,
     lyric: info.cochoicochiu,
   },
   {
@@ -355,7 +355,7 @@ const MY_PLAYLIST = [
     },
     srcAudio: audios.tongphu,
     currentTime: 0,
-    duration: 339,
+    duration: 295,
     lyric: info.tongphu,
   },
   {
@@ -370,7 +370,7 @@ const MY_PLAYLIST = [
     },
     srcAudio: audios.dangdo,
     currentTime: 0,
-    duration: 339,
+    duration: 290,
     lyric: info.dangdo,
   },
   {
@@ -385,7 +385,7 @@ const MY_PLAYLIST = [
     },
     srcAudio: audios.thegoitronganh,
     currentTime: 0,
-    duration: 339,
+    duration: 239,
     lyric: info.thegioitronganh,
   },
   {
@@ -400,7 +400,7 @@ const MY_PLAYLIST = [
     },
     srcAudio: audios.waiting4u,
     currentTime: 0,
-    duration: 339,
+    duration: 265,
     lyric: info.waitting4u,
   },
   {
@@ -415,7 +415,7 @@ const MY_PLAYLIST = [
     },
     srcAudio: audios.xinmaruocdau,
     currentTime: 0,
-    duration: 339,
+    duration: 189,
     lyric: info.xinmaruocdau,
   },
 ];

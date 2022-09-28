@@ -1,6 +1,5 @@
 @use "../../scss/" as *;
 
-
 .playlist {
   margin-left: -10px;
   &__header {
@@ -34,7 +33,7 @@
       text-align: left;
       align-self: center;
       width: 0;
-      @include mobile{
+      @include mobile {
         visibility: hidden;
       }
     }
@@ -47,30 +46,36 @@
   }
   &__content {
     &__item {
-        display: flex;
-        position: relative;
+      display: flex;
+      position: relative;
       .list-item {
         max-width: 100%;
         flex-grow: 1;
         border-bottom: 1px solid var(--border-secondary);
         border-radius: 4px;
-        &:hover{
-            background-color: var(--alpha-bg);
-            .hover-items{
-              display: block;
-            }
-            .right-action-items{
-              display:none
-            }
-            .opacity{
-              visibility: visible;
-            }
-            .thumb-action{
-              visibility: visible !important;
-            }
+        &:hover {
+          background-color: var(--alpha-bg);
+          .hover-items {
+            display: block;
+          }
+          .right-action-items {
+            display: none;
+          }
+          .opacity {
+            visibility: visible;
+          }
+          .thumb-action {
+            visibility: visible !important;
+          }
         }
-        &.active{
-            background-color: var(--alpha-bg);
+        &.active {
+          background-color: var(--alpha-bg);
+          .opacity {
+            visibility: visible;
+          }
+          .thumb-action {
+            visibility: visible !important;
+          }
         }
       }
     }
