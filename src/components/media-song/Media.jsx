@@ -9,7 +9,7 @@ import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
 import MusicNoteRoundedIcon from "@mui/icons-material/MusicNoteRounded";
 
 const Media = (props) => {
-  const { prefixType, rightType, customImg, tracks, className } = props;
+  const { prefixType, rightType, customImg, audio, className } = props;
 
   return (
     <div className="media-song">
@@ -22,7 +22,7 @@ const Media = (props) => {
         </div>
         <div className="song-thumb">
           <figure className={"image " + customImg}>
-            <img src={tracks.infoSong.thumbnailM} alt="" />
+            <img src={audio.thumbnailM} alt="" />
           </figure>
           <div className="opacity"></div>
           <div className="action-items">
@@ -38,18 +38,18 @@ const Media = (props) => {
         <div className="song-info">
           <div className="title-wrapper">
             <span className="title-item">
-              <span className="title">{tracks.infoSong.title}</span>
+              <span className="title">{audio.title}</span>
             </span>
           </div>
           <div className="subtitle-wrapper">
-            <span className="subtitle">{tracks.infoSong.artistsNames}</span>
+            <span className="subtitle">{audio.artistsNames}</span>
           </div>
         </div>
       </div>
       {/* center */}
       <div className="media-song-center">
         <div className="album-info">
-          <h3 className="subtitle">{tracks.infoSong.album.title}</h3>
+          <h3 className="subtitle">{audio.album.title}</h3>
         </div>
       </div>
       {/* right */}

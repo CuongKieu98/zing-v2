@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { actionSelector } from "../../redux/selectors/selectors";
 import Media from "../media-song/Media";
@@ -6,9 +6,10 @@ import Media from "../media-song/Media";
 import "./playlist.scss";
 
 const Playlist = (props) => {
-    const reducer = useSelector(actionSelector);
-    const bg = reducer.bgReducer;
-    const tracks = reducer.audioReducer;
+  const reducer = useSelector(actionSelector);
+  const bg = reducer.bgReducer;
+  const tracks = reducer.audioReducer;
+  const itemRef = useRef(null);
 
   return (
     <div className="playlist">
@@ -24,12 +25,19 @@ const Playlist = (props) => {
         </div>
       </div>
       <div className="playlist__content">
-            <div className="playlist__content__item">
-                <div className="list-item">
-                <Media tracks={tracks} customImg={"is-40"}/>
-                </div>
+        {tracks.playingList &&
+          tracks.playingList.map((item, index) => (
+            <div className="playlist__content__item" key={index}>
+              <div
+                className={
+                  "list-item" +
+                  (tracks.songId === item.encodeId ? " active" : "")
+                }
+              >
+                <Media audio={item} customImg={"is-40"} />
+              </div>
             </div>
-   
+          ))}
       </div>
     </div>
   );

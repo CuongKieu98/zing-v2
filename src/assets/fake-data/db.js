@@ -1,6 +1,8 @@
 import images from "../images";
 import radios from "../radios";
 import themes from "../theme";
+import info from "./info";
+import audios from "./audio";
 
 const SECTION_1 = [
   {
@@ -294,6 +296,130 @@ const THEME_ARTIST = [
     datatheme: "blue",
   },
 ];
+
+const MY_PLAYLIST = [
+  {
+    encodeId: "1",
+    title: "Mình Hãy Ngừng Lại Em Nhé",
+    thumbnailM: info.emnendunglai,
+    thumbnail: info.emnendunglai,
+    artistsNames: "Văn Võ,Ngọc Nhân",
+    album: {
+      encodeId: "6BZUUWW0",
+      title: "Mình Ngừng Lại Em Nhé (Single)",
+    },
+    srcAudio: audios.minhngunglaiemnhe,
+    currentTime: 0,
+    duration: 339,
+    lyric: info.minhngunglaiemnhelrc,
+  },
+  {
+    encodeId: "2",
+    title: "Em Nên Dừng Lại",
+    thumbnailM: info.imgemhayquendi,
+    thumbnail: info.imgemhayquendi,
+    artistsNames: "Khang Việt",
+    album: {
+      encodeId: "2",
+      title: "Em Nên Dừng Lại (Single)",
+    },
+    srcAudio: audios.emnendunglai,
+    currentTime: 0,
+    duration: 339,
+    lyric: info.emnendunglailrc,
+  },
+  {
+    encodeId: "3",
+    title: "Có Chơi Có Chịu",
+    thumbnailM: info.cochoicochiuimg,
+    thumbnail: info.cochoicochiuimg,
+    artistsNames: "Karik, Only C",
+    album: {
+      encodeId: "2",
+      title: "Có Chơi Có Chịu (Single)",
+    },
+    srcAudio: audios.cochoicochiu,
+    currentTime: 0,
+    duration: 339,
+    lyric: info.cochoicochiu,
+  },
+  {
+    encodeId: "4",
+    title: "Tòng Phu",
+    thumbnailM: info.imgtongphu,
+    thumbnail: info.imgtongphu,
+    artistsNames: "Keyo",
+    album: {
+      encodeId: "2",
+      title: "Tòng Phu (Single)",
+    },
+    srcAudio: audios.tongphu,
+    currentTime: 0,
+    duration: 339,
+    lyric: info.tongphu,
+  },
+  {
+    encodeId: "5",
+    title: "Dang Dở",
+    thumbnailM: info.dangdoimg,
+    thumbnail: info.dangdoimg,
+    artistsNames: "Keyo",
+    album: {
+      encodeId: "2",
+      title: "Dang Dở (Single)",
+    },
+    srcAudio: audios.dangdo,
+    currentTime: 0,
+    duration: 339,
+    lyric: info.dangdo,
+  },
+  {
+    encodeId: "6",
+    title: "Thế Giới Trong Em",
+    thumbnailM: info.imgthegioitrongem,
+    thumbnail: info.imgthegioitrongem,
+    artistsNames: "Hương Ly, LY.M",
+    album: {
+      encodeId: "2",
+      title: "Thế Giới Trong Em (Single)",
+    },
+    srcAudio: audios.thegoitronganh,
+    currentTime: 0,
+    duration: 339,
+    lyric: info.thegioitronganh,
+  },
+  {
+    encodeId: "7",
+    title: "Waiting For You",
+    thumbnailM: info.w4u,
+    thumbnail: info.w4u,
+    artistsNames: "MONO, Onionn",
+    album: {
+      encodeId: "2",
+      title: "22",
+    },
+    srcAudio: audios.waiting4u,
+    currentTime: 0,
+    duration: 339,
+    lyric: info.waitting4u,
+  },
+  {
+    encodeId: "8",
+    title: "Xin Má Rước Dâu",
+    thumbnailM: info.imgxinmaruocdau,
+    thumbnail: info.imgxinmaruocdau,
+    artistsNames: "Diệu Kiên",
+    album: {
+      encodeId: "2",
+      title: "Xin Má Rước Dâu (Single)",
+    },
+    srcAudio: audios.xinmaruocdau,
+    currentTime: 0,
+    duration: 339,
+    lyric: info.xinmaruocdau,
+  },
+];
+
 export {
   SECTION_1,
   SECTION_2,
@@ -303,4 +429,5 @@ export {
   THEME_DYNAMIC,
   THEME_2,
   THEME_ARTIST,
+  MY_PLAYLIST
 };
