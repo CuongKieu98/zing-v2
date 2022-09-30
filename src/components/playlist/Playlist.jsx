@@ -19,7 +19,7 @@ import Media from "../media-song/Media";
 import "./playlist.scss";
 
 const Playlist = (props) => {
-  const { type, playlist } = props;
+  const { type, playlist, prefixType } = props;
   const reducer = useSelector(actionSelector);
   const tracks = reducer.audioReducer;
   const dispatch = useDispatch();
@@ -65,7 +65,7 @@ const Playlist = (props) => {
 
   const playSongWithApi = async (item) => {
     try {
-      const durr = await getInfoSong(item.encodeId)
+      const durr = await getInfoSong(item.encodeId);
       const srcAud = await getSong(item.encodeId);
       dispatch(setSongId(item.encodeId));
       dispatch(setDurTime(durr.data.duration));
@@ -128,11 +128,13 @@ const Playlist = (props) => {
                 id={item.encodeId}
               >
                 <Media
+                  index={index + 1}
                   audio={item}
                   customImg={"is-40"}
                   onPlay={handlePlay}
                   onPause={handlePause}
                   tracks={tracks}
+                  prefixType={prefixType}
                 />
               </div>
             </div>

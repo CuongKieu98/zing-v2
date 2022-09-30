@@ -45,7 +45,7 @@ const NowPlaying = (props) => {
     setActiveTab(1);
   }, [tracks.songId]);
   const parseFile = (filePath) => {
-    if (filePath && filePath !== null) {
+    if (filePath && filePath !== null && filePath !== "") {
       fetch(filePath)
         .then((res) => res.text())
         .then((data) => {

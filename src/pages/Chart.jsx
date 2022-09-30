@@ -13,6 +13,7 @@ import Button from "../components/button/Button";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import Playlist from "../components/playlist/Playlist";
 import TYPE_PLAYLIST from "../consts/TYPE_PLAYLIST";
+import CARD_TYPE from "../consts/CARD_TYPE";
 
 const iconsMedia = [
   {
@@ -70,7 +71,7 @@ const Chart = () => {
           <Button
             className={"is-40 mg-07"}
             customIcon={"is-hover-circle"}
-            style={{backgroundColor:"var(--purple-primary)"}}
+            style={{ backgroundColor: "var(--purple-primary)" }}
           >
             <PlayArrowRoundedIcon
               sx={{ fontSize: 30, color: "var(--setting-icon-text)" }}
@@ -79,7 +80,18 @@ const Chart = () => {
         </div>
       </div>
 
-      <Playlist type={TYPE_PLAYLIST.ZINGCHART} playlist={itemChart.slice(0, datasize)}/>
+      <Playlist
+        type={TYPE_PLAYLIST.ZINGCHART}
+        playlist={itemChart.slice(0, datasize)}
+        prefixType={CARD_TYPE.rank}
+      />
+      {datasize < 100 && (
+        <div className="is-center">
+          <button onClick={handleLoadMore} className="btn-morechart">
+            Xem Top 100
+          </button>
+        </div>
+      )}
     </div>
   );
 };

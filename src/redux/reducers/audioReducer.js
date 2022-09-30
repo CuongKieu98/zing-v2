@@ -114,7 +114,7 @@ const audioReducer = (state = initialState, action) => {
     case "ACTION_SET_LYRIC":
       return {
         ...state,
-        lyric: [action.payload],
+        lyric: action.payload,
       };
     case "ACTION_SET_POPUP":
       return {
