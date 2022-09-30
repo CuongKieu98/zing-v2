@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {
@@ -7,6 +7,7 @@ import {
   setSongId,
   setSongInfo,
   setSrcAudio,
+  setType,
   togglePlay,
 } from "../../redux/actions/actions";
 import { actionSelector } from "../../redux/selectors/selectors";
@@ -15,6 +16,7 @@ import Media from "../media-song/Media";
 import "./playlist.scss";
 
 const Playlist = (props) => {
+  const { type ,playlist} = props;
   const reducer = useSelector(actionSelector);
   const tracks = reducer.audioReducer;
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const Playlist = (props) => {
       dispatch(setDurTime(item.duration));
       dispatch(setSrcAudio(item.srcAudio));
       dispatch(setLyric(item.lyric));
+      dispatch(setType(type));
       dispatch(
         setSongInfo({
           encodeId: item.encodeId,
@@ -48,9 +51,15 @@ const Playlist = (props) => {
     }
   };
 
-  const handlePause =(item) =>{
+  const handlePause = () => {
     dispatch(togglePlay(false));
-  }
+  };
+
+  // useEffect(() => {
+  //   document.getElementById(tracks.songId).scrollIntoView({
+  //     behavior: 'smooth'
+  //   });
+  // }, []);
 
   return (
     <div className="playlist">
@@ -74,6 +83,7 @@ const Playlist = (props) => {
                   "list-item" +
                   (tracks.songId === item.encodeId ? " active" : "")
                 }
+                id={item.encodeId}
               >
                 <Media
                   audio={item}

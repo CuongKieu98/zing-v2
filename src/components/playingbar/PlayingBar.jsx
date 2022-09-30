@@ -138,7 +138,7 @@ const PlayingBar = () => {
             </div>
           </div>
           <div className="playing-bar__controls__center">
-            <Controls audioRef={audioRef} tracks={tracks} />
+            <Controls audioRef={audioRef} tracks={tracks} onOpenList={(e) => openRightBar(e)}/>
           </div>
           <div className="playing-bar__controls__right">
             {iconR.map((item, index) => (

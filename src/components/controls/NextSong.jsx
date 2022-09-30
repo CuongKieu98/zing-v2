@@ -12,38 +12,80 @@ import {
 } from "../../redux/actions/actions";
 import { getInfoSong, getSong } from "../../api/musicApi";
 import Button from "../button/Button";
+import TYPE_PLAYLIST from "../../consts/TYPE_PLAYLIST";
 const NextSong = ({ audioRef, tracks }) => {
   const dispatch = useDispatch();
+  const typePlaylist = tracks.type;
 
   const handleNext = async () => {
+    if (typePlaylist === TYPE_PLAYLIST.MYPLAYLIST) {
+      nextSongLocal();
+    } else if (typePlaylist === TYPE_PLAYLIST.ZINGCHART) {
+      nextSongWithApi();
+    } else {
+      window.alert("Có lỗi xảy ra!");
+    }
+    return;
+  };
+
+  const nextSongLocal = async () => {
     if (tracks.playingList.length > 0) {
       const indexSong = findIndexSong();
-      dispatch(setLyric(""));
       dispatch(setSongId(tracks.playingList[indexSong].encodeId));
+      dispatch(setDurTime(tracks.playingList[indexSong].duration));
+      dispatch(setSrcAudio(tracks.playingList[indexSong].srcAudio));
+      dispatch(setLyric(tracks.playingList[indexSong].lyric));
+      dispatch(
+        setSongInfo({
+          encodeId: tracks.playingList[indexSong].encodeId,
+          title: tracks.playingList[indexSong].title,
+          thumbnailM: tracks.playingList[indexSong].thumbnailM,
+          thumbnail: tracks.playingList[indexSong].thumbnailM,
+          artistsNames: tracks.playingList[indexSong].artistsNames,
+          album: {
+            encodeId: tracks.playingList[indexSong].album.encodeId,
+            title: tracks.playingList[indexSong].album.title,
+          },
+          srcAudio: tracks.playingList[indexSong].srcAudio,
+          currentTime: tracks.playingList[indexSong].currentTime,
+          duration: tracks.playingList[indexSong].duration,
+          lyric: tracks.playingList[indexSong].lyric,
+        })
+      );
+
+      dispatch(togglePlay(true));
+      audioRef.current.play();
+    } else {
+      window.alert("Vui lòng thêm danh sách phát");
+    }
+  };
+
+  const nextSongWithApi = async () => {
+    if (tracks.playingList.length > 0) {
+      const indexSong = findIndexSong();
+      const durr = await getInfoSong(tracks.playingList[indexSong].encodeId)
+        .data.duration;
+      const srcAud = await getSong(tracks.playingList[indexSong].encodeId)
+        .data[128];
+      dispatch(setSongId(tracks.playingList[indexSong].encodeId));
+      dispatch(setDurTime(durr));
+      dispatch(setSrcAudio(srcAud));
+      dispatch(setLyric(""));
+      console.log(durr);
       dispatch(
         setSongInfo({
           title: tracks.playingList[indexSong].title,
           thumbnailM: tracks.playingList[indexSong].thumbnailM,
           thumbnail: tracks.playingList[indexSong].thumbnailM,
           artistsNames: tracks.playingList[indexSong].artistsNames,
+          album: {},
+          srcAudio: srcAud,
+          currentTime: 0,
+          duration: durr,
+          lyric: "",
         })
       );
-      await getInfoSong(tracks.playingList[indexSong].encodeId).then((res) => {
-        try {
-          dispatch(setDurTime(res.data.duration));
-        } catch (error) {
-          console.log(error);
-          return;
-        }
-      });
-      await getSong(tracks.playingList[indexSong].encodeId).then((res) => {
-        try {
-          dispatch(setSrcAudio(res.data[128]));
-        } catch (error) {
-          console.log(error);
-          return;
-        }
-      });
+
       dispatch(togglePlay(true));
       audioRef.current.play();
     } else {
@@ -51,6 +93,7 @@ const NextSong = ({ audioRef, tracks }) => {
     }
     return;
   };
+
   //nếu bài đang phát có trong ds thì bài tiếp theo = index +1, ngược lại phát bài đầu tiên
   const findIndexSong = () => {
     const songIdx = tracks.playingList.findIndex(

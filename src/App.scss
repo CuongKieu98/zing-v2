@@ -554,6 +554,9 @@ body ::-webkit-scrollbar-track {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  .nowpl-show{
+    display: none;
+  }
 }
 .number {
   min-width: 38px;

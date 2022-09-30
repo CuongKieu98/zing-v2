@@ -1,0 +1,14 @@
+@use "./index.scss" as *;
+
+.profile {
+  .profile-header {
+    display: flex;
+    align-items: center;
+    .tite-header {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 48px;
+      color: var(--text-primary);
+    }
+  }
+}

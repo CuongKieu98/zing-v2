@@ -16,9 +16,7 @@
   transform: none;
   
   }
-  @include mobile {
-    display: none;
-  }
+
   &__container-bar {
     height: calc(100vh - 90px);
     max-height: calc(100vh - 90px);

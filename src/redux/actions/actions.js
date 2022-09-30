@@ -72,3 +72,9 @@ export const setCurTime = (time) => {
     payload: time,
   };
 };
+export const setType = (type) => {
+  return {
+    type: "ACTION_SET_TYPE",
+    payload: type,
+  };
+};

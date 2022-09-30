@@ -3,6 +3,9 @@ import "./controls.scss";
 
 //icon
 
+import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
+
+import TocRoundedIcon from '@mui/icons-material/TocRounded';
 import { Slider } from "@mui/material";
 import ActiveRandom from "./ActiveRandom";
 import Previous from "./Previous";
@@ -12,10 +15,11 @@ import Loop from "./Loop";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setCurTime } from "../../redux/actions/actions";
+import Button from "../button/Button";
 //icon
 
 const Controls = (props) => {
-  const { tracks } = props;
+  const { tracks,onOpenList } = props;
   const dispatch = useDispatch();
   const audioRef = useRef(null);
 
@@ -47,19 +51,15 @@ const Controls = (props) => {
     setSeekValue(
       (audioRef.current.currentTime / checkNaN(audioRef.current.duration)) * 100
     );
-    if(audioRef.current) {
-      dispatch(setCurTime(
-        (formatDuration(audioRef.current.currentTime))
-      ))
+    if (audioRef.current) {
+      dispatch(setCurTime(formatDuration(audioRef.current.currentTime)));
     }
-
   };
   const onLoad = () => {
     setTimeout(() => {
       setPosition(audioRef.current?.currentTime);
     }, 1000);
   };
-
 
   return (
     <>
@@ -79,6 +79,14 @@ const Controls = (props) => {
       <div className="level__item">
         <div className="action-bar">
           {/* acitve random song */}
+          <Button
+            className={"square-bg mg-07 nowpl-show"}
+            customIcon={"is-hover-square"}
+          >
+            <VolumeUpRoundedIcon
+              sx={{ fontSize: 22, color: "var(--setting-icon-text)" }}
+            />
+          </Button>
           <ActiveRandom />
           {/* previous song */}
           <Previous audioRef={audioRef} tracks={tracks} />
@@ -88,6 +96,15 @@ const Controls = (props) => {
           <NextSong audioRef={audioRef} tracks={tracks} />
           {/* loop */}
           <Loop />
+          <Button
+            className={"square-bg mg-07 nowpl-show"}
+            customIcon={"is-hover-square"}
+            onClick={onOpenList}
+          >
+            <TocRoundedIcon
+              sx={{ fontSize: 22, color: "var(--setting-icon-text)" }}
+            />
+          </Button>
         </div>
       </div>
       <audio

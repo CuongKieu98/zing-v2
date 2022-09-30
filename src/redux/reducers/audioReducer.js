@@ -2,6 +2,7 @@ import { ActionTypes } from "@mui/base";
 import audios from "../../assets/fake-data/audio";
 import { MY_PLAYLIST } from "../../assets/fake-data/db";
 import info from "../../assets/fake-data/info";
+import TYPE_PLAYLIST from "../../consts/TYPE_PLAYLIST";
 
 
 const initialState = {
@@ -29,6 +30,7 @@ const initialState = {
   duration: 339,
   volume: 0.5,
   isLoop: false,
+  type:TYPE_PLAYLIST.MYPLAYLIST,
   playingList: MY_PLAYLIST,
   isLyric: false,
   lyric: info.minhngunglaiemnhelrc,
@@ -119,6 +121,11 @@ const audioReducer = (state = initialState, action) => {
         ...state,
         isPopup: action.payload,
       };
+      case "ACTION_SET_TYPE":
+        return {
+          ...state,
+          type: action.payload,
+        };
     // case "ACTION_SET_SONG":
     //   return {
     //     ...state,

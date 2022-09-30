@@ -2,14 +2,10 @@ import React, { useState } from "react";
 import Action from "../../action/Action";
 import "./nowplaying.scss";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
-import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
-import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
-import LyricsIcon from "@mui/icons-material/Lyrics";
+
 import TuneIcon from "@mui/icons-material/Tune";
-import { useSelector } from "react-redux";
-import { actionSelector } from "../../../redux/selectors/selectors";
-import images from "../../../assets/images";
-import stringUtils from "../../../utils/stringUtils";
+import SettingsVoiceIcon from "@mui/icons-material/SettingsVoice";
+
 import { useEffect } from "react";
 import Lyric from "../../lyric/Lyric";
 import { getLyric } from "../../../api/musicApi";
@@ -27,7 +23,7 @@ const NowPlaying = (props) => {
   const handleChangeTab = (value) => {
     if (activeTab === value) return;
     setActiveTab(value);
-    if (value === 2 ) {
+    if (value === 2) {
       if (tracks.lyric !== "") {
         setLyric(tracks.lyric);
         parseFile(tracks.lyric);
@@ -122,7 +118,7 @@ const NowPlaying = (props) => {
                   {activeTab === 1 ? (
                     <Action
                       icon={{
-                        icon: <LyricsIcon sx={{ fontSize: 20 }} />,
+                        icon: <SettingsVoiceIcon sx={{ fontSize: 20 }} />,
                         className: "card-icon ",
                         onClick: () => handleChangeTab(2),
                       }}
@@ -148,7 +144,7 @@ const NowPlaying = (props) => {
                 <div className="body__list__wrapper">
                   <div className="wrapper__content">
                     <div className="wrapper__content__card">
-                      <figure className="card__content__img">
+                      <figure className={"card__content__img " + (tracks.isPlay ? "playing" : "")}>
                         <img src={tracks.infoSong.thumbnailM} alt="" />
                       </figure>
                     </div>
@@ -159,7 +155,6 @@ const NowPlaying = (props) => {
             <div className="np__content__bottom">
               <div className="content__text">
                 <div className="content_text_title">
-                  <span>{lyrics}</span>
                 </div>
               </div>
             </div>

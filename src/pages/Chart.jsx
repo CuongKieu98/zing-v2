@@ -68,6 +68,7 @@ const Chart = () => {
           <Button
             className={"is-40 mg-07"}
             customIcon={"is-hover-circle"}
+            style={{backgroundColor:"var(--purple-primary)"}}
           >
             <PlayArrowRoundedIcon
               sx={{ fontSize: 30, color: "var(--setting-icon-text)" }}

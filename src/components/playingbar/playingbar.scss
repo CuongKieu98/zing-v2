@@ -21,33 +21,38 @@
       @include mobile {
         bottom: 0;
       }
-      .playing-bar__controls__center{
+      .playing-bar__controls__center {
         display: flex;
         flex-direction: column-reverse;
         max-width: unset;
-        .hide-on-mobile{
+        .hide-on-mobile {
           display: flex !important;
         }
-        .level__item{
+        .level__item {
           @include mobile {
             justify-content: center;
-            .border-icon{
+            .border-icon {
               border: 1px solid !important;
             }
-            .action-bar{
+            .action-bar {
               padding-bottom: 10px;
+              .nowpl-show {
+                @include mobile {
+                  display: flex;
+                }
+              }
             }
           }
         }
       }
-      .playing-bar__controls__left{
-        @include mobile{
+      .playing-bar__controls__left {
+        @include mobile {
           display: none;
         }
       }
-      .playing-bar__controls__container{
+      .playing-bar__controls__container {
         @include mobile {
-          height: 90px;
+          height: 150px;
         }
       }
     }
@@ -71,14 +76,13 @@
       }
       .level__item.is-narrow {
         width: 100%;
-
       }
       .media {
         padding: 0;
         transition: transform 0.5s;
         cursor: inherit;
         width: 100%;
-        figure{
+        figure {
           @include mobile {
             width: 40px;
             height: 40px;
@@ -91,7 +95,7 @@
       max-width: 40vw;
       @include mobile {
         max-width: 90vw;
-        .level__item{
+        .level__item {
           justify-content: right;
         }
       }

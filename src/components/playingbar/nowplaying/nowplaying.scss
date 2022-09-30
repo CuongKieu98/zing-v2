@@ -1,5 +1,5 @@
 @use "../../../scss/" as *;
-.now-playing{
+.now-playing {
   height: 100%;
 }
 .now-playing-bg {
@@ -136,11 +136,24 @@
             max-width: 100%;
             padding: 15px;
             .card__content__img {
-              animation-timing-function: linear;
               display: flex;
               justify-content: center;
               position: relative;
               border-radius: 999px;
+              -webkit-animation-name: spin-off;
+              animation-name: spin-off;
+              -webkit-animation-duration: 0.5s;
+              animation-duration: 0.5s;
+              &.playing {
+                -webkit-animation-name: spin;
+                animation-name: spin;
+                -webkit-animation-duration: 12s;
+                animation-duration: 12s;
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+                -webkit-animation-timing-function: linear;
+                animation-timing-function: linear;
+              }
               img {
                 border-radius: 999px;
               }
@@ -164,5 +177,14 @@
       overflow: hidden;
       color: $white;
     }
+  }
+}
+
+@keyframes spin-off {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1turn);
   }
 }
