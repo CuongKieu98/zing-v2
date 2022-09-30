@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { getInfoSong, getSong } from "../../api/musicApi";
+import TYPE_PLAYLIST from "../../consts/TYPE_PLAYLIST";
 import {
   setDurTime,
   setLyric,
+  setPlayList,
   setSongId,
   setSongInfo,
   setSrcAudio,
@@ -16,7 +19,7 @@ import Media from "../media-song/Media";
 import "./playlist.scss";
 
 const Playlist = (props) => {
-  const { type ,playlist} = props;
+  const { type, playlist } = props;
   const reducer = useSelector(actionSelector);
   const tracks = reducer.audioReducer;
   const dispatch = useDispatch();
@@ -25,11 +28,51 @@ const Playlist = (props) => {
     if (item.encodeId === tracks.songId) {
       dispatch(togglePlay(true));
     } else {
+      if (type === TYPE_PLAYLIST.MYPLAYLIST) {
+        playSongLocal(item);
+      } else if (type === TYPE_PLAYLIST.ZINGCHART) {
+        playSongWithApi(item);
+      }
+    }
+  };
+
+  const playSongLocal = (item) => {
+    dispatch(setSongId(item.encodeId));
+    dispatch(setDurTime(item.duration));
+    dispatch(setSrcAudio(item.srcAudio));
+    dispatch(setLyric(item.lyric));
+    dispatch(setType(type));
+    dispatch(setPlayList(playlist));
+    dispatch(
+      setSongInfo({
+        encodeId: item.encodeId,
+        title: item.title,
+        thumbnailM: item.thumbnailM,
+        thumbnail: item.thumbnailM,
+        artistsNames: item.artistsNames,
+        album: {
+          encodeId: item.album.encodeId,
+          title: item.album.title,
+        },
+        srcAudio: item.srcAudio,
+        currentTime: item.currentTime,
+        duration: item.duration,
+        lyric: item.lyric,
+      })
+    );
+    dispatch(togglePlay(true));
+  };
+
+  const playSongWithApi = async (item) => {
+    try {
+      const durr = await getInfoSong(item.encodeId)
+      const srcAud = await getSong(item.encodeId);
       dispatch(setSongId(item.encodeId));
-      dispatch(setDurTime(item.duration));
-      dispatch(setSrcAudio(item.srcAudio));
-      dispatch(setLyric(item.lyric));
+      dispatch(setDurTime(durr.data.duration));
+      dispatch(setSrcAudio(srcAud.data[128]));
+      dispatch(setLyric(""));
       dispatch(setType(type));
+      dispatch(setPlayList(playlist));
       dispatch(
         setSongInfo({
           encodeId: item.encodeId,
@@ -37,17 +80,16 @@ const Playlist = (props) => {
           thumbnailM: item.thumbnailM,
           thumbnail: item.thumbnailM,
           artistsNames: item.artistsNames,
-          album: {
-            encodeId: item.album.encodeId,
-            title: item.album.title,
-          },
-          srcAudio: item.srcAudio,
-          currentTime: item.currentTime,
-          duration: item.duration,
-          lyric: item.lyric,
+          album: {},
+          srcAudio: srcAud,
+          currentTime: 0,
+          duration: durr,
+          lyric: "",
         })
       );
       dispatch(togglePlay(true));
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -75,8 +117,8 @@ const Playlist = (props) => {
         </div>
       </div>
       <div className="playlist__content">
-        {tracks.playingList &&
-          tracks.playingList.map((item, index) => (
+        {playlist &&
+          playlist.map((item, index) => (
             <div className="playlist__content__item" key={index}>
               <div
                 className={

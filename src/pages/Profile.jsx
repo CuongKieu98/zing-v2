@@ -10,6 +10,7 @@ import Button from "../components/button/Button";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import SlidesAnimation from "../components/slides-animation/SlidesAnimation";
 import TYPE_PLAYLIST from "../consts/TYPE_PLAYLIST";
+import { MY_PLAYLIST } from "../assets/fake-data/db";
 
 const Profile = () => {
   const [value, setValue] = React.useState("1");
@@ -64,7 +65,7 @@ const Profile = () => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            {<Playlist type={TYPE_PLAYLIST.MYPLAYLIST} />}{" "}
+            {<Playlist type={TYPE_PLAYLIST.MYPLAYLIST} playlist={MY_PLAYLIST}/>}{" "}
           </TabPanel>
           <TabPanel value="2">Test</TabPanel>
           <TabPanel value="3">Item Three</TabPanel>

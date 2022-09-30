@@ -11,6 +11,8 @@ import { actionSelector } from "../redux/selectors/selectors";
 import "../scss/_chart.scss";
 import Button from "../components/button/Button";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
+import Playlist from "../components/playlist/Playlist";
+import TYPE_PLAYLIST from "../consts/TYPE_PLAYLIST";
 
 const iconsMedia = [
   {
@@ -76,30 +78,8 @@ const Chart = () => {
           </Button>
         </div>
       </div>
-      <div className="list mb-3">
-        {itemChart.slice(0, datasize).map((item, index) => (
-          <div className="chart-song-items" key={index}>
-            <div className="list-item-border">
-              <Media
-                left={{
-                  rank: index + 1,
-                }}
-                item={item}
-                tracks={tracks}
-                className={"is-40"}
-                sort={true}
-                right={iconsMedia}
-                time={true}
-              />
-            </div>
-          </div>
-        ))}
-        <div className="is-center">
-          <div className="show-more" onClick={handleLoadMore}>
-            {itemChart.length === 0 ? "Đang tải..." : "Xem thêm"}
-          </div>
-        </div>
-      </div>
+
+      <Playlist type={TYPE_PLAYLIST.ZINGCHART} playlist={itemChart.slice(0, datasize)}/>
     </div>
   );
 };

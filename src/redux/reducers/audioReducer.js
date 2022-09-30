@@ -109,7 +109,7 @@ const audioReducer = (state = initialState, action) => {
     case "ACTION_SET_PLAYLIST":
       return {
         ...state,
-        playingList: [...state.playingList, action.payload],
+        playingList: action.payload,
       };
     case "ACTION_SET_LYRIC":
       return {

@@ -127,7 +127,7 @@ const Content = ({ tracks, bg }) => {
             <div className="right-bar__content__items">
 
               <div className="next-song">
-                <h3 className="title">Danh sách đang phát</h3>
+                <h3 className="title">Danh sách đang phát <a href="/">từ {tracks.type}</a></h3>
               </div>
               <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="1">
