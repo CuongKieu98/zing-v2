@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getInfoSong, getSong } from "../../api/musicApi";
 import TYPE_PLAYLIST from "../../consts/TYPE_PLAYLIST";
 import {
   setDurTime,
+  setLoading,
   setLyric,
   setPlayList,
   setSongId,
@@ -23,7 +24,6 @@ const Playlist = (props) => {
   const reducer = useSelector(actionSelector);
   const tracks = reducer.audioReducer;
   const dispatch = useDispatch();
-
   const handlePlay = (item) => {
     if (item.encodeId === tracks.songId) {
       dispatch(togglePlay(true));
@@ -64,7 +64,9 @@ const Playlist = (props) => {
   };
 
   const playSongWithApi = async (item) => {
+    
     try {
+      dispatch(setLoading(true));
       const durr = await getInfoSong(item.encodeId);
       const srcAud = await getSong(item.encodeId);
       dispatch(setSongId(item.encodeId));
@@ -88,8 +90,10 @@ const Playlist = (props) => {
         })
       );
       dispatch(togglePlay(true));
+      dispatch(setLoading(false));
     } catch (error) {
       console.log(error);
+      dispatch(setLoading(false));
     }
   };
 

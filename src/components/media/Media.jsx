@@ -1,9 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./media.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { actionSelector } from "../../redux/selectors/selectors";
-import { Tooltip } from "@mui/material";
 import Action from "../action/Action";
 
 //icon
@@ -20,9 +18,8 @@ import {
   setSongInfo,
   setSrcAudio,
 } from "../../redux/actions/actions";
-import { getInfoSong, getLyric, getSong } from "../../api/musicApi";
+import { getInfoSong,  getSong } from "../../api/musicApi";
 import { useState } from "react";
-import { PlaceOutlined } from "@mui/icons-material";
 import stringUtils from "../../utils/stringUtils";
 
 const Media = (props) => {
@@ -41,7 +38,6 @@ const Media = (props) => {
 
   const [loading, setLoading] = useState(false);
   const [playing, setPlaying] = useState(false);
-  const classImg = className ? className : "";
   useEffect(() => {
     if (tracks && item.encodeId === tracks.songId && tracks.isPlay) {
       setPlaying(true);
@@ -109,6 +105,7 @@ const Media = (props) => {
     if (left && (left.rank === 1 || left.rank === 2 || left.rank === 3)) {
       numRef.current.classList.add(`top-${left.rank}`);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const SortIcon = () => {
     if (item.rakingStatus > 0) {

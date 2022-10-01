@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+
 import { getCharthome } from "../api/musicApi";
-import Media from "../components/media/Media";
+
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import MicNoneIcon from "@mui/icons-material/MicNone";
@@ -38,7 +37,7 @@ const iconsMedia = [
 ];
 
 const Chart = () => {
-  const dispatch = useDispatch();
+
   const reducer = useSelector(actionSelector);
   const bg = reducer.bgReducer;
   const tracks = reducer.audioReducer;

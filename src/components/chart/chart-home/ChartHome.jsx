@@ -8,12 +8,11 @@ import { Link } from "react-router-dom";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import images from "../../../assets/images";
 import Media from "../../media/Media";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { actionSelector } from "../../../redux/selectors/selectors";
 
 
 const ChartHome = () => {
-  const dispatch = useDispatch();
 
   const tracks = useSelector(actionSelector).audioReducer;
   const [chart, setChart] = useState([]);

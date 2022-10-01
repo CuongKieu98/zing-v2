@@ -27,10 +27,10 @@ const Media = (props) => {
     onPlay,
     tracks,
     onPause,
+    loadingApi,
   } = props;
   const dispatch = useDispatch();
   const isNowPlaying = tracks.infoSong.encodeId === audio.encodeId;
-
   // useEffect(() =>{
 
   // },[audio.isPlay])
@@ -49,7 +49,13 @@ const Media = (props) => {
           <div className="opacity"></div>
           <div className="action-items">
             <div className="thumb-action">
-              {tracks.isPlay && isNowPlaying ? (
+              {tracks.isLoading ? (
+                <img
+                  className="media__action__loading"
+                  src={images.spiner}
+                  alt=""
+                />
+              ) : (tracks.isPlay && isNowPlaying) ? (
                 <img
                   className="action__playing"
                   src={images.iconplaying}
@@ -116,7 +122,9 @@ const Media = (props) => {
         </div>
         <div className="right-action-items">
           <div className="level">
-            <div className="level-item duration">{stringUtils.formatDuration(audio.duration)}</div>
+            <div className="level-item duration">
+              {stringUtils.formatDuration(audio.duration)}
+            </div>
           </div>
         </div>
       </div>

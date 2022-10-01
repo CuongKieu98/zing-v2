@@ -78,3 +78,9 @@ export const setType = (type) => {
     payload: type,
   };
 };
+export const setLoading= (value) => {
+  return {
+    type: "ACTION_SET_LOADINGAPI",
+    payload: value,
+  };
+};

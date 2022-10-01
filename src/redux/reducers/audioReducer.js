@@ -9,6 +9,7 @@ const initialState = {
   isPlay: false,
   isMute: false,
   isPopup: false,
+  isLoading:false,
   songId: "1",
   infoSong: {
     encodeId: "1",
@@ -126,6 +127,11 @@ const audioReducer = (state = initialState, action) => {
           ...state,
           type: action.payload,
         };
+        case "ACTION_SET_LOADINGAPI":
+          return {
+            ...state,
+            isLoading: action.payload,
+          };
     // case "ACTION_SET_SONG":
     //   return {
     //     ...state,
