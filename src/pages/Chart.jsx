@@ -52,7 +52,6 @@ const Chart = () => {
       .then((res) => {
         setData(res.data);
         setItemChart(res.data.RTChart.items);
-        console.log(res.data.RTChart.items);
         setLoading(false);
       })
       .catch((err) => {
