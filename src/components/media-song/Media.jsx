@@ -55,7 +55,7 @@ const Media = (props) => {
                   src={images.spiner}
                   alt=""
                 />
-              ) : (tracks.isPlay && isNowPlaying) ? (
+              ) : tracks.isPlay && isNowPlaying ? (
                 <img
                   className="action__playing"
                   src={images.iconplaying}
@@ -88,11 +88,13 @@ const Media = (props) => {
         </div>
       </div>
       {/* center */}
-      <div className="media-song-center">
-        <div className="album-info">
-          <h3 className="subtitle">{audio.album.title}</h3>
+      {audio.album && (
+        <div className="media-song-center">
+          <div className="album-info">
+            <h3 className="subtitle">{audio.album.title}</h3>
+          </div>
         </div>
-      </div>
+      )}
       {/* right */}
       <div className="media-song-right">
         <div className="hover-items">
