@@ -14,7 +14,7 @@ import NextSong from "./NextSong";
 import Loop from "./Loop";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { setCurTime } from "../../redux/actions/actions";
+import { setCurTime, togglePlay } from "../../redux/actions/actions";
 import Button from "../button/Button";
 //icon
 
@@ -22,10 +22,9 @@ const Controls = (props) => {
   const { tracks,onOpenList } = props;
   const dispatch = useDispatch();
   const audioRef = useRef(null);
-
   const [position, setPosition] = useState(0);
   const [seekValue, setSeekValue] = useState(0);
-
+  
   function formatDuration(value) {
     var m = Math.floor(value / 60);
     var s = Math.floor(value % 60);
@@ -60,6 +59,13 @@ const Controls = (props) => {
       setPosition(audioRef.current?.currentTime);
     }, 1000);
   };
+
+  useEffect(() =>{
+    if(seekValue === 100 && !tracks.isLoop){
+      dispatch(togglePlay(false))
+    }
+    return;
+  },[seekValue])
 
   return (
     <>
