@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import Action from "../../action/Action";
 import "./nowplaying.scss";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 
-import TuneIcon from "@mui/icons-material/Tune";
-import SettingsVoiceIcon from "@mui/icons-material/SettingsVoice";
 
 import { useEffect } from "react";
 import Lyric from "../../lyric/Lyric";

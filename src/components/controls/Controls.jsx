@@ -5,7 +5,6 @@ import "./controls.scss";
 
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 import QueueMusicIcon from '@mui/icons-material/QueueMusic';
-import TocRoundedIcon from '@mui/icons-material/TocRounded';
 import { Slider } from "@mui/material";
 import ActiveRandom from "./ActiveRandom";
 import Previous from "./Previous";
@@ -65,6 +64,7 @@ const Controls = (props) => {
       dispatch(togglePlay(false))
     }
     return;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[seekValue])
 
   return (
@@ -119,7 +119,7 @@ const Controls = (props) => {
           size="small"
           value={seekValue || 0}
           onChange={handleChange}
-          sx={{ color: "white" }}
+          sx={{ color: "var(--progressbar-active-bg)" }}
         />
         <span className="time right">{formatDuration(tracks.duration)}</span>
       </div>

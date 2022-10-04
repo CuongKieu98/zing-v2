@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./header.scss";
-import { useLocation } from "react-router-dom";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -13,14 +12,12 @@ import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 
 import Action from "../action/Action";
 import { useDebounce } from "../../hooks";
-import { useSelector } from "react-redux";
+
 import Media from "../media/Media";
-import { actionSelector } from "../../redux/selectors/selectors";
 import Button from "../button/Button";
 import Modal from "../modal/Modal";
 import Card from "../cards/Card";
 import Skeleton from "@mui/material/Skeleton";
-import Stack from "@mui/material/Stack";
 import {
   THEME_2,
   THEME_ARTIST,
@@ -30,24 +27,6 @@ import { useDispatch } from "react-redux";
 import { setColor, setMode } from "../../redux/actions/actions";
 import { SearchData } from "../../api/musicApi";
 
-const headerNav = [
-  {
-    display: "Khám Phá",
-    path: "/",
-  },
-  {
-    display: "#zingchart",
-    path: "/zing-chart",
-  },
-  {
-    display: "Radio",
-    path: "/radio",
-  },
-  {
-    display: "PlayList",
-    path: "/play-list",
-  },
-];
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -57,8 +36,6 @@ const Header = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [isColapse, setIsColapse] = useState("");
   const [loading, setLoading] = useState(false);
-  const reducer = useSelector(actionSelector);
-  const tracks = reducer.audioReducer;
   const ulsRef = useRef();
   const [openDialog, setOpenDialog] = useState(false);
 

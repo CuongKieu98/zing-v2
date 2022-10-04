@@ -14,14 +14,13 @@ import {
   setDurTime,
   setLoading,
   setLyric,
-  setPlayList,
   setSongId,
   setSongInfo,
   setSrcAudio,
   setType,
   togglePlay,
 } from "../../redux/actions/actions";
-import { getInfoSong,  getSong } from "../../api/musicApi";
+import { getInfoSong, getSong } from "../../api/musicApi";
 import { useState } from "react";
 import stringUtils from "../../utils/stringUtils";
 import TYPE_PLAYLIST from "../../consts/TYPE_PLAYLIST";
@@ -42,7 +41,7 @@ const Media = (props) => {
   const bg = useSelector(actionSelector).bgReducer;
 
   const [playing, setPlaying] = useState(false);
-  const loading =tracks && item.encodeId === tracks.songId && tracks.isLoading
+  const loading = tracks && item.encodeId === tracks.songId && tracks.isLoading;
   useEffect(() => {
     if (tracks && item.encodeId === tracks.songId && tracks.isPlay) {
       setPlaying(true);
@@ -121,12 +120,11 @@ const Media = (props) => {
     }
   };
 
-
   useEffect(() => {
     if (left && (left.rank === 1 || left.rank === 2 || left.rank === 3)) {
       numRef.current.classList.add(`top-${left.rank}`);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const SortIcon = () => {
     if (item.rakingStatus > 0) {
@@ -197,9 +195,7 @@ const Media = (props) => {
         {/*end img in bar */}
         <div className="media__content ">
           <h3 className="is-mark level-left">{item.title}</h3>
-          <h4 className="is-mark">
-          {item.artistsNames}
-          </h4>
+          <h4 className="is-mark">{item.artistsNames}</h4>
         </div>
       </div>
       <div className="media__right">
