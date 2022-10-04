@@ -734,3 +734,23 @@ h3.subtitle{
   color: var(--text-secondary);
   font-size: 12px;
 }
+.loading-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  .item-skeleton {
+    width: 100%;
+    display: flex;
+    .text-skeleton {
+      width: 70%;
+      display: block;
+    }
+    .icon-skeleton {
+      padding-right: 10px;
+    }
+  }
+  .right-skeleton {
+    right: 0;
+  }
+}

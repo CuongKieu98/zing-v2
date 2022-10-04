@@ -19,6 +19,8 @@ import { actionSelector } from "../../redux/selectors/selectors";
 import Button from "../button/Button";
 import Modal from "../modal/Modal";
 import Card from "../cards/Card";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 import {
   THEME_2,
   THEME_ARTIST,
@@ -125,7 +127,6 @@ const Header = () => {
       });
   }, [debounced]);
 
-
   const handleClickOutside = (event) => {
     if (inputRef.current && inputRef.current.contains(event.target)) {
       return;
@@ -176,16 +177,10 @@ const Header = () => {
                 />
               </div>
               {searchValue.length > 0 && (
-                // <Action
-                //   icon={{
-                //     icon: <CloseRoundedIcon sx={{ fontSize: 20 }} />,
-                //     className: "card-icon ",
-                //     customClass: " no-bg",
-                //     onClick: handleClear,
-                //   }}
-                //   className={"mg-07 icon-close"}
-                // />
-                <Button className={"is-32 no-bg mg-07 icon-close"} onClick={handleClear}>
+                <Button
+                  className={"is-32 no-bg mg-07 icon-close"}
+                  onClick={handleClear}
+                >
                   <CloseRoundedIcon
                     sx={{ fontSize: 20, color: "var(--setting-icon-text)" }}
                   />
@@ -197,12 +192,35 @@ const Header = () => {
               <ul className="suggest__list" ref={ulsRef}>
                 <div className="suggest__list__container">
                   <div className="search-title">Gợi ý kết quả</div>
-                 { searchResult?.map((item,i) =>(
-                    <li className="suggest__list__item" key={i}> 
-                    <Media item={item} />
-                  </li>
-                  ) )}
-                  
+                  {loading ? (
+                    <div className="loading-skeleton">
+                      <div className="item-skeleton">
+                        <div className="icon-skeleton">
+                          <Skeleton variant="rounded" width={40} height={40} />
+                        </div>
+                        <div className="text-skeleton">
+                          <Skeleton
+                            variant="text"
+                            sx={{ fontSize: "1rem" }}
+                            width={"auto"}
+                            height={20}
+                          />
+                          <Skeleton
+                            variant="text"
+                            sx={{ fontSize: "1rem" }}
+                            width={100}
+                            height={20}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    searchResult?.map((item, i) => (
+                      <li className="suggest__list__item" key={i}>
+                        <Media item={item} />
+                      </li>
+                    ))
+                  )}
                 </div>
               </ul>
             )}
