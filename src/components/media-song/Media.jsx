@@ -27,13 +27,10 @@ const Media = (props) => {
     onPlay,
     tracks,
     onPause,
-    loadingApi,
+    isLoading,
   } = props;
-  const dispatch = useDispatch();
   const isNowPlaying = tracks.infoSong.encodeId === audio.encodeId;
-  // useEffect(() =>{
-
-  // },[audio.isPlay])
+  const Loading = isLoading && tracks.isLoading
 
   return (
     <div className="media-song">
@@ -49,7 +46,7 @@ const Media = (props) => {
           <div className="opacity"></div>
           <div className="action-items">
             <div className="thumb-action">
-              {tracks.isLoading ? (
+              {Loading ? (
                 <img
                   className="media__action__loading"
                   src={images.spiner}

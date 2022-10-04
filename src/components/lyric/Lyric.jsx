@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 // import required modules
-import { Mousewheel,Autoplay } from "swiper";
+import { Mousewheel } from "swiper";
 
 const Lyric = ({ data, tracks }) => {
   const lrcRef = useRef([]);

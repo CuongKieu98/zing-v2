@@ -12,15 +12,19 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import images from "../../assets/images";
 import {
   setDurTime,
+  setLoading,
   setLyric,
   setPlayList,
   setSongId,
   setSongInfo,
   setSrcAudio,
+  setType,
+  togglePlay,
 } from "../../redux/actions/actions";
 import { getInfoSong,  getSong } from "../../api/musicApi";
 import { useState } from "react";
 import stringUtils from "../../utils/stringUtils";
+import TYPE_PLAYLIST from "../../consts/TYPE_PLAYLIST";
 
 const Media = (props) => {
   const {
@@ -31,13 +35,14 @@ const Media = (props) => {
     className,
     sort = false,
     time = false,
+    type,
   } = props;
   const dispatch = useDispatch();
   const numRef = useRef(null);
   const bg = useSelector(actionSelector).bgReducer;
 
-  const [loading, setLoading] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const loading =tracks && item.encodeId === tracks.songId && tracks.isLoading
   useEffect(() => {
     if (tracks && item.encodeId === tracks.songId && tracks.isPlay) {
       setPlaying(true);
@@ -46,60 +51,76 @@ const Media = (props) => {
     }
   }, [item.encodeId, playing, tracks]);
 
-  const Duplicate = (value) => {
-    const found = tracks.playingList.find((el) => el.encodeId === value);
-    if (!found) {
-      dispatch(
-        setPlayList({
-          encodeId: item.encodeId,
-          title: item.title,
-          thumbnailM: item.thumbnailM,
-          thumbnail: item.thumbnail,
-          artistsNames: item.artistsNames,
-        })
-      );
+  const handlePlay = () => {
+    if (item.encodeId === tracks?.songId) {
+      dispatch(togglePlay(true));
+    } else {
+      if (type === TYPE_PLAYLIST.MYPLAYLIST) {
+        playSongLocal(item);
+      } else if (type === TYPE_PLAYLIST.ZINGCHART) {
+        playSongWithApi(item);
+      }
     }
   };
 
-  const handlePlay = async (e) => {
-    if (tracks.songId === item.encodeId && tracks.isPlay) {
-      return;
-    } else {
-      setLoading(true);
-      dispatch(setLyric(""));
-      dispatch(setSongId(item.encodeId));
-      Duplicate(item.encodeId);
+  const playSongLocal = () => {
+    dispatch(setSongId(item.encodeId));
+    dispatch(setDurTime(item.duration));
+    dispatch(setSrcAudio(item.srcAudio));
+    dispatch(setLyric(item.lyric));
+    dispatch(setType(type));
+    dispatch(
+      setSongInfo({
+        encodeId: item.encodeId,
+        title: item.title,
+        thumbnailM: item.thumbnailM,
+        thumbnail: item.thumbnailM,
+        artistsNames: item.artistsNames,
+        album: {
+          encodeId: item.album.encodeId,
+          title: item.album.title,
+        },
+        srcAudio: item.srcAudio,
+        currentTime: item.currentTime,
+        duration: item.duration,
+        lyric: item.lyric,
+      })
+    );
+    dispatch(togglePlay(true));
+  };
 
+  const playSongWithApi = async (item) => {
+    try {
+      dispatch(setSongId(item.encodeId));
+      dispatch(setLoading(true));
+      const durr = await getInfoSong(item.encodeId);
+      const srcAud = await getSong(item.encodeId);
+      dispatch(setDurTime(durr.data.duration));
+      dispatch(setSrcAudio(srcAud.data[128]));
+      dispatch(setLyric(""));
+      dispatch(setType(type));
       dispatch(
         setSongInfo({
+          encodeId: item.encodeId,
           title: item.title,
           thumbnailM: item.thumbnailM,
           thumbnail: item.thumbnailM,
           artistsNames: item.artistsNames,
+          album: {},
+          srcAudio: srcAud,
+          currentTime: 0,
+          duration: durr,
+          lyric: "",
         })
       );
-      await getInfoSong(item.encodeId).then((res) => {
-        try {
-          dispatch(setDurTime(res.data.duration));
-        } catch (error) {
-          console.log(error);
-          setLoading(false);
-          return;
-        }
-      });
-      await getSong(item.encodeId).then((res) => {
-        try {
-          dispatch(setSrcAudio(res.data[128]));
-        } catch (error) {
-          console.log(error);
-          setLoading(false);
-          return;
-        }
-      });
- 
-      setLoading(false);
+      dispatch(togglePlay(true));
+      dispatch(setLoading(false));
+    } catch (error) {
+      console.log(error);
+      dispatch(setLoading(false));
     }
   };
+
 
   useEffect(() => {
     if (left && (left.rank === 1 || left.rank === 2 || left.rank === 3)) {

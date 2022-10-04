@@ -13,13 +13,11 @@ import { useDispatch } from "react-redux";
 import { setLyric } from "../../../redux/actions/actions";
 
 const NowPlaying = (props) => {
-  const { bg, tracks, theme, onClick } = props;
+  const { tracks, theme, onClick } = props;
   const [dataLyric, setDataLyric] = useState([]);
-  const [lyrics, setLyrics] = useState("");
   const [activeTab, setActiveTab] = useState(1);
 
   const dispatch = useDispatch();
-
   const handleChangeTab = (value) => {
     if (activeTab === value) return;
     setActiveTab(value);

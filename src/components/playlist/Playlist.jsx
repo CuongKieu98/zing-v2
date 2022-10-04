@@ -64,12 +64,11 @@ const Playlist = (props) => {
   };
 
   const playSongWithApi = async (item) => {
-    
     try {
+      dispatch(setSongId(item.encodeId));
       dispatch(setLoading(true));
       const durr = await getInfoSong(item.encodeId);
       const srcAud = await getSong(item.encodeId);
-      dispatch(setSongId(item.encodeId));
       dispatch(setDurTime(durr.data.duration));
       dispatch(setSrcAudio(srcAud.data[128]));
       dispatch(setLyric(""));
@@ -139,6 +138,7 @@ const Playlist = (props) => {
                   onPause={handlePause}
                   tracks={tracks}
                   prefixType={prefixType}
+                  isLoading={item.encodeId === tracks.songId}
                 />
               </div>
             </div>

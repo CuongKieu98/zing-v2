@@ -10,7 +10,7 @@ import AlarmIcon from "@mui/icons-material/Alarm";
 //drag drop item
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
-import { TrackChangesSharp } from "@mui/icons-material";
+
 
 const icons = [
   {
@@ -40,7 +40,7 @@ const iconsMedia = [
 
 const DragItem = styled.div`
   border-radius: 4px;
-  background-color: ${(props) => props.bgActive};
+  background-color: ${(props) => props.hoverActive ? props.bgActive : "var(--queue-player-popup-bg)"}  ;
   &:hover {
     background-color: ${(props) => props.hoverActive ? props.bgActive : props.hover};
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.3),
@@ -109,7 +109,6 @@ const Content = ({ tracks, bg }) => {
 
   useEffect(() =>{
     setData(tracks.playingList);
-    console.log(tracks.playingList);
   },[tracks.playingList])
 
   const onDragEnd = (result) => {
@@ -163,6 +162,7 @@ const Content = ({ tracks, bg }) => {
                                   tracks={tracks}
                                   className={"is-40"}
                                   right={iconsMedia}
+                                  type={tracks.type}
                                 />
                               </DragItem>
                               {item.encodeId === tracks.songId && (

@@ -26,6 +26,7 @@ import {
 } from "../../assets/fake-data/db";
 import { useDispatch } from "react-redux";
 import { setColor, setMode } from "../../redux/actions/actions";
+import { SearchData } from "../../api/musicApi";
 
 const headerNav = [
   {
@@ -47,9 +48,7 @@ const headerNav = [
 ];
 
 const Header = () => {
-  const { pathname } = useLocation();
   const headerRef = useRef(null);
-  const active = headerNav.findIndex((e) => e.path === pathname);
   const inputRef = useRef(null);
   const [isShow, setIsShow] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -57,13 +56,11 @@ const Header = () => {
   const [isColapse, setIsColapse] = useState("");
   const [loading, setLoading] = useState(false);
   const reducer = useSelector(actionSelector);
-  const bg = reducer.bgReducer;
   const tracks = reducer.audioReducer;
   const ulsRef = useRef();
   const [openDialog, setOpenDialog] = useState(false);
 
   const debounced = useDebounce(searchValue, 800);
-
   const handleClear = () => {
     setSearchValue("");
     inputRef.current.focus();
@@ -111,6 +108,24 @@ const Header = () => {
       document.removeEventListener("click", handleClickOutside, !isShow);
     };
   }, []);
+
+  useEffect(() => {
+    if (!debounced.trim()) {
+      setSearchResult([]);
+      return;
+    }
+    setLoading(true);
+    SearchData(debounced)
+      .then((res) => {
+        setSearchResult(res.data.songs.slice(0, 8));
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, [debounced]);
+
+
   const handleClickOutside = (event) => {
     if (inputRef.current && inputRef.current.contains(event.target)) {
       return;
@@ -182,24 +197,12 @@ const Header = () => {
               <ul className="suggest__list" ref={ulsRef}>
                 <div className="suggest__list__container">
                   <div className="search-title">Gợi ý kết quả</div>
-                  <li className="suggest__list__item">
-                    <Media item={tracks.infoSong} />
+                 { searchResult?.map((item,i) =>(
+                    <li className="suggest__list__item" key={i}> 
+                    <Media item={item} />
                   </li>
-                  <li className="suggest__list__item">
-                    <Media item={tracks.infoSong} />
-                  </li>
-                  <li className="suggest__list__item">
-                    <Media item={tracks.infoSong} />
-                  </li>
-                  <li className="suggest__list__item">
-                    <Media item={tracks.infoSong} />
-                  </li>
-                  <li className="suggest__list__item">
-                    <Media item={tracks.infoSong} />
-                  </li>
-                  <li className="suggest__list__item">
-                    <Media item={tracks.infoSong} />
-                  </li>
+                  ) )}
+                  
                 </div>
               </ul>
             )}
