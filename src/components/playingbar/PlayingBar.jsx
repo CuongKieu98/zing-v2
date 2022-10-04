@@ -9,10 +9,8 @@ import { Slider } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Controls from "../controls/Controls";
-import Action from "../action/Action";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import LyricsIcon from "@mui/icons-material/Lyrics";
-import TabRoundedIcon from "@mui/icons-material/TabRounded";
+
+import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import { useRef } from "react";
@@ -87,24 +85,6 @@ const PlayingBar = () => {
   ];
   const iconR = [
     {
-      icon: <YouTubeIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)" }} />,
-      title: "Xem MV",
-      onClick: (e) => handleClick(e, "favorite"),
-      className: "hide-on-tablet ",
-    },
-    {
-      icon: <LyricsIcon sx={{ fontSize: 20, color: "var(--setting-icon-text)" }} />,
-      title: "Xem lời bài hát",
-      onClick: (e) => handleClick(e, "Khác"),
-      className: "hide-on-tablet ",
-    },
-    {
-      icon: <TabRoundedIcon sx={{ fontSize: 20 , color: "var(--setting-icon-text)"}} />,
-      title: "Chế độ cửa sổ",
-      onClick: (e) => handleClick(e, "Khác"),
-      className: "hide-on-tablet ",
-    },
-    {
       icon: <VolumeUpRoundedIcon sx={{ fontSize: 20 , color: "var(--setting-icon-text)"}} />,
       onClick: (e) => handleClick(e, "Khác"),
       className: "hide-on-mobile ",
@@ -168,11 +148,11 @@ const PlayingBar = () => {
             </div>
             <div className="level__item is-narrow">
               <Button
-                className={"is-32 square-bg mg-07 hide-on-mobile"}
+                className={" square-bg mg-07 hide-on-mobile"}
                 onClick={(e) => openRightBar(e)}
                 customIcon={"is-hover-square"}
               >
-                <PlaylistPlayIcon
+                <QueueMusicIcon
                   sx={{ fontSize: 20, color: "var(--setting-icon-text)" }}
                 />
               </Button>

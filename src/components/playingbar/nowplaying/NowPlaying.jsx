@@ -11,6 +11,7 @@ import Lyric from "../../lyric/Lyric";
 import { getLyric } from "../../../api/musicApi";
 import { useDispatch } from "react-redux";
 import { setLyric } from "../../../redux/actions/actions";
+import Button from "../../button/Button";
 
 const NowPlaying = (props) => {
   const { tracks, theme, onClick } = props;
@@ -74,23 +75,7 @@ const NowPlaying = (props) => {
         <div className="np__content__header">
           <div className="left">
             <div className="level">
-              <div className="level__item">
-                <button className="left__btn">
-                  <Action
-                    icon={{
-                      icon: <ExpandMoreRoundedIcon sx={{ fontSize: 20 }} />,
-                      className: "card-icon ",
-                      onClick: onClick,
-                    }}
-                  />
-                </button>
-              </div>
-              <div className="left-content">
-                <h3 className="title" style={{ marginBottom: "0" }}>
-                  {tracks.infoSong.title}
-                </h3>
-                <h4 className="subtitle">{tracks.infoSong.artistsNames}</h4>
-              </div>
+              <div className="level__item"></div>
             </div>
           </div>
           <ul className="tabs">
@@ -112,25 +97,15 @@ const NowPlaying = (props) => {
           <div className="right">
             <div className="level">
               <div className="level__item">
-                <button className="left__btn">
-                  {activeTab === 1 ? (
-                    <Action
-                      icon={{
-                        icon: <SettingsVoiceIcon sx={{ fontSize: 20 }} />,
-                        className: "card-icon ",
-                        onClick: () => handleChangeTab(2),
-                      }}
-                    />
-                  ) : (
-                    <Action
-                      icon={{
-                        icon: <TuneIcon sx={{ fontSize: 20 }} />,
-                        className: "card-icon ",
-                        onClick: () => handleChangeTab(1),
-                      }}
-                    />
-                  )}
-                </button>
+                <Button
+                  className={"circle-bg mg-07 nowpl-show"}
+                  customIcon={"is-hover-circle"}
+                  onClick={onClick}
+                >
+                  <ExpandMoreRoundedIcon
+                    sx={{ fontSize: 30, color: "var(--setting-icon-text)" }}
+                  />
+                </Button>
               </div>
             </div>
           </div>
@@ -142,17 +117,16 @@ const NowPlaying = (props) => {
                 <div className="body__list__wrapper">
                   <div className="wrapper__content">
                     <div className="wrapper__content__card">
-                      <figure className={"card__content__img " + (tracks.isPlay ? "playing" : "")}>
+                      <figure
+                        className={
+                          "card__content__img " +
+                          (tracks.isPlay ? "playing" : "")
+                        }
+                      >
                         <img src={tracks.infoSong.thumbnailM} alt="" />
                       </figure>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className="np__content__bottom">
-              <div className="content__text">
-                <div className="content_text_title">
                 </div>
               </div>
             </div>

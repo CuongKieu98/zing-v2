@@ -97,9 +97,6 @@
           transition: 0.5 ease;
         }
       }
-      @include mobile {
-        display: none;
-      }
     }
     .right {
       position: absolute;

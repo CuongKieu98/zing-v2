@@ -58,6 +58,9 @@
           background-color: var(--alpha-bg);
           .hover-items {
             display: block;
+            @include mobile {
+              display: none;
+            }
           }
           .right-action-items {
             display: none;
