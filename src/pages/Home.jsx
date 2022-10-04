@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Section from "../components/section/Section";
 import SlideHome from "../components/slidehome/SlideHome";
 import {
-  RANK,
+
   SECTION_1,
   SECTION_2,
   SECTION_3,
   SECTION_4,
 } from "../assets/fake-data/db";
-import ChartHome from "../components/chart/chart-home/ChartHome";
+
 import RadioSection from "../components/section/radio-section/RadioSection";
 import Card from "../components/card/Card";
 import images from "../assets/images";
