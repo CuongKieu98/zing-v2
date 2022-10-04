@@ -12,9 +12,8 @@ import Controls from "../controls/Controls";
 
 import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
-import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
+
 import { useRef } from "react";
-import { useEffect } from "react";
 import RightBar from "./rightbar/RightBar";
 import NowPlaying from "./nowplaying/NowPlaying";
 import { setPopup } from "../../redux/actions/actions";

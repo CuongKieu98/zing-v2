@@ -455,8 +455,7 @@ figure{
 .mr-15 {
   margin-right: 15px !important;
 }
-.section {
-}
+
 .mg-07 {
   margin: 0 7px;
 }
@@ -499,9 +498,11 @@ body ::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: hsla(0, 0%, 100%, 0.3);
   -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 50%);
+  box-shadow: inset 0 0 6px rgb(0 0 0 / 50%);
 }
 body ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset #fff;
+  box-shadow: inset #fff;
   border-radius: 4px;
 }
 .opacity {
@@ -599,6 +600,7 @@ body ::-webkit-scrollbar-track {
   border: 1px solid var(--text-item-hover);
   padding: 5px 25px;
   -webkit-mask-image: linear-gradient(359deg, $white 0.1%, #000 10%);
+  mask-image: linear-gradient(359deg, $white 0.1%, #000 10%);
   &:hover {
     cursor: pointer;
     background-color: var(--alpha-bg);

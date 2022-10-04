@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 
 import { getCharthome } from "../api/musicApi";
 
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import MicNoneIcon from "@mui/icons-material/MicNone";
-import { actionSelector } from "../redux/selectors/selectors";
 import "../scss/_chart.scss";
 import Button from "../components/button/Button";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
@@ -16,32 +11,7 @@ import CARD_TYPE from "../consts/CARD_TYPE";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 
-const iconsMedia = [
-  {
-    icon: <MicNoneIcon sx={{ fontSize: 20 }} />,
-    title: "Phát cùng lời bài hát",
-
-    className: "card-small-icon ",
-  },
-  {
-    icon: <FavoriteBorderIcon sx={{ fontSize: 20 }} />,
-    title: "Thêm vào thư viện",
-
-    className: "card-small-icon ",
-  },
-  {
-    icon: <MoreHorizIcon sx={{ fontSize: 20 }} />,
-    title: "Xem thêm",
-    className: "card-small-icon ",
-  },
-];
-
 const Chart = () => {
-
-  const reducer = useSelector(actionSelector);
-  const bg = reducer.bgReducer;
-  const tracks = reducer.audioReducer;
-  const [data, setData] = useState({});
   const [itemChart, setItemChart] = useState([]);
   const [datasize, setDatasize] = useState(10);
   const [loading, setLoading] = useState(false);
@@ -50,7 +20,6 @@ const Chart = () => {
     setLoading(true);
     getCharthome()
       .then((res) => {
-        setData(res.data);
         setItemChart(res.data.RTChart.items);
         setLoading(false);
       })

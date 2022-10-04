@@ -86,6 +86,7 @@ const Header = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside, !isShow);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -257,6 +258,7 @@ const Header = () => {
 const Theme = (props) => {
   const { onClose } = props;
   const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
   const [currTheme, setCurrThem] = useState("zma");
 
   const setTheme = (theme) => {
