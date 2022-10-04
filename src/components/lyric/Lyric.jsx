@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useEffect } from "react";
+
 import "./lyric.scss";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,8 +13,7 @@ import { Mousewheel } from "swiper";
 const Lyric = ({ data, tracks }) => {
   const lrcRef = useRef([]);
   const ulRef = useRef(null);
-  const swiperRef = useRef(null)
-
+  const swiperRef = useRef(null);
   return (
     <div className="lyric">
       <div className="column is-multiline">
@@ -29,7 +28,6 @@ const Lyric = ({ data, tracks }) => {
               pagination={{
                 clickable: true,
               }}
-      
               modules={[Mousewheel]}
               className="mySwiper"
             >
@@ -38,11 +36,13 @@ const Lyric = ({ data, tracks }) => {
                   const prevTime = arr[
                     index + 1 >= arr.length ? index : index + 1
                   ][0].time.slice(0, -3);
-                  if (lrcRef.current[index + 2]?.className.includes("current")) {
-                    swiperRef?.current?.swiper.slideTo(index)
+                  if (
+                    lrcRef.current[index + 2]?.className.includes("current")
+                  ) {
+                    swiperRef?.current?.swiper.slideTo(index);
                   }
                   return (
-                    <SwiperSlide  key={index}>
+                    <SwiperSlide key={index}>
                       <li
                         className={
                           "items " +

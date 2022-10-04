@@ -84,3 +84,9 @@ export const setLoading= (value) => {
     payload: value,
   };
 };
+export const setIsLoop= (loop) => {
+  return {
+    type: "ACTION_SET_LOOP",
+    payload: loop,
+  };
+};

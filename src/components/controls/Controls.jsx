@@ -113,6 +113,7 @@ const Controls = (props) => {
         onTimeUpdate={onPlaying}
         onLoadedMetadata={onLoad}
         autoPlay={tracks.isPlay}
+        loop={tracks.isLoop}
         hidden
       >
         Your browser does not support the
