@@ -14,6 +14,9 @@ export function makeApiCall(options) {
   return axios(options)
     .then((response) => {
       var data = response.data;
+      if(data.err !== 0){
+        return alert(data.msg)
+      }
       return data;
     })
     .catch((error) => {

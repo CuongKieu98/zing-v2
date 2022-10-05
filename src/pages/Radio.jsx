@@ -1,5 +1,5 @@
 import React from 'react'
-import SlideHome from "../components/slidehome/SlideHome";
+
 import Section from "../components/section/Section";
 import "../scss/_home.scss"
 

@@ -69,8 +69,12 @@ const Playlist = (props) => {
       dispatch(setLoading(true));
       const durr = await getInfoSong(item.encodeId);
       const srcAud = await getSong(item.encodeId);
+      if (srcAud.data[128]) {
+        dispatch(setSrcAudio(srcAud.data[128]));
+      } else {
+        return alert(srcAud);
+      }
       dispatch(setDurTime(durr.data.duration));
-      dispatch(setSrcAudio(srcAud.data[128]));
       dispatch(setLyric(""));
       dispatch(setType(type));
       dispatch(setPlayList(playlist));
@@ -100,11 +104,6 @@ const Playlist = (props) => {
     dispatch(togglePlay(false));
   };
 
-  // useEffect(() => {
-  //   document.getElementById(tracks.songId).scrollIntoView({
-  //     behavior: 'smooth'
-  //   });
-  // }, []);
 
   return (
     <div className="playlist">
