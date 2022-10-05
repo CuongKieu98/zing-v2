@@ -4,6 +4,7 @@ import Button from "../button/Button";
 import { useDispatch } from "react-redux";
 import {
   setDurTime,
+  setLoading,
   setLyric,
   setSongId,
   setSongInfo,
@@ -27,7 +28,7 @@ const Previous = ({ audioRef, tracks }) => {
     return;
   };
 
-  const PrevSongLocal =() =>{
+  const PrevSongLocal = () => {
     if (tracks.playingList.length > 0) {
       const indexSong = findIndexSong();
       dispatch(setSongId(tracks.playingList[indexSong].encodeId));
@@ -56,10 +57,11 @@ const Previous = ({ audioRef, tracks }) => {
     } else {
       window.alert("Vui lòng thêm danh sách phát");
     }
-  }
-  const PrevSongWithApi = async () =>{
+  };
+  const PrevSongWithApi = async () => {
     try {
       if (tracks.playingList.length > 0) {
+        dispatch(setLoading(true));
         const indexSong = findIndexSong();
         const durr = await getInfoSong(tracks.playingList[indexSong].encodeId);
         const srcAud = await getSong(tracks.playingList[indexSong].encodeId);
@@ -81,15 +83,16 @@ const Previous = ({ audioRef, tracks }) => {
             lyric: "",
           })
         );
-
+        dispatch(setLoading(false));
         dispatch(togglePlay(true));
       } else {
         window.alert("Vui lòng thêm danh sách phát");
       }
     } catch (error) {
       console.log(error);
+      dispatch(setLoading(false));
     }
-  }
+  };
 
   //nếu bài đang phát có trong ds thì bài tiếp theo = index +1, ngược lại phát bài đầu tiên
   const findIndexSong = () => {

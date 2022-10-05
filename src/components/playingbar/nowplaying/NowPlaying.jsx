@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./nowplaying.scss";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 
-
 import { useEffect } from "react";
 import Lyric from "../../lyric/Lyric";
 import { getLyric } from "../../../api/musicApi";
@@ -14,6 +13,7 @@ const NowPlaying = (props) => {
   const { tracks, theme, onClick } = props;
   const [dataLyric, setDataLyric] = useState([]);
   const [activeTab, setActiveTab] = useState(1);
+  const [spiner, setSpiner] = useState(false);
 
   const dispatch = useDispatch();
   const handleChangeTab = (value) => {
@@ -24,12 +24,15 @@ const NowPlaying = (props) => {
         setLyric(tracks.lyric);
         parseFile(tracks.lyric);
       } else {
+        setSpiner(true);
         getLyric(tracks.songId).then((res) => {
           try {
             dispatch(setLyric(res.data.file));
             parseFile(res.data.file);
+            setSpiner(false);
           } catch (error) {
             console.log(error);
+            setSpiner(false);
             return;
           }
         });
@@ -88,7 +91,7 @@ const NowPlaying = (props) => {
               value={2}
               onClick={() => handleChangeTab(2)}
             >
-              Lời bài hát
+              {spiner ? "Đang cập nhật..." : "Lời bài hát" }        
             </li>
           </ul>
           <div className="right">
