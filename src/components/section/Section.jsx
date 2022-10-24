@@ -68,7 +68,7 @@ const CardMedia = (props) => {
     <div className="card-media">
       <div className="card-media__img">
         <figure style={{ backgroundColor: `${bg.bgLoading}` }}>
-          <img src={img} alt="" />
+          <img src={img} alt="" loading="lazy"/>
         </figure>
         <div className="opacity"></div>
         <div className="card-media__action">
